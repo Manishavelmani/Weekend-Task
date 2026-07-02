@@ -1,0 +1,52 @@
+body{
+    background: #f4f6f9;
+}
+
+.dashboard-header{
+    background: linear-gradient(135deg,#141E30,#243B55);
+    color: white;
+    padding: 40px;
+    border-radius: 20px;
+}
+
+.stat-card{
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    transition: 0.3s;
+}
+
+.stat-card:hover{
+    transform: translateY(-10px);
+}
+
+.icon{
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.dashboard-box{
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.achievement-card{
+    background: white;
+    padding: 30px;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.achievement-card:hover{
+    transform: translateY(-10px);
+}
+
+.progress{
+    height: 30px;
+    border-radius: 20px;
+}

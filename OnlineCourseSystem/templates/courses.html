@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}
+Courses
+{% endblock %}
+
+{% block content %}
+
+<div class="container page-container">
+
+    <div class="row mb-4">
+
+        <div class="col-md-6">
+            <h2 class="fw-bold">Available Courses</h2>
+            <p class="text-muted">Explore and enroll in courses.</p>
+        </div>
+
+        <div class="col-md-6">
+
+            <form method="GET" action="/courses">
+                <div class="input-group">
+                    <input type="text" name="keyword" class="form-control" placeholder="Search courses...">
+                    <button class="btn btn-primary">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+
+        {% for course in courses %}
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card course-card h-100">
+
+                <div class="card-body">
+
+                    <h4 class="mb-3">{{ course.course_name }}</h4>
+
+                    <p class="text-muted mb-2"><strong>Category:</strong>{{ course.category }}</p>
+
+                    <p class="text-muted mb-2"><strong>Duration:</strong>{{ course.duration }}</p>
+
+                    <hr>
+
+                    <p>
+                        {{ course.description }}
+                    </p>
+
+                </div>
+
+                <div class="card-footer bg-white border-0">
+
+                    {% if course.course_id in enrolled_courses %}
+                    <button class="btn btn-success w-100" disabled>Enrolled ✓</button>
+                    {% else %}
+                    <a href="/enroll/{{ course.course_id }}" class="btn btn-primary w-100">Enroll Now</a>
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

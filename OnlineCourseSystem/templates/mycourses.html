@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+
+{% block title %}
+My Courses
+{% endblock %}
+
+{% block content %}
+
+<h2 class="text-center page-title mb-4">
+    <i class="bi bi-journal-bookmark-fill text-primary"></i>
+    My Courses
+</h2>
+
+<div class="row">
+
+    {% for course in courses %}
+
+    <div class="col-md-6 col-lg-4 mb-4">
+
+        <div class="card course-card h-100">
+
+            <div class="card-body">
+
+                <h4 class="mb-3">
+                    {{ course.course_name }}
+                </h4>
+
+                <p>
+                    <strong>Category:</strong>
+                    {{ course.category }}
+                </p>
+
+                <p>
+                    <strong>Duration:</strong>
+                    {{ course.duration }}
+                </p>
+
+                {% if course.progress == 100 %}
+
+                    <span class="badge bg-success mb-3">
+                        Completed
+                    </span>
+
+                {% elif course.progress == 0 %}
+
+                    <span class="badge bg-secondary mb-3">
+                        Not Started
+                    </span>
+
+                {% else %}
+
+                    <span class="badge bg-warning text-dark mb-3">
+                        Learning
+                    </span>
+
+                {% endif %}
+
+                <p class="mb-2">
+                    <strong>Progress:</strong>
+                    {{ course.progress }}%
+                </p>
+
+                <div class="progress mb-3">
+
+                    <div class="progress-bar bg-success"
+                         role="progressbar"
+                         style="width: {{ course.progress }}%;">
+
+                        {{ course.progress }}%
+
+                    </div>
+
+                </div>
+
+                {% if course.progress != 100 %}
+
+                <form action="/update_progress/{{ course.enrollment_id }}"
+                      method="POST">
+
+                    <div class="row g-2">
+
+                        <div class="col-8">
+
+                            <select name="progress"
+                                    class="form-select">
+
+                                <option value="0"
+                                {% if course.progress == 0 %}selected{% endif %}>
+                                    0%
+                                </option>
+
+                                <option value="20"
+                                {% if course.progress == 20 %}selected{% endif %}>
+                                    20%
+                                </option>
+
+                                <option value="40"
+                                {% if course.progress == 40 %}selected{% endif %}>
+                                    40%
+                                </option>
+
+                                <option value="60"
+                                {% if course.progress == 60 %}selected{% endif %}>
+                                    60%
+                                </option>
+
+                                <option value="80"
+                                {% if course.progress == 80 %}selected{% endif %}>
+                                    80%
+                                </option>
+
+                                <option value="100"
+                                {% if course.progress == 100 %}selected{% endif %}>
+                                    100%
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="col-4">
+
+                            <button type="submit"
+                                    class="btn btn-primary w-100">
+                                Update
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+                {% else %}
+
+                <div class="course-complete mt-3">
+                    Course Completed
+                </div>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,215 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <!-- Welcome Section -->
+
+    <div class="dashboard-header">
+
+        <h1>Welcome, {{ user.name }} 👋</h1>
+
+        <p>Continue your learning journey and complete your courses.</p>
+
+    </div>
+
+    <!-- Statistics Cards -->
+
+    <div class="row mt-4">
+
+        <div class="col-md-3 mb-4">
+
+            <div class="stat-card bg-primary">
+
+                <i class="bi bi-book-half icon"></i>
+
+                <h2>{{ total_courses }}</h2>
+
+                <p>Total Courses</p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 mb-4">
+
+            <div class="stat-card bg-success">
+
+                <i class="bi bi-check-circle-fill icon"></i>
+
+                <h2>{{ completed }}</h2>
+
+                <p>Completed</p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 mb-4">
+
+            <div class="stat-card bg-warning">
+
+                <i class="bi bi-play-circle-fill icon"></i>
+
+                <h2>{{ in_progress }}</h2>
+
+                <p>Learning</p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 mb-4">
+
+            <div class="stat-card bg-danger">
+
+                <i class="bi bi-graph-up-arrow icon"></i>
+
+                <h2>{{ completion_rate }}%</h2>
+
+                <p>Progress</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Progress Section -->
+
+    <div class="dashboard-box mt-4">
+
+        <h3>Overall Learning Progress</h3>
+
+        <div class="progress mt-3">
+
+            <div class="progress-bar bg-success" style="width: {{ completion_rate }}%;">
+                {{ completion_rate }}%
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Recent Courses -->
+
+    <div class="dashboard-box mt-4">
+
+        <h3>My Learning</h3>
+
+        <table class="table table-hover mt-3">
+
+            <thead>
+
+                <tr>
+
+                    <th>Course</th>
+
+                    <th>Progress</th>
+
+                    <th>Status</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for course in courses %}
+
+                <tr>
+
+                    <td>{{ course.course_name }}</td>
+
+                    <td>{{ course.progress }}%</td>
+
+                    <td>
+
+                        {% if course.progress == 100 %}
+
+                        <span class="badge bg-success">Completed</span>
+
+                        {% elif course.progress > 0 %}
+
+                        <span class="badge bg-warning text-dark">Learning</span>
+
+                        {% else %}
+
+                        <span class="badge bg-secondary">Not Started</span>
+
+                        {% endif %}
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <!-- Achievements -->
+
+    <div class="row mt-4">
+
+        <div class="col-md-4 mb-3">
+
+            <div class="achievement-card">
+
+                🏆
+
+                <h4>Course Starter</h4>
+
+                <p>You started learning.</p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4 mb-3">
+
+            <div class="achievement-card">
+
+                🎯
+
+                <h4>Active Learner</h4>
+
+                <p>Keep learning daily.</p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4 mb-3">
+
+            <div class="achievement-card">
+
+                🚀
+
+                <h4>Future Expert</h4>
+
+                <p>Complete all courses.</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
