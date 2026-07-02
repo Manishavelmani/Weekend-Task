@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <!-- Welcome -->
+
+    <div class="mb-4">
+        <h2 class="fw-bold">
+            Welcome, {{ session["name"] }}
+        </h2>
+
+        <p class="text-muted">
+            Manage your jobs and applicants.
+        </p>
+    </div>
+
+    <!-- Statistics -->
+
+    <div class="row g-4 mb-5">
+
+        <div class="col-md-4">
+
+            <div class="card shadow border-0 p-4">
+
+                <h5>Total Jobs</h5>
+
+                <h2 class="text-primary">
+                    {{ jobs|length }}
+                </h2>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow border-0 p-4">
+
+                <h5>Total Applicants</h5>
+
+                <h2 class="text-success">
+                    {{ total_applications }}
+                </h2>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow border-0 p-4">
+
+                <h5>Active Jobs</h5>
+
+                <h2 class="text-danger">
+                    {{ jobs|length }}
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Action Button -->
+
+    <div class="mb-4">
+
+        <a href="/add_job"
+           class="btn btn-primary">
+
+            <i class="bi bi-plus-circle"></i>
+
+            Post New Job
+
+        </a>
+
+    </div>
+
+    <!-- Job Table -->
+
+    <div class="card shadow border-0">
+
+        <div class="card-header bg-white">
+
+            <h4 class="mb-0">
+                Posted Jobs
+            </h4>
+
+        </div>
+
+        <div class="card-body">
+
+            <div class="table-responsive">
+
+                <table class="table align-middle">
+
+                    <thead>
+
+                        <tr>
+                            <th>Job Title</th>
+                            <th>Location</th>
+                            <th>Salary</th>
+                            <th>Experience</th>
+                            <th>Actions</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    {% for job in jobs %}
+
+                        <tr>
+
+                            <td>
+                                {{ job["job_title"] }}
+                            </td>
+
+                            <td>
+                                {{ job["location"] }}
+                            </td>
+
+                            <td>
+                                {{ job["salary"] }}
+                            </td>
+
+                            <td>
+                                {{ job["experience"] }}
+                            </td>
+
+                            <td>
+
+                                <a href="/applicants/{{ job['job_id'] }}"
+                                   class="btn btn-success btn-sm">
+
+                                    Applicants
+
+                                </a>
+
+                                <a href="/edit_job/{{ job['job_id'] }}"
+                                   class="btn btn-warning btn-sm">
+
+                                    Edit
+
+                                </a>
+
+                                <a href="/delete_job/{{ job['job_id'] }}"
+                                   class="btn btn-danger btn-sm">
+
+                                    Delete
+
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+                    {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

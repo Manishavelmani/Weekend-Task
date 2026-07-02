@@ -1,0 +1,202 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="job-header">
+
+    <div class="container text-center">
+
+        <h1 class="fw-bold text-white">
+            Find Your Dream Job
+        </h1>
+
+        <p class="text-light">
+            Explore thousands of opportunities
+        </p>
+
+        <div class="search-box mt-4">
+
+            <form method="GET" action="/jobs">
+
+                <div class="row g-2">
+
+                    <div class="col-md-4">
+                        <input type="text"
+                               name="keyword"
+                               class="form-control"
+                               placeholder="Job Title / Company / Skill"
+                               value="{{ keyword }}">
+                    </div>
+
+                    <div class="col-md-3">
+                        <select name="experience" class="form-select">
+
+                            <option value="">Experience</option>
+
+                            <option value="Fresher"
+                                {% if experience == "Fresher" %}selected{% endif %}>
+                                Fresher
+                            </option>
+
+                            <option value="1 Year"
+                                {% if experience == "1 Year" %}selected{% endif %}>
+                                1 Year
+                            </option>
+
+                            <option value="2 Years"
+                                {% if experience == "2 Years" %}selected{% endif %}>
+                                2 Years
+                            </option>
+
+                            <option value="3 Years"
+                                {% if experience == "3 Years" %}selected{% endif %}>
+                                3 Years
+                            </option>
+
+                            <option value="5+ Years"
+                                {% if experience == "5+ Years" %}selected{% endif %}>
+                                5+ Years
+                            </option>
+
+                        </select>
+                    </div>
+
+                    <div class="col-md-3">
+                        <input type="text"
+                               name="location"
+                               class="form-control"
+                               placeholder="Location"
+                               value="{{ location }}">
+                    </div>
+
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-light w-100">
+                            <i class="bi bi-search"></i>
+                            Search
+                        </button>
+                    </div>
+
+                </div>
+
+                <!-- ✅ Helper Text -->
+                <p class="text-light mt-2 mb-0" style="font-size: 14px;">
+                    <i class="bi bi-info-circle"></i>
+                    Fill at least one field to search
+                </p>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<div class="container py-5">
+
+    <!-- ✅ Show Results Count -->
+    {% if keyword or experience or location %}
+    <div class="mb-4">
+        <h5 class="text-muted">
+            <i class="bi bi-funnel-fill text-primary"></i>
+            Found <strong>{{ jobs|length }}</strong> jobs
+            {% if keyword %} for "<strong>{{ keyword }}</strong>"{% endif %}
+            {% if location %} in <strong>{{ location }}</strong>{% endif %}
+        </h5>
+
+        <a href="/jobs" class="btn btn-sm btn-outline-secondary">
+            <i class="bi bi-x-circle"></i> Clear Filters
+        </a>
+    </div>
+    {% endif %}
+
+    <div class="row">
+
+        {% for job in jobs %}
+
+        <div class="col-lg-4 col-md-6 mb-4">
+
+            <div class="card job-card border-0 shadow h-100">
+
+                <div class="card-body">
+
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="badge bg-primary">Full Time</span>
+                        <span class="text-warning fw-bold">
+                            <i class="bi bi-cash-coin"></i>
+                            {{ job.salary }}
+                        </span>
+                    </div>
+
+                    <h4 class="mt-3">
+                        {{ job.job_title }}
+                    </h4>
+
+                    <h6 class="text-primary">
+                        {{ job.company_name }}
+                    </h6>
+
+                    <p class="text-muted mb-1">
+                        <i class="bi bi-geo-alt-fill"></i>
+                        {{ job.location }}
+                    </p>
+
+                    <p class="text-muted mb-1">
+                        <i class="bi bi-briefcase-fill"></i>
+                        {{ job.experience }}
+                    </p>
+
+                    <!-- ✅ Show Skills as Badges -->
+                    {% if job.skills %}
+                    <div class="mt-2 mb-2">
+                        {% for skill in job.skills.split(',')[:3] %}
+                            <span class="badge bg-light text-dark border">
+                                {{ skill.strip() }}
+                            </span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    <hr>
+
+                    <!-- ✅ Single View Details Button (Apply inside details page) -->
+                    <a href="/job/{{ job.job_id }}"
+                       class="btn btn-primary w-100">
+                        <i class="bi bi-eye"></i>
+                        View Details & Apply
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% else %}
+
+        <div class="col-12 text-center py-5">
+
+            <i class="bi bi-search fs-1 text-muted"></i>
+
+            <h4 class="text-muted mt-3">
+                No Jobs Found!
+            </h4>
+
+            <p class="text-muted">
+                Try different keyword, experience or location.
+            </p>
+
+            <a href="/jobs" class="btn btn-primary">
+                View All Jobs
+            </a>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

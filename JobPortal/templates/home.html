@@ -1,0 +1,215 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-6">
+
+                <h1 class="display-4 fw-bold">
+                    Find Your Dream Job
+                </h1>
+
+                <p class="lead">
+                    Thousands of jobs from top companies.
+                </p>
+
+                <form action="/search" method="GET" class="mt-4">
+                    <div class="input-group">
+                        <input type="text"
+                       name="keyword"
+                         class="form-control form-control-lg"
+                        placeholder="Search Jobs"
+                            required
+                          minlength="2">
+                        <button type="submit" class="btn btn-warning">
+                          Search
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+
+            
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Statistics -->
+<section class="container stats-section">
+
+    <div class="row text-center">
+
+        <div class="col-md-4 mb-3">
+
+            <div class="card shadow border-0 p-4">
+
+                <h2 class="text-primary">500+</h2>
+                <h5>Companies</h5>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4 mb-3">
+
+            <div class="card shadow border-0 p-4">
+
+                <h2 class="text-success">1000+</h2>
+                <h5>Jobs</h5>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4 mb-3">
+
+            <div class="card shadow border-0 p-4">
+
+                <h2 class="text-danger">5000+</h2>
+                <h5>Candidates</h5>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Job Categories -->
+<section class="container categories-section">
+
+    <h2 class="text-center mb-4">
+        Job Categories
+    </h2>
+
+    <div class="row text-center">
+
+        <div class="col-md-3 mb-3">
+
+            <div class="card shadow p-4">
+
+                <i class="bi bi-code-slash fs-1 text-primary"></i>
+
+                <h5 class="mt-3">
+                    IT Jobs
+                </h5>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 mb-3">
+
+            <div class="card shadow p-4">
+
+                <i class="bi bi-bar-chart fs-1 text-success"></i>
+
+                <h5 class="mt-3">
+                    Data Analyst
+                </h5>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 mb-3">
+
+            <div class="card shadow p-4">
+
+                <i class="bi bi-bank fs-1 text-warning"></i>
+
+                <h5 class="mt-3">
+                    Banking
+                </h5>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 mb-3">
+
+            <div class="card shadow p-4">
+
+                <i class="bi bi-hospital fs-1 text-danger"></i>
+
+                <h5 class="mt-3">
+                    Healthcare
+                </h5>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Latest Jobs -->
+<section class="container jobs-section">
+
+    <h2 class="mb-4">
+        Latest Jobs
+    </h2>
+
+    <div class="row">
+
+        {% for job in jobs %}
+
+        <div class="col-lg-4 mb-4">
+
+            <div class="card shadow h-100">
+
+                <div class="card-body">
+
+                    <h4>
+                        {{ job.job_title }}
+                    </h4>
+
+                    <h6 class="text-muted">
+                        {{ job.company_name }}
+                    </h6>
+
+                    <p>
+                        <i class="bi bi-geo-alt"></i>
+                        {{ job.location }}
+                    </p>
+
+                    <p>
+                        <strong>Experience:</strong>
+                        {{ job.experience }}
+                    </p>
+
+                    <p>
+                        <strong>Salary:</strong>
+                        {{ job.salary }}
+                    </p>
+
+                    <a href="/job/{{ job.job_id }}"
+                       class="btn btn-primary">
+                        View Details
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}

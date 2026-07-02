@@ -1,0 +1,187 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/jobs.css') }}">
+
+<div class="container py-4">
+
+    <div class="row g-4">
+
+        <!-- ================================ -->
+        <!-- LEFT SIDE : JOB DETAILS          -->
+        <!-- ================================ -->
+
+        <div class="col-lg-8">
+
+            <div class="card shadow border-0 rounded-4 p-4 h-100">
+
+                <!-- Job Title -->
+
+                <h2 class="fw-bold mb-2">
+                    {{ job.job_title }}
+                </h2>
+
+                <!-- Company -->
+
+                <h5 class="text-primary mb-3">
+                    {{ job.company_name }}
+                </h5>
+
+                <!-- Job Info -->
+
+                <div class="d-flex flex-wrap gap-3 text-muted mb-3">
+
+                    <span>
+                        <i class="bi bi-geo-alt-fill text-danger"></i>
+                        {{ job.location }}
+                    </span>
+
+                    <span>
+                        <i class="bi bi-briefcase-fill text-warning"></i>
+                        {{ job.experience }}
+                    </span>
+
+                    <span>
+                        <i class="bi bi-cash-coin text-success"></i>
+                        {{ job.salary }}
+                    </span>
+
+                </div>
+
+                <hr>
+
+                <!-- Skills -->
+
+                <h5 class="fw-bold mb-3">
+                    Skills Required
+                </h5>
+
+                <div class="mb-4">
+
+                    {% for skill in job.skills.split(',') %}
+
+                        <span class="badge bg-light text-dark border px-3 py-2 me-2 mb-2">
+                            {{ skill }}
+                        </span>
+
+                    {% endfor %}
+
+                </div>
+
+                <hr>
+
+                <!-- Description -->
+
+                <h5 class="fw-bold mb-3">
+                    Job Description
+                </h5>
+
+                <p class="text-muted lh-lg">
+                    {{ job.description }}
+                </p>
+
+                <hr>
+
+                <!-- Posted Date -->
+
+                <p class="text-secondary mb-0">
+
+                    <i class="bi bi-calendar-event text-danger"></i>
+
+                    Posted on:
+                    {{ job.posted_date }}
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- ================================ -->
+        <!-- RIGHT SIDE : APPLY BOX           -->
+        <!-- ================================ -->
+
+        <div class="col-lg-4">
+
+            <div class="card shadow border-0 rounded-4 p-4 sticky-top"
+                 style="top: 100px;">
+
+                <h4 class="fw-bold mb-3">
+                    Apply for this job
+                </h4>
+
+                {% if is_applied %}
+
+                    <!-- Already Applied Message -->
+
+                    <div class="alert alert-success text-center mb-3">
+
+                        <i class="bi bi-check-circle-fill fs-3"></i>
+
+                        <p class="mb-0 mt-2">
+                            <strong>Already Applied!</strong>
+                        </p>
+
+                        <small>
+                            Check status in dashboard
+                        </small>
+
+                    </div>
+
+                    <a href="/candidate_dashboard"
+                       class="btn btn-primary w-100 mb-3">
+
+                        <i class="bi bi-speedometer2"></i>
+                        Go to Dashboard
+
+                    </a>
+
+                {% else %}
+
+                    <!-- Apply Form -->
+
+                    <p class="text-muted">
+                        Upload your resume to apply
+                    </p>
+
+                    <form action="/apply/{{ job.job_id }}"
+                          method="POST"
+                          enctype="multipart/form-data">
+
+                        <input type="file"
+                               name="resume"
+                               class="form-control mb-3"
+                               accept=".pdf,.doc,.docx"
+                               required>
+
+                        <button class="btn btn-success w-100 mb-3">
+                            <i class="bi bi-send"></i>
+                            Apply Now
+                        </button>
+
+                    </form>
+
+                {% endif %}
+
+                <hr>
+
+                <!-- Save Job Button -->
+
+                <a href="/save_job/{{ job.job_id }}"
+                   class="btn btn-outline-primary w-100">
+
+                    ⭐ Save Job
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

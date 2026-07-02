@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container py-4">
+
+    <!-- Welcome Banner -->
+    <div class="welcome-banner mb-4">
+        <div class="d-flex justify-content-between align-items-center flex-wrap">
+            <div>
+                <h2 class="fw-bold mb-1">
+                    Welcome, {{ session.name }} 👋
+                </h2>
+                <p class="mb-0">
+                    Track your applications and discover opportunities.
+                </p>
+            </div>
+            <a href="/jobs" class="btn btn-warning mt-3 mt-lg-0">
+                <i class="bi bi-search"></i>
+                Browse Jobs
+            </a>
+        </div>
+    </div>
+
+    <!-- Statistics -->
+    <div class="row g-4 mb-4">
+        <div class="col-md-3">
+            <div class="card shadow border-0 text-center p-4">
+                <i class="bi bi-file-earmark-text fs-1 text-primary"></i>
+                <h2 class="mt-2">{{ applied_count }}</h2>
+                <p class="text-muted mb-0">Applied</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow border-0 text-center p-4">
+                <i class="bi bi-hourglass-split fs-1 text-warning"></i>
+                <h2 class="mt-2">{{ pending_count }}</h2>
+                <p class="text-muted mb-0">Pending</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow border-0 text-center p-4">
+                <i class="bi bi-check-circle fs-1 text-success"></i>
+                <h2 class="mt-2">{{ accepted_count }}</h2>
+                <p class="text-muted mb-0">Accepted</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow border-0 text-center p-4">
+                <i class="bi bi-x-circle fs-1 text-danger"></i>
+                <h2 class="mt-2">{{ rejected_count }}</h2>
+                <p class="text-muted mb-0">Rejected</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+
+        <!-- Left Profile Card -->
+        <div class="col-lg-4 mb-4">
+            <div class="card shadow border-0 rounded-4">
+                <div class="profile-banner-small rounded-top"></div>
+                <div class="card-body text-center">
+                    <img src="{{ url_for('static', filename='uploads/profile/' + session.profile_image) }}"
+                         class="dash-profile-img">
+                    <h4 class="fw-bold mt-3">{{ session.name }}</h4>
+                    <p class="text-muted">{{ session.role }}</p>
+                    <div class="progress mb-3" style="height:8px;">
+                        <div class="progress-bar" style="width:80%"></div>
+                    </div>
+                    <small class="text-muted">Profile Completion 80%</small>
+                    <hr>
+                    <a href="/profile" class="btn btn-outline-primary w-100 mb-2">
+                        <i class="bi bi-person"></i> View Profile
+                    </a>
+                    <a href="/jobs" class="btn btn-primary w-100">
+                        <i class="bi bi-search"></i> Browse Jobs
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Applications -->
+        <div class="col-lg-8">
+            <div class="card shadow border-0 rounded-4">
+                <div class="card-header bg-white">
+                    <h4 class="mb-0">Recent Applications</h4>
+                </div>
+                <div class="card-body">
+                    {% if applications %}
+                        {% for app in applications %}
+                            <div class="app-card shadow-sm p-3 mb-3">
+                                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                                    <div>
+                                        <h5 class="mb-1">{{ app.job_title }}</h5>
+                                        <p class="text-muted mb-1">{{ app.company_name }}</p>
+                                        <small class="text-muted">Applied: {{ app.applied_date }}</small>
+                                    </div>
+                                    <div>
+                                        {% if app.status == "Pending" %}
+                                            <span class="badge bg-warning text-dark">Pending</span>
+                                        {% elif app.status == "Accepted" %}
+                                            <span class="badge bg-success">Accepted</span>
+                                        {% else %}
+                                            <span class="badge bg-danger">Rejected</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <a href="/job/{{ app.job_id }}" class="btn btn-sm btn-outline-primary">
+                                        View Job
+                                    </a>
+
+                                    <!-- ✅ REDIRECTS TO NEW PAGE -->
+                                    <a href="/view_resume_page/{{ app.resume_file }}"  class="btn btn-sm btn-outline-secondary">
+                                        <i class="bi bi-eye"></i> Resume
+                                    </a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="text-center py-5">
+                            <i class="bi bi-briefcase fs-1 text-secondary"></i>
+                            <h5 class="mt-3">No Applications Yet</h5>
+                            <p class="text-muted">Start applying for jobs today.</p>
+                            <a href="/jobs" class="btn btn-primary">Browse Jobs</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

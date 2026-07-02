@@ -1,0 +1,161 @@
+/* ============ GLOBAL & BLINK FIX ============ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f7fa;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+main {
+    flex: 1;
+}
+
+/* Mouse hover smooth-ah irukka */
+.card, .btn, .nav-link, i, .social-icons a {
+    will-change: transform, box-shadow;
+    transform: translateZ(0);
+    transition: all 0.2s ease-in-out !important;
+}
+
+/* ============ NAVBAR ============ */
+.navbar {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    padding: 12px 0;
+    background: #fff !important;
+}
+
+.navbar-brand {
+    color: #2563eb !important;
+    font-weight: 800;
+    font-size: 1.4rem;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: #475569 !important;
+}
+
+.nav-link:hover {
+    color: #2563eb !important;
+}
+
+/* ============ BUTTONS & CARDS ============ */
+.btn {
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.card {
+    border-radius: 12px;
+    border: none;
+}
+
+/* ============ FOOTER ============ */
+.premium-footer {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: white;
+    padding: 50px 0 20px;
+    margin-top: auto;
+}
+
+.footer-logo {
+    color: #fbbf24;
+    font-weight: 800;
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+}
+
+.footer-heading {
+    color: #fbbf24;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+.footer-links, .footer-contact {
+    list-style: none;
+}
+
+.footer-links li, .footer-contact li {
+    margin-bottom: 10px;
+    color: rgba(255,255,255,0.85);
+}
+
+.footer-links a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: #fbbf24;
+    padding-left: 5px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.social-icons a {
+    width: 38px;
+    height: 38px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    background: #fbbf24;
+    color: #1e3a8a;
+    transform: translateY(-5px);
+}
+
+.footer-divider {
+    border-color: rgba(255,255,255,0.2);
+    margin: 25px 0 15px;
+}
+
+.footer-bottom {
+    text-align: center;
+    color: rgba(255,255,255,0.85);
+}
+
+
+
+
+/* ============ SCROLLBAR (Neat Look) ============ */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2563eb;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #1e3a8a;
+}

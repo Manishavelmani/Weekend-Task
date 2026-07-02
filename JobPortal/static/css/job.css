@@ -1,0 +1,78 @@
+/* ============ HEADER ============ */
+.job-header {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    padding: 60px 0;
+}
+
+.job-header h1 { font-weight: 800; }
+
+/* ============ SEARCH BOX ============ */
+.search-box {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.search-box .form-control,
+.search-box .form-select {
+    padding: 11px;
+    border: 1px solid #e2e8f0;
+}
+
+.search-box .btn-light {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 11px;
+    font-weight: 600;
+}
+
+.search-box .btn-light:hover {
+    background: #1d4ed8;
+    color: white;
+}
+
+/* ============ JOB CARD ============ */
+.job-card {
+    border: 1px solid #e2e8f0 !important;
+    transition: 0.3s;
+}
+
+.job-card:hover {
+    transform: translateY(-5px);
+    border-color: #2563eb !important;
+    box-shadow: 0 15px 35px rgba(37,99,235,0.15) !important;
+}
+
+.job-card .badge.bg-primary {
+    background: #eff6ff !important;
+    color: #2563eb !important;
+}
+
+/* ============ APPLY BOX ============ */
+.sticky-top.card {
+    background: linear-gradient(135deg, #2563eb, #1e3a8a);
+    color: white;
+}
+
+.sticky-top.card h4,
+.sticky-top.card .text-muted {
+    color: white !important;
+}
+
+.sticky-top.card .btn-success {
+    background: #f59e0b;
+    border: none;
+}
+
+.sticky-top.card .btn-outline-primary {
+    background: rgba(255,255,255,0.2);
+    border: 1px solid white;
+    color: white;
+}
+
+.sticky-top.card .btn-outline-primary:hover {
+    background: white;
+    color: #2563eb;
+}

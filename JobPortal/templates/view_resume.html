@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container py-4">
+
+    <!-- Header Section -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="fw-bold mb-0">
+            <i class="bi bi-file-earmark-pdf-fill text-danger"></i>
+            Resume Viewer
+        </h3>
+
+        <div>
+            <a href="/resume/{{ filename }}" download class="btn btn-success me-2">
+                <i class="bi bi-download"></i> Download PDF
+            </a>
+            <!-- Go Back Button (பழைய பேஜுக்கே போக) -->
+            <button onclick="history.back()" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left"></i> Go Back
+            </button>
+        </div>
+    </div>
+
+    <!-- Resume Iframe Section -->
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-body p-0" style="background: #525659; min-height: 80vh; border-radius: 1rem; overflow: hidden;">
+
+            <iframe src="/resume/{{ filename }}"
+                    width="100%"
+                    height="800px"
+                    style="border: none; display: block;">
+            </iframe>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

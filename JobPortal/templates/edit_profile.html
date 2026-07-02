@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container py-4">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-7">
+
+            <div class="card shadow-lg border-0 p-4">
+
+                <h3 class="mb-4">
+                    <i class="bi bi-person-gear text-primary"></i>
+                    Edit Profile
+                </h3>
+
+                <form method="POST" enctype="multipart/form-data">
+
+                    <!-- NAME -->
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input type="text"
+                               name="name"
+                               value="{{ user.name }}"
+                               class="form-control"
+                               required>
+                    </div>
+
+                    <!-- MOBILE -->
+                    <div class="mb-3">
+                        <label class="form-label">Mobile</label>
+                        <input type="text"
+                               name="mobile"
+                               value="{{ user.mobile }}"
+                               class="form-control"
+                               required>
+                    </div>
+
+                    <!-- PROFILE IMAGE -->
+                    <div class="mb-3">
+                        <label class="form-label">Profile Image</label>
+                        <input type="file"
+                               name="profile"
+                               class="form-control"
+                               accept="image/*">
+                    </div>
+
+                    <!-- ================= CANDIDATE SECTION ================= -->
+                    {% if user.role == "Candidate" %}
+
+                    <hr>
+                    <h5 class="text-primary mb-3">Candidate Details</h5>
+
+                    <div class="mb-3">
+                        <label class="form-label">Skills</label>
+                        <input type="text"
+                               name="skills"
+                               value="{{ user.skills or '' }}"
+                               class="form-control"
+                               placeholder="Python, Flask, SQL">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Experience</label>
+                        <textarea name="experience"
+                                  class="form-control"
+                                  rows="4">{{ user.experience or '' }}</textarea>
+                    </div>
+
+                    <!-- Resume -->
+                    <div class="mb-3">
+                        <label class="form-label">Resume</label>
+                        <input type="file"
+                               name="resume"
+                               class="form-control"
+                               accept=".pdf,.doc,.docx">
+                    </div>
+
+                    {% endif %}
+
+                    <!-- ================= EMPLOYER SECTION ================= -->
+                    {% if user.role == "Employer" %}
+
+                    <hr>
+                    <h5 class="text-success mb-3">Company Details</h5>
+
+                    <div class="mb-3">
+                        <label class="form-label">Company Name</label>
+                        <input type="text"
+                               name="company_name"
+                               value="{{ user.company_name or '' }}"
+                               class="form-control"
+                               required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Company Type</label>
+                        <input type="text"
+                               name="company_type"
+                               value="{{ user.company_type or '' }}"
+                               class="form-control"
+                               placeholder="IT / Finance / Startup">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">About Company</label>
+                        <textarea name="about_company"
+                                  value="{{ about_company or '' }}"
+                                  class="form-control"
+                                  rows="4"
+                                  placeholder="Short description about your company...">{{ user.about_company or '' }}</textarea>
+                    </div>
+
+                    {% endif %}
+
+                    <!-- BUTTONS -->
+                    <div class="d-flex gap-2 mt-4">
+
+                        <button type="submit"
+                                class="btn btn-success flex-grow-1">
+                            <i class="bi bi-check-circle"></i>
+                            Update Profile
+                        </button>
+
+                        <a href="/profile"
+                           class="btn btn-outline-secondary">
+                            Cancel
+                        </a>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,223 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- PROFILE BANNER -->
+<section class="profile-banner">
+    <div class="container">
+        <div class="profile-card">
+            <div class="row align-items-center">
+                <div class="col-lg-3 text-center">
+                    <img src="{{ url_for('static', filename='uploads/profile/' + user.profile_image) }}" class="profile-image">
+                </div>
+                <div class="col-lg-6">
+                    <h1 class="profile-name">{{ user.name }}</h1>
+                    <p class="profile-role">
+                        {% if user.role == "Candidate" %}
+                            {{ user.work_status if user.work_status else "Candidate" }}
+                        {% else %}
+                            Employer at {{ user.company_name }}
+                        {% endif %}
+                    </p>
+                    <div class="profile-info">
+                        <p><i class="bi bi-envelope-fill"></i> {{ user.email }}</p>
+                        <p><i class="bi bi-phone-fill"></i> {{ user.mobile }}</p>
+                        <p><i class="bi bi-person-badge-fill"></i> {{ user.role }}</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 text-center">
+                    <a href="/edit_profile" class="btn btn-warning px-4">
+                        <i class="bi bi-pencil-square"></i> Edit Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container py-5">
+
+    <!-- STATISTICS -->
+    <div class="row g-4 mb-4">
+        {% if user.role == "Candidate" %}
+            <div class="col-md-4">
+                <div class="detail-card text-center">
+                    <i class="bi bi-file-earmark-text fs-1 text-primary"></i>
+                    <h2 class="fw-bold mt-2">{{ applied_count }}</h2>
+                    <p class="text-muted mb-0">Applied Jobs</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="detail-card text-center">
+                    <i class="bi bi-bookmark-heart fs-1 text-warning"></i>
+                    <h2 class="fw-bold mt-2">{{ saved_count }}</h2>
+                    <p class="text-muted mb-0">Saved Jobs</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="detail-card text-center">
+                    <i class="bi bi-check-circle fs-1 text-success"></i>
+                    <h2 class="fw-bold mt-2">{{ accepted_count }}</h2>
+                    <p class="text-muted mb-0">Accepted</p>
+                </div>
+            </div>
+        {% else %}
+            <div class="col-md-4">
+                <div class="detail-card text-center">
+                    <i class="bi bi-briefcase-fill fs-1 text-primary"></i>
+                    <h2 class="fw-bold mt-2">{{ total_jobs }}</h2>
+                    <p class="text-muted mb-0">Jobs Posted</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="detail-card text-center">
+                    <i class="bi bi-people-fill fs-1 text-success"></i>
+                    <h2 class="fw-bold mt-2">{{ total_applications }}</h2>
+                    <p class="text-muted mb-0">Total Applicants</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="detail-card text-center">
+                    <i class="bi bi-check-circle-fill fs-1 text-warning"></i>
+                    <h2 class="fw-bold mt-2">{{ total_jobs }}</h2>
+                    <p class="text-muted mb-0">Active Jobs</p>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="row g-4">
+
+        <!-- Personal Information -->
+        <div class="col-lg-6">
+            <div class="detail-card">
+                <h4><i class="bi bi-person-circle"></i> Personal Information</h4>
+                <hr>
+                <p><strong>Name :</strong> {{ user.name }}</p>
+                <p><strong>Email :</strong> {{ user.email }}</p>
+                <p><strong>Mobile :</strong> {{ user.mobile }}</p>
+                <p><strong>Role :</strong> {{ user.role }}</p>
+            </div>
+        </div>
+
+        <!-- About -->
+        <div class="col-lg-6">
+            <div class="detail-card">
+                <h4><i class="bi bi-person-lines-fill"></i> About Me</h4>
+                <hr>
+                {% if user.role == "Candidate" %}
+                    {% if user.experience %}
+                        <p class="lh-lg">{{ user.experience }}</p>
+                    {% else %}
+                        <p class="text-muted">No description added yet. <a href="/edit_profile">Click here</a> to add.</p>
+                    {% endif %}
+                {% else %}
+                    {% if user.about_company %}
+                        <p class="lh-lg">{{ user.about_company }}</p>
+                    {% else %}
+                        <p class="text-muted">No company description added yet. <a href="/edit_profile">Click here</a> to add.</p>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+
+        {% if user.role == "Candidate" %}
+            <!-- Skills -->
+            <div class="col-lg-6">
+                <div class="detail-card">
+                    <h4><i class="bi bi-stars"></i> Skills</h4>
+                    <hr>
+                    {% if user.skills %}
+                        {% for skill in user.skills.split(',') %}
+                            <span class="skill-badge">{{ skill.strip() }}</span>
+                        {% endfor %}
+                    {% else %}
+                        <p class="text-muted">No skills added yet.</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Experience -->
+            <div class="col-lg-6">
+                <div class="detail-card">
+                    <h4><i class="bi bi-briefcase-fill"></i> Experience</h4>
+                    <hr>
+                    <p>{{ user.experience if user.experience else "Not Updated Yet" }}</p>
+                </div>
+            </div>
+
+            <!-- Resume Section (CLEANED) -->
+            <div class="col-12">
+                <div class="detail-card">
+                    <h4><i class="bi bi-file-earmark-pdf-fill"></i> Resume</h4>
+                    <hr>
+                    {% if latest_resume %}
+                        <p class="mb-3">
+                            <i class="bi bi-check-circle text-success"></i> Latest Resume: <strong>{{ latest_resume }}</strong>
+                        </p>
+
+                        <!-- ✅ REDIRECTS TO NEW PAGE -->
+                        <a href="/view_resume_page/{{ latest_resume }}"  class="btn btn-primary">
+                            <i class="bi bi-eye"></i> View Resume
+                        </a>
+
+                        <a href="/resume/{{ latest_resume }}" download class="btn btn-outline-primary ms-2">
+                            <i class="bi bi-download"></i> Download
+                        </a>
+                    {% else %}
+                        <div class="alert alert-warning">
+                            <i class="bi bi-exclamation-circle"></i> No resume uploaded yet. <a href="/edit_profile">Upload here</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Candidate Quick Actions -->
+            <div class="col-12">
+                <div class="detail-card">
+                    <h4><i class="bi bi-lightning-charge-fill"></i> Quick Actions</h4>
+                    <hr>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="/jobs" class="btn btn-primary"><i class="bi bi-search"></i> Browse Jobs</a>
+                        <a href="/candidate_dashboard" class="btn btn-success"><i class="bi bi-speedometer2"></i> My Dashboard</a>
+                        <a href="/saved_jobs" class="btn btn-warning"><i class="bi bi-bookmark-heart"></i> Saved Jobs</a>
+                    </div>
+                </div>
+            </div>
+
+        {% else %}
+            <!-- Employer Company Information -->
+            <div class="col-12">
+                <div class="detail-card">
+                    <h4><i class="bi bi-buildings-fill"></i> Company Information</h4>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong>Company :</strong> {{ user.company_name }}</p>
+                            <p><strong>Company Type :</strong> {{ user.company_type }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Contact Email :</strong> {{ user.email }}</p>
+                            <p><strong>Contact Mobile :</strong> {{ user.mobile }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Employer Quick Actions -->
+            <div class="col-12">
+                <div class="detail-card">
+                    <h4><i class="bi bi-lightning-charge-fill"></i> Quick Actions</h4>
+                    <hr>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="/add_job" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Post New Job</a>
+                        <a href="/employer_dashboard" class="btn btn-success"><i class="bi bi-speedometer2"></i> Dashboard</a>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
