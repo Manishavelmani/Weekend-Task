@@ -1,0 +1,363 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+Payment & Review Analytics
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+<div class="row mb-4">
+
+<div class="col">
+
+<h2 class="fw-bold">
+
+Payment & Review Analytics
+
+</h2>
+
+<p class="text-muted">
+
+Payment Behaviour and Customer Satisfaction
+
+</p>
+
+</div>
+
+</div>
+
+<!-- KPI -->
+
+<div class="row g-4">
+
+<div class="col-lg-3">
+
+<div class="card kpi-card purple-card">
+
+<div class="card-body">
+
+<h6>Total Payment</h6>
+
+<h2>
+
+₹ {{ "{:,.2f}".format(summary.total_payment) }}
+
+</h2>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-3">
+
+<div class="card mini-card purple-card">
+
+<div class="card-body">
+
+<h6>Average Payment</h6>
+
+<h2>
+
+₹ {{ summary.average_payment }}
+
+</h2>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-3">
+
+<div class="card mini-card purple-card">
+
+<div class="card-body">
+
+<h6>Average Review</h6>
+
+<h2>
+
+{{ summary.average_review }} ⭐
+
+</h2>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-3">
+
+<div class="card mini-card purple-card">
+
+<div class="card-body">
+
+<h6>Total Installments</h6>
+
+<h2>
+
+{{ "{:,}".format(summary.installments) }}
+
+</h2>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Charts -->
+
+<div class="row mt-4">
+
+<div class="col-lg-6">
+
+<div class="card chart-card">
+
+<div class="card-header">
+
+<h5>Payment Methods</h5>
+
+</div>
+
+<div class="card-body text-center">
+
+<img src="{{ url_for('static', filename='charts/payment.png') }}" class="img-fluid rounded">
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-6">
+
+<div class="card chart-card">
+
+<div class="card-header">
+
+<h5>Payment Installments</h5>
+
+</div>
+
+<div class="card-body text-center">
+
+<img src="{{ url_for('static', filename='charts/installments.png') }}" class="img-fluid rounded">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="row mt-4">
+
+<div class="col-lg-6">
+
+<div class="card chart-card">
+
+<div class="card-header">
+
+<h5>Review Score Distribution</h5>
+
+</div>
+
+<div class="card-body text-center">
+
+<img src="{{ url_for('static', filename='charts/review_scores.png') }}" class="img-fluid rounded">
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-6">
+
+<div class="card chart-card">
+
+<div class="card-header">
+
+<h5>Review Sentiment</h5>
+
+</div>
+
+<div class="card-body text-center">
+
+<img src="{{ url_for('static', filename='charts/review_sentiment.png') }}" class="img-fluid rounded">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Tables -->
+
+<div class="row mt-4">
+
+<div class="col-lg-6">
+
+<div class="card">
+
+<div class="card-header">
+
+<h5>Payment Methods Summary</h5>
+
+</div>
+
+<div class="card-body">
+
+<table class="table table-hover">
+
+<thead>
+
+<tr>
+
+<th>Method</th>
+
+<th>Orders</th>
+
+<th>Revenue</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for row in payments %}
+
+<tr>
+
+<td>{{ row.payment_type }}</td>
+
+<td>{{ row.Orders }}</td>
+
+<td>₹ {{ "{:,.2f}".format(row.Revenue) }}</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-6">
+
+<div class="card">
+
+<div class="card-header">
+
+<h5>Review Sentiment Summary</h5>
+
+</div>
+
+<div class="card-body">
+
+<table class="table table-hover">
+
+<thead>
+
+<tr>
+
+<th>Sentiment</th>
+
+<th>Reviews</th>
+
+<th>Average Score</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for row in reviews %}
+
+<tr>
+
+<td>{{ row.review_sentiment }}</td>
+
+<td>{{ row.Reviews }}</td>
+
+<td>{{ "%.2f"|format(row.Average) }}</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="card mt-4">
+
+<div class="card-header">
+
+<h5>Executive Payment & Review Insights</h5>
+
+</div>
+
+<div class="card-body">
+
+<div class="alert alert-success">
+
+💳 Customers predominantly use digital payment methods.
+
+</div>
+
+<div class="alert alert-primary">
+
+⭐ Average customer rating is <strong>{{ summary.average_review }}</strong>.
+
+</div>
+
+<div class="alert alert-warning">
+
+💰 Average payment value is <strong>₹ {{ summary.average_payment }}</strong>.
+
+</div>
+
+<div class="alert alert-info">
+
+📈 Improving delivery performance and seller quality can further increase customer satisfaction and review scores.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

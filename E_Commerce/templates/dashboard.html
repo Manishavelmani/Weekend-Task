@@ -1,0 +1,578 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+Dashboard
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <!-- Welcome -->
+
+    <div class="card mb-4 shadow-sm border-0">
+
+        <div class="card-body">
+
+            <h2 class="fw-bold">
+
+                Brazilian E-Commerce Analytics Dashboard
+
+            </h2>
+             <a href="/download-dataset"
+           class="btn btn-success mt-2">
+
+            <i class="bi bi-download"></i>
+
+            Download Cleaned Dataset
+
+             </a>
+
+        </div>
+
+    </div>
+
+    <!-- KPI Cards -->
+
+    <div class="row g-4">
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="card kpi-card h-100">
+
+                <div class="card-body text-center">
+
+                    <div class="icon mb-3">
+
+                        <i class="bi bi-currency-dollar fs-1"></i>
+
+                    </div>
+
+                    <h6>Total Revenue</h6>
+
+                    <h2>
+
+                        ₹ {{ "{:,.2f}".format(summary.revenue) }}
+
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="card kpi-card h-100">
+
+                <div class="card-body text-center">
+
+                    <div class="icon mb-3">
+
+                        <i class="bi bi-cart-fill fs-1"></i>
+
+                    </div>
+
+                    <h6>Total Orders</h6>
+
+                    <h2>
+
+                        {{ "{:,}".format(summary.orders) }}
+
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="card kpi-card h-100">
+
+                <div class="card-body text-center">
+
+                    <div class="icon mb-3">
+
+                        <i class="bi bi-people-fill fs-1"></i>
+
+                    </div>
+
+                    <h6>Total Customers</h6>
+
+                    <h2>
+
+                        {{ "{:,}".format(summary.customers) }}
+
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="card kpi-card h-100">
+
+                <div class="card-body text-center">
+
+                    <div class="icon mb-3">
+
+                        <i class="bi bi-shop fs-1"></i>
+
+                    </div>
+
+                    <h6>Total Sellers</h6>
+
+                    <h2>
+
+                        {{ "{:,}".format(summary.sellers) }}
+
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Secondary KPI -->
+
+    <div class="row g-4 mt-1">
+
+        <div class="col-lg-4">
+
+            <div class="card mini-card h-100">
+
+                <div class="card-body text-center">
+
+                    <i class="bi bi-receipt fs-2 text-primary mb-2"></i>
+
+                    <h6>Average Order Value</h6>
+
+                    <h3>
+
+                        ₹ {{ summary.avg_order }}
+
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-4">
+
+            <div class="card mini-card h-100">
+
+                <div class="card-body text-center">
+
+                    <i class="bi bi-truck fs-2 text-success mb-2"></i>
+
+                    <h6>Average Delivery Time</h6>
+
+                    <h3>
+
+                        {{ summary.avg_delivery }} Days
+
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-4">
+
+            <div class="card mini-card h-100">
+
+                <div class="card-body text-center">
+
+                    <i class="bi bi-star-fill fs-2 text-warning mb-2"></i>
+
+                    <h6>Average Review Score</h6>
+
+                    <h3>
+
+                        {{ summary.avg_review }} ⭐
+
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Charts Start -->
+
+    <div class="row g-4 mt-2">
+                <!-- Monthly Revenue -->
+
+        <div class="col-lg-8">
+
+            <div class="card chart-card h-100">
+
+                <div class="card-header d-flex justify-content-between align-items-center">
+
+                    <h5 class="mb-0">
+
+                        <i class="bi bi-graph-up-arrow text-primary"></i>
+
+                        Monthly Revenue Trend
+
+                    </h5>
+
+                </div>
+
+                <div class="card-body text-center">
+
+                    <img
+                        src="{{ url_for('static', filename='charts/monthly_sales.png') }}"
+                        class="img-fluid rounded">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Payment -->
+
+        <div class="col-lg-4">
+
+            <div class="card chart-card h-100">
+
+                <div class="card-header">
+
+                    <h5 class="mb-0">
+
+                        <i class="bi bi-credit-card text-success"></i>
+
+                        Payment Methods
+
+                    </h5>
+
+                </div>
+
+                <div class="card-body text-center">
+
+                    <img
+                        src="{{ url_for('static', filename='charts/payment.png') }}"
+                        class="img-fluid rounded">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Row 2 -->
+
+    <div class="row g-4 mt-1">
+
+        <div class="col-lg-6">
+
+            <div class="card chart-card h-100">
+
+                <div class="card-header">
+
+                    <h5 class="mb-0">
+
+                        <i class="bi bi-geo-alt-fill text-danger"></i>
+
+                        Revenue by State
+
+                    </h5>
+
+                </div>
+
+                <div class="card-body text-center">
+
+                    <img
+                        src="{{ url_for('static', filename='charts/revenue_state.png') }}"
+                        class="img-fluid rounded">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-6">
+
+            <div class="card chart-card h-100">
+
+                <div class="card-header">
+
+                    <h5 class="mb-0">
+
+                        <i class="bi bi-box-seam text-warning"></i>
+
+                        Revenue by Product Category
+
+                    </h5>
+
+                </div>
+
+                <div class="card-body text-center">
+
+                    <img
+                        src="{{ url_for('static', filename='charts/category_sales.png') }}"
+                        class="img-fluid rounded">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Row 3 -->
+
+    <div class="row g-4 mt-1">
+
+        <div class="col-lg-6">
+
+            <div class="card chart-card h-100">
+
+                <div class="card-header">
+
+                    <h5 class="mb-0">
+
+                        <i class="bi bi-truck text-info"></i>
+
+                        Delivery Time Distribution
+
+                    </h5>
+
+                </div>
+
+                <div class="card-body text-center">
+
+                    <img
+                        src="{{ url_for('static', filename='charts/delivery_time.png') }}"
+                        class="img-fluid rounded">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-6">
+
+            <div class="card chart-card h-100">
+
+                <div class="card-header">
+
+                    <h5 class="mb-0">
+
+                        <i class="bi bi-star-fill text-warning"></i>
+
+                        Customer Review Distribution
+
+                    </h5>
+
+                </div>
+
+                <div class="card-body text-center">
+
+                    <img
+                        src="{{ url_for('static', filename='charts/review_score.png') }}"
+                        class="img-fluid rounded">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Insights Section -->
+
+    <div class="row g-4 mt-2">
+                <!-- Executive Business Insights -->
+
+        <div class="col-lg-6">
+
+            <div class="card shadow-sm h-100">
+
+                <div class="card-header">
+
+                    <h5 class="mb-0">
+
+                        <i class="bi bi-lightbulb-fill text-warning"></i>
+
+                        Executive Business Insights
+
+                    </h5>
+
+                </div>
+
+                <div class="card-body">
+
+                    <table class="table table-hover align-middle">
+
+                        <tbody>
+
+                            <tr>
+
+                                <th>Highest Revenue Month</th>
+
+                                <td>{{ insights.highest_revenue_month }}</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <th>Best Product Category</th>
+
+                                <td>{{ insights.best_category }}</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <th>Top Customer State</th>
+
+                                <td>{{ insights.best_state }}</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <th>Best Seller</th>
+
+                                <td>{{ insights.best_seller }}</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <th>Average Review Score</th>
+
+                                <td>{{ insights.average_review }} ⭐</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <th>Average Delivery Time</th>
+
+                                <td>{{ insights.average_delivery }} Days</td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Project Highlights -->
+
+        <div class="col-lg-6">
+
+            <div class="card shadow-sm h-100">
+
+                <div class="card-header">
+
+                    <h5 class="mb-0">
+
+                        <i class="bi bi-award-fill text-primary"></i>
+
+                        Project Highlights
+
+                    </h5>
+
+                </div>
+
+                <div class="card-body">
+
+                    <div class="alert alert-success">
+
+                        <strong>✔ Data Cleaning</strong><br>
+
+                        Missing values, duplicates and invalid records were handled successfully.
+
+                    </div>
+
+                    <div class="alert alert-primary">
+
+                        <strong>✔ Feature Engineering</strong><br>
+
+                        Business features such as delivery time, customer lifetime value and seller performance were created.
+
+                    </div>
+
+                    <div class="alert alert-warning">
+
+                        <strong>✔ Interactive Analytics</strong><br>
+
+                        Charts were created using Matplotlib and Seaborn for better business understanding.
+
+                    </div>
+
+                    <div class="alert alert-info">
+
+                        <strong>✔ Business Intelligence Dashboard</strong><br>
+
+                        Developed using Flask, Bootstrap 5 and Jinja Templates with responsive design.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Footer Card -->
+
+    <div class="card mt-4 border-0 shadow-sm">
+
+        <div class="card-body text-center">
+
+            <h5 class="fw-bold mb-2">
+
+                Brazilian E-Commerce Analytics Dashboard
+
+            </h5>
+
+            <p class="text-muted mb-0">
+
+                This dashboard transforms the Brazilian Olist E-Commerce dataset into actionable business insights through
+                data cleaning, feature engineering, exploratory data analysis and interactive visualization.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

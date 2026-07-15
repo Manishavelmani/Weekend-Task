@@ -1,0 +1,402 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+Product Analytics
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+<div class="row mb-4">
+
+<div class="col">
+
+<h2 class="fw-bold">
+
+Product Analytics
+
+</h2>
+
+<p class="text-muted">
+
+Product Performance and Category Analysis
+
+</p>
+
+</div>
+
+</div>
+
+<!-- KPI -->
+
+<div class="row g-4">
+
+<div class="col-lg-3">
+
+<div class="card kpi-card purple-card">
+
+<div class="card-body">
+
+<h6>Total Products</h6>
+
+<h2>
+
+{{ "{:,}".format(summary.products) }}
+
+</h2>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-3">
+
+<div class="card mini-card purple-card">
+
+<div class="card-body">
+
+<h6>Categories</h6>
+
+<h2>
+
+{{ summary.categories }}
+
+</h2>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-3">
+
+<div class="card mini-card purple-card">
+
+<div class="card-body">
+
+<h6>Average Price</h6>
+
+<h2>
+
+₹ {{ summary.avg_price }}
+
+</h2>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-3">
+
+<div class="card mini-card purple-card">
+
+<div class="card-body">
+
+<h6>Average Weight</h6>
+
+<h2>
+
+{{ summary.avg_weight }} g
+
+</h2>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Charts -->
+
+<div class="row mt-4">
+
+<div class="col-lg-6">
+
+<div class="card chart-card">
+
+<div class="card-header">
+
+<h5>
+
+Product Price Distribution
+
+</h5>
+
+</div>
+
+<div class="card-body text-center">
+
+<img
+src="{{ url_for('static', filename='charts/product_price.png') }}"
+class="img-fluid rounded">
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-6">
+
+<div class="card chart-card">
+
+<div class="card-header">
+
+<h5>
+
+Top Categories
+
+</h5>
+
+</div>
+
+<div class="card-body text-center">
+
+<img
+src="{{ url_for('static', filename='charts/top_categories.png') }}"
+class="img-fluid rounded">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="row mt-4">
+
+<div class="col-lg-12">
+
+<div class="card chart-card">
+
+<div class="card-header">
+
+<h5>
+
+Top Selling Products
+
+</h5>
+
+</div>
+
+<div class="card-body text-center">
+
+<img
+src="{{ url_for('static', filename='charts/top_products.png') }}"
+class="img-fluid rounded">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- TABLES -->
+
+<div class="row mt-4">
+
+<div class="col-lg-6">
+
+<div class="card">
+
+<div class="card-header">
+
+<h5>
+
+Top Categories
+
+</h5>
+
+</div>
+
+<div class="card-body">
+
+<table class="table table-hover">
+
+<thead>
+
+<tr>
+
+<th>Category</th>
+
+<th>Orders</th>
+
+<th>Revenue</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for row in categories %}
+
+<tr>
+
+<td>{{ row.product_category_name_english }}</td>
+
+<td>{{ row.Orders }}</td>
+
+<td>
+
+₹ {{ "{:,.2f}".format(row.Revenue) }}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-6">
+
+<div class="card">
+
+<div class="card-header">
+
+<h5>
+
+Top Products
+
+</h5>
+
+</div>
+
+<div class="card-body">
+
+<table class="table table-hover">
+
+<thead>
+
+<tr>
+
+<th>Product</th>
+
+<th>Orders</th>
+
+<th>Revenue</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for row in products %}
+
+<tr>
+
+<td>{{ row.product_id[:20] }}...</td>
+
+<td>{{ row.Orders }}</td>
+
+<td>
+
+₹ {{ "{:,.2f}".format(row.Revenue) }}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- EXECUTIVE INSIGHTS -->
+
+<div class="card mt-4">
+
+<div class="card-header">
+
+<h5>
+
+Executive Product Insights
+
+</h5>
+
+</div>
+
+<div class="card-body">
+
+<div class="alert alert-success">
+
+📦
+
+{{ "{:,}".format(summary.products) }}
+
+products are available across
+
+{{ summary.categories }}
+
+categories.
+
+</div>
+
+<div class="alert alert-primary">
+
+💰
+
+Average product price:
+
+₹ {{ summary.avg_price }}
+
+</div>
+
+<div class="alert alert-warning">
+
+⚖️
+
+Average product weight:
+
+{{ summary.avg_weight }} g
+
+</div>
+
+<div class="alert alert-info">
+
+📈
+
+High-performing categories generate most of the platform revenue.
+Focus marketing and inventory on these categories to maximize sales.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

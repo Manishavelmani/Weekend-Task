@@ -1,0 +1,323 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+Business KPI Scorecard
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+<h2 class="fw-bold mb-4">
+
+Business KPI Scorecard
+
+</h2>
+
+<div class="row g-4">
+
+<div class="col-lg-4">
+
+<div class="card">
+
+<div class="card-body">
+
+<h5>
+
+Revenue Health
+
+</h5>
+
+{% if score.revenue > 15000000 %}
+
+<span class="badge bg-success">
+
+Excellent
+
+</span>
+
+{% elif score.revenue > 10000000 %}
+
+<span class="badge bg-warning">
+
+Good
+
+</span>
+
+{% else %}
+
+<span class="badge bg-danger">
+
+Needs Improvement
+
+</span>
+
+{% endif %}
+
+<h2 class="mt-3">
+
+₹ {{ "{:,.0f}".format(score.revenue) }}
+
+</h2>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-4">
+
+<div class="card">
+
+<div class="card-body">
+
+<h5>
+
+Customer Satisfaction
+
+</h5>
+
+{% if score.review >=4 %}
+
+<span class="badge bg-success">
+
+Excellent
+
+</span>
+
+{% elif score.review >=3 %}
+
+<span class="badge bg-warning">
+
+Average
+
+</span>
+
+{% else %}
+
+<span class="badge bg-danger">
+
+Poor
+
+</span>
+
+{% endif %}
+
+<h2 class="mt-3">
+
+⭐ {{ score.review }}
+
+</h2>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-4">
+
+<div class="card">
+
+<div class="card-body">
+
+<h5>
+
+Delivery Performance
+
+</h5>
+
+{% if score.delivery <10 %}
+
+<span class="badge bg-success">
+
+Fast
+
+</span>
+
+{% elif score.delivery <15 %}
+
+<span class="badge bg-warning">
+
+Average
+
+</span>
+
+{% else %}
+
+<span class="badge bg-danger">
+
+Slow
+
+</span>
+
+{% endif %}
+
+<h2 class="mt-3">
+
+{{ score.delivery }} Days
+
+</h2>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="row g-4 mt-2">
+
+<div class="col-lg-3">
+
+<div class="card">
+
+<div class="card-body text-center">
+
+<h6>
+
+Repeat Customers
+
+</h6>
+
+<h2>
+
+{{ score.repeat }}%
+
+</h2>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-3">
+
+<div class="card">
+
+<div class="card-body text-center">
+
+<h6>
+
+Delayed Orders
+
+</h6>
+
+<h2>
+
+{{ score.delay }}%
+
+</h2>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-3">
+
+<div class="card">
+
+<div class="card-body text-center">
+
+<h6>
+
+Payment Methods
+
+</h6>
+
+<h2>
+
+{{ score.payments }}
+
+</h2>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-3">
+
+<div class="card">
+
+<div class="card-body text-center">
+
+<h6>
+
+Seller Score
+
+</h6>
+
+<h2>
+
+{{ score.seller }}
+
+</h2>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="card mt-4">
+
+<div class="card-header">
+
+Executive Recommendation
+
+</div>
+
+<div class="card-body">
+
+<ul class="list-group">
+
+<li class="list-group-item">
+
+Increase marketing in high-performing states.
+
+</li>
+
+<li class="list-group-item">
+
+Reduce delayed deliveries to improve ratings.
+
+</li>
+
+<li class="list-group-item">
+
+Reward top-performing sellers.
+
+</li>
+
+<li class="list-group-item">
+
+Focus on repeat customers through loyalty programs.
+
+</li>
+
+<li class="list-group-item">
+
+Promote high-revenue product categories.
+
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}
