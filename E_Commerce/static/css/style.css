@@ -1,0 +1,802 @@
+/* ==========================================================
+   GOOGLE FONT
+========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ==========================================================
+   GLOBAL
+========================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background: #d4dae3;
+
+    color: #454384;
+
+    overflow-x:hidden;
+
+}
+
+/* ==========================================================
+   SIDEBAR
+========================================================== */
+
+.sidebar{
+
+    position:fixed;
+
+    left:0;
+
+    top:0;
+
+    width:270px;
+
+    height:100vh;
+
+    background:linear-gradient(180deg,#0f172a,#1e293b);
+
+    color:#fff;
+
+    overflow-y:auto;
+
+    transition:.3s;
+
+    z-index:1000;
+
+    box-shadow:5px 0 20px rgba(0,0,0,.15);
+
+}
+
+.logo{
+
+    padding:28px 20px;
+
+    text-align:center;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.logo i{
+
+    font-size:32px;
+
+    color:#38bdf8;
+
+    margin-right:8px;
+
+}
+
+.menu{
+
+    list-style:none;
+
+    padding:20px 0;
+
+}
+
+.menu li{
+
+    margin:6px 12px;
+
+}
+
+.menu a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    color:#cbd5e1;
+
+    text-decoration:none;
+
+    padding:13px 18px;
+
+    border-radius:12px;
+
+    transition:.25s;
+
+    font-size:15px;
+
+    font-weight:500;
+
+}
+
+.menu a i{
+
+    font-size:20px;
+
+    width:24px;
+
+    text-align:center;
+
+}
+
+.menu a:hover{
+
+    background:#2563eb;
+
+    color:#fff;
+
+    transform:translateX(5px);
+
+}
+
+.menu a.active{
+
+    background:#2563eb;
+
+    color:#fff;
+
+}
+
+/* ==========================================================
+   MAIN CONTENT
+========================================================== */
+
+.main-content{
+
+    margin-left:270px;
+
+    min-height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.content-wrapper{
+
+    padding:30px;
+
+    flex:1;
+
+}
+
+/* ==========================================================
+   TOP NAVBAR
+========================================================== */
+
+.top-navbar{
+
+    background:#1e3a8a;
+
+    padding:15px 30px;
+
+    color:#fff;
+
+    box-shadow:0 3px 12px rgba(0,0,0,.1);
+
+}
+
+.top-navbar .navbar-brand{
+
+    color:#fff;
+
+    font-size:22px;
+
+}
+
+.top-navbar .badge{
+
+    font-size:14px;
+
+}
+
+/* ==========================================================
+   FOOTER
+========================================================== */
+
+.footer{
+
+    background:#fff;
+
+    padding:18px;
+
+    border-top:1px solid #e5e7eb;
+
+    color:#64748b;
+
+    font-size:14px;
+
+}
+/* ==========================================================
+   CARDS
+========================================================== */
+
+.card{
+
+    border:none;
+
+    border-radius:18px;
+
+    box-shadow:0 8px 25px rgba(15,23,42,.08);
+
+    margin-bottom:25px;
+
+    transition:.3s;
+
+    background:#fff;
+
+}
+
+.card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 15px 35px rgba(15,23,42,.15);
+
+}
+
+.card-header{
+
+    background:#ffffff;
+
+    border-bottom:1px solid #e5e7eb;
+
+    font-weight:600;
+
+    font-size:17px;
+
+    padding:18px 22px;
+
+}
+
+.card-body{
+
+    padding:22px;
+
+
+}
+
+/* ==========================================================
+   KPI CARDS
+========================================================== */
+
+.kpi-card{
+
+
+    background: linear-gradient(135deg,#6a11cb,#4b00ff);
+    color:white;
+}
+
+
+
+
+.kpi-card h6{
+
+    font-size:15px;
+
+    opacity:.9;
+
+    margin-bottom:10px;
+
+}
+
+.kpi-card h2{
+
+    font-size:32px;
+
+    font-weight:700;
+
+}
+
+.mini-card{
+
+    background: linear-gradient(135deg, #651edf, #4f1a73);
+    color:white;
+
+
+}
+
+.mini-card h6{
+
+    color: #eceff3;
+
+    font-size:14px;
+
+}
+
+.mini-card h2{
+
+    color: #d4dae3;
+
+    font-size:28px;
+
+    font-weight:700;
+
+}
+
+/* ==========================================================
+   CHARTS
+========================================================== */
+
+.chart-card img{
+
+    width:100%;
+
+    border-radius:12px;
+
+    transition:.3s;
+
+}
+
+.chart-card img:hover{
+
+    transform:scale(1.02);
+
+}
+
+/* ==========================================================
+   TABLE
+========================================================== */
+
+.table{
+
+    vertical-align:middle;
+
+}
+
+.table thead{
+
+    background:#1e293b;
+
+    color:#fff;
+
+}
+
+.table-hover tbody tr:hover{
+
+    background:#eff6ff;
+
+}
+
+.table td{
+
+    font-size:14px;
+
+}
+
+.table th{
+
+    font-size:15px;
+
+}
+
+/* ==========================================================
+   BUTTONS
+========================================================== */
+
+.btn{
+
+    border-radius:10px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.btn-primary{
+
+    background:#2563eb;
+
+    border:none;
+
+}
+
+.btn-primary:hover{
+
+    background:#1d4ed8;
+
+}
+
+.btn-success{
+
+    border:none;
+
+}
+
+.btn-warning{
+
+    border:none;
+
+}
+
+.btn-danger{
+
+    border:none;
+
+}
+
+/* ==========================================================
+   FORM
+========================================================== */
+
+.form-control,
+
+.form-select{
+
+    border-radius:10px;
+
+    padding:11px;
+
+    border:1px solid #cbd5e1;
+
+}
+
+.form-control:focus,
+
+.form-select:focus{
+
+    border-color:#2563eb;
+
+    box-shadow:0 0 0 .2rem rgba(37,99,235,.15);
+
+}
+
+/* ==========================================================
+   ALERT
+========================================================== */
+
+.alert{
+
+    border:none;
+
+    border-radius:12px;
+
+    font-weight:500;
+
+    margin-bottom:15px;
+
+}
+
+/* ==========================================================
+   BADGE
+========================================================== */
+
+.badge{
+
+    border-radius:8px;
+
+    padding:8px 14px;
+
+}
+/* ==========================================================
+   PAGINATION
+========================================================== */
+
+.pagination{
+
+    margin-top:25px;
+
+}
+
+.page-link{
+
+    color:#2563eb;
+
+    border-radius:8px;
+
+    margin:0 4px;
+
+    border:none;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+
+}
+
+.page-link:hover{
+
+    background:#2563eb;
+
+    color:#fff;
+
+}
+
+.page-item.active .page-link{
+
+    background:#2563eb;
+
+    border-color:#2563eb;
+
+}
+
+/* ==========================================================
+   PROGRESS BAR
+========================================================== */
+
+.progress{
+
+    height:18px;
+
+    border-radius:20px;
+
+    background:#e2e8f0;
+
+}
+
+.progress-bar{
+
+    font-weight:600;
+
+}
+
+/* ==========================================================
+   LIST GROUP
+========================================================== */
+
+.list-group-item{
+
+    border:none;
+
+    padding:14px 18px;
+
+    border-bottom:1px solid #e5e7eb;
+
+    font-weight:500;
+
+}
+
+.list-group-item:last-child{
+
+    border-bottom:none;
+
+}
+
+/* ==========================================================
+   SCROLLBAR
+========================================================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#f1f5f9;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#94a3b8;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#64748b;
+
+}
+
+/* ==========================================================
+   IMAGE
+========================================================== */
+
+img{
+
+    max-width:100%;
+
+    height:auto;
+
+}
+
+/* ==========================================================
+   ANIMATION
+========================================================== */
+
+.card,
+
+.kpi-card,
+
+.chart-card{
+
+    animation:fadeIn .5s ease;
+
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(15px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media(max-width:991px){
+
+.sidebar{
+
+    left:-270px;
+
+}
+
+.sidebar.show{
+
+    left:0;
+
+}
+
+.main-content{
+
+    margin-left:0;
+
+}
+
+.top-navbar{
+
+    padding:15px;
+
+}
+
+.content-wrapper{
+
+    padding:20px;
+
+}
+
+.logo{
+
+    font-size:20px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.kpi-card h2,
+
+.mini-card h2{
+
+    font-size:22px;
+
+}
+
+.card-header{
+
+    font-size:16px;
+
+}
+
+.table{
+
+    font-size:13px;
+
+}
+
+.top-navbar .navbar-brand{
+
+    font-size:18px;
+
+}
+
+}
+
+@media(max-width:576px){
+
+.content-wrapper{
+
+    padding:15px;
+
+}
+
+.card-body{
+
+    padding:16px;
+
+}
+
+.footer{
+
+    font-size:12px;
+
+}
+
+}
+
+/* ==========================================================
+   UTILITIES
+========================================================== */
+
+.shadow-soft{
+
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+}
+
+.rounded-xl{
+
+    border-radius:18px;
+
+}
+
+.text-primary-dark{
+
+    color:#1e3a8a;
+
+}
+
+.bg-gradient-blue{
+
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+
+    color:#fff;
+
+}
+
+.border-light{
+
+    border:1px solid #e5e7eb;
+
+}
+
+.fw-600{
+
+    font-weight:600;
+
+}
+
+.fw-700{
+
+    font-weight:700;
+
+}
+
+.cursor-pointer{
+
+    cursor:pointer;
+
+}
+
+.transition{
+
+    transition:.3s ease;
+
+}
+.purple-card{
+    background: linear-gradient(135deg,#6a11cb,#4b00ff);
+    color:white;
+}
+
+/* ==========================================================
+   END
+========================================================== */
