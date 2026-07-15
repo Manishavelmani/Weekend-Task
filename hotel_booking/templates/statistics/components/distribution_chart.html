@@ -1,0 +1,28 @@
+<div class="card border-0 shadow-sm h-100">
+
+    <div class="card-header bg-white">
+
+        <h5 class="fw-bold mb-0">
+
+            <i class="bi bi-pie-chart-fill text-primary"></i>
+
+            ADR Distribution
+
+        </h5>
+
+    </div>
+
+    <div class="card-body">
+
+        <canvas id="adrDistributionChart"></canvas>
+
+    </div>
+
+</div>
+
+<script id="adr-distribution-data" type="application/json">
+{
+    "labels": {{ adr_distribution.index.tolist() | tojson }},
+    "values": {{ adr_distribution.values.tolist() | tojson }}
+}
+</script>

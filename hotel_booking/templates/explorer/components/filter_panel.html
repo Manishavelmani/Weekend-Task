@@ -1,0 +1,140 @@
+<div class="card border-0 shadow-sm mb-4">
+
+    <div class="card-body">
+
+        <form method="GET" action="{{ url_for('explorer') }}">
+
+            <div class="row g-3">
+
+                <div class="col-lg-3">
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="search"
+                        placeholder="Search..."
+                        value="{{ request.args.get('search','') }}"
+                    >
+
+                </div>
+
+                <div class="col-lg-2">
+
+                    <select
+                        class="form-select"
+                        name="hotel">
+
+                        <option value="">All Hotels</option>
+
+                        {% for hotel in hotels %}
+
+                        <option
+                            value="{{ hotel }}"
+                            {% if request.args.get('hotel')==hotel %}selected{% endif %}>
+
+                            {{ hotel }}
+
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+                <div class="col-lg-2">
+
+                    <select
+                        class="form-select"
+                        name="season">
+
+                        <option value="">All Seasons</option>
+
+                        {% for season in seasons %}
+
+                        <option
+                            value="{{ season }}"
+                            {% if request.args.get('season')==season %}selected{% endif %}>
+
+                            {{ season }}
+
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+                <div class="col-lg-2">
+
+                    <select
+                        class="form-select"
+                        name="customer_type">
+
+                        <option value="">Customer Type</option>
+
+                        {% for customer in customer_types %}
+
+                        <option
+                            value="{{ customer }}"
+                            {% if request.args.get('customer_type')==customer %}selected{% endif %}>
+
+                            {{ customer }}
+
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+                <div class="col-lg-2">
+                    <select class="form-select" name="per_page">
+                        <option value="10"
+                                {% if request.args.get('per_page','10')=='10' %}selected{% endif %}>
+                        10 Rows
+                        </option>
+                        <option value="20"
+                                {% if request.args.get('per_page')=='20' %}selected{% endif %}>
+                        20 Rows
+                        </option>
+                        <option value="50"
+                                {% if request.args.get('per_page')=='50' %}selected{% endif %}>
+                        50 Rows
+                        </option>
+                        <option value="100"
+                                {% if request.args.get('per_page')=='100' %}selected{% endif %}>
+                        100 Rows
+                        </option>
+                    </select>
+                </div>
+
+                <div class="col-lg-3 d-flex gap-2">
+                    <button class="btn btn-primary w-100">
+                        <i class="bi bi-search"></i>
+                        Search
+                    </button>
+                    <a
+                            href="{{ url_for('download',
+                            search=request.args.get('search',''),
+                            hotel=request.args.get('hotel',''),
+                            season=request.args.get('season',''),
+                            customer_type=request.args.get('customer_type',''),
+                            per_page=request.args.get('per_page','10')) }}"
+                            class="btn btn-success">
+                        <i class="bi bi-download"></i>
+                    </a>
+                    <a href="{{ url_for('explorer') }}" class="btn btn-outline-secondary">Reset
+                    </a>
+                </div>
+
+
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>

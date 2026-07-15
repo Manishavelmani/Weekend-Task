@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-between align-items-center mt-4">
+
+    <div class="fw-semibold text-secondary">
+        Page {{ page }} of {{ total_pages }}
+    </div>
+
+    <div>
+
+        {% if page > 1 %}
+
+        <a
+            class="btn btn-outline-primary me-2"
+            href="{{ url_for(
+                'explorer',
+                page=page-1,
+                per_page=per_page,
+                search=request.args.get('search','')|trim,
+                hotel=request.args.get('hotel','')|trim,
+                season=request.args.get('season','')|trim,
+                customer_type=request.args.get('customer_type','')|trim
+            ) }}">
+            <i class="bi bi-arrow-left"></i>
+            Previous
+        </a>
+
+        {% endif %}
+
+
+        {% if page < total_pages %}
+
+        <a
+            class="btn btn-primary"
+            href="{{ url_for(
+                'explorer',
+                page=page+1,
+                per_page=per_page,
+                search=request.args.get('search','')|trim,
+                hotel=request.args.get('hotel','')|trim,
+                season=request.args.get('season','')|trim,
+                customer_type=request.args.get('customer_type','')|trim
+            ) }}">
+            Next
+            <i class="bi bi-arrow-right"></i>
+        </a>
+
+        {% endif %}
+
+    </div>
+
+</div>

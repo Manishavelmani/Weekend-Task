@@ -1,0 +1,33 @@
+{% extends "layout/base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    {% include "dashboard/components/welcome_banner.html" %}
+
+    {% include "dashboard/components/kpi_cards.html" %}
+
+    <div class="row g-4 mb-4">
+
+        <div class="col-lg-8">
+            {% include "dashboard/components/booking_chart.html" %}
+        </div>
+
+        <div class="col-lg-4">
+            {% include "dashboard/components/hotel_chart.html" %}
+        </div>
+
+    </div>
+
+    {% include "dashboard/components/business_insights.html" %}
+
+    {% include "dashboard/components/quick_navigation.html" %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+<div class="card border-0 shadow-sm h-100">
+
+    <div class="card-header bg-white">
+
+        <h5 class="fw-bold mb-0">
+
+            <i class="bi bi-x-circle-fill text-danger"></i>
+
+            Booking Cancellation
+
+        </h5>
+
+    </div>
+
+    <div class="card-body">
+
+        <div style="height:320px;">
+
+            <canvas id="cancellationChart"></canvas>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script id="cancellation-data" type="application/json">
+{
+    "labels": {{ cancellation_distribution.index.tolist() | tojson }},
+    "values": {{ cancellation_distribution.values.tolist() | tojson }}
+}
+</script>

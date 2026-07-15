@@ -1,0 +1,81 @@
+<div class="row g-4 mb-4">
+
+    <div class="col-lg-4">
+
+        <div class="card border-0 shadow-sm h-100">
+
+            <div class="card-body text-center">
+
+                <i class="bi bi-people display-5 text-primary"></i>
+
+                <h2 class="fw-bold mt-3">
+
+                    {{ "{:,}".format(total_bookings) }}
+
+                </h2>
+
+                <p class="text-muted mb-0">
+
+                    Total Guests
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-4">
+
+        <div class="card border-0 shadow-sm h-100">
+
+            <div class="card-body text-center">
+
+                <i class="bi bi-person-check display-5 text-success"></i>
+
+                <h2 class="fw-bold mt-3">
+
+                    {{ customer_type.idxmax() }}
+
+                </h2>
+
+                <p class="text-muted mb-0">
+
+                    Top Customer Type
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-4">
+
+        <div class="card border-0 shadow-sm h-100">
+
+            <div class="card-body text-center">
+
+                <i class="bi bi-globe display-5 text-warning"></i>
+
+                <h2 class="fw-bold mt-3">
+
+                    {{ countries.index[0] }}
+
+                </h2>
+
+                <p class="text-muted mb-0">
+
+                    Top Country
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

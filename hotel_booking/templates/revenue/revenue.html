@@ -1,0 +1,43 @@
+{% extends "layout/base.html" %}
+
+{% block title %}
+Revenue Analytics
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid py-3">
+
+    {% include "revenue/components/revenue_header.html" %}
+
+    {% include "revenue/components/revenue_kpi.html" %}
+
+    <div class="row g-4 mb-4">
+
+        <div class="col-lg-6">
+            {% include "revenue/components/adr_hotel_chart.html" %}
+        </div>
+
+        <div class="col-lg-6">
+            {% include "revenue/components/adr_season_chart.html" %}
+        </div>
+
+    </div>
+
+    <div class="row g-4 mb-4">
+
+        <div class="col-lg-6">
+            {% include "revenue/components/revenue_category_chart.html" %}
+        </div>
+
+        <div class="col-lg-6">
+            {% include "revenue/components/stay_type_chart.html" %}
+        </div>
+
+    </div>
+
+    {% include "revenue/components/revenue_insights.html" %}
+
+</div>
+
+{% endblock %}

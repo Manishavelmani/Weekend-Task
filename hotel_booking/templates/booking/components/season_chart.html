@@ -1,0 +1,29 @@
+<div class="card border-0 shadow-sm h-100">
+
+    <div class="card-header bg-white">
+
+        <h5 class="fw-bold mb-0">
+            <i class="bi bi-sun-fill text-warning"></i>
+            Seasonal Booking Distribution
+        </h5>
+
+    </div>
+
+    <div class="card-body">
+
+        <div style="height:350px;">
+
+            <canvas id="seasonChart"></canvas>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script id="season-data" type="application/json">
+{
+    "labels": {{ season_distribution.index.tolist() | tojson }},
+    "values": {{ season_distribution.values.tolist() | tojson }}
+}
+</script>

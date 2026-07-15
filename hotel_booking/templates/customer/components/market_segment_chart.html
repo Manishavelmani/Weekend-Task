@@ -1,0 +1,32 @@
+<div class="card border-0 shadow-sm h-100">
+
+    <div class="card-header bg-white">
+
+        <h5 class="fw-bold mb-0">
+
+            <i class="bi bi-diagram-3-fill text-primary"></i>
+
+            Market Segment Distribution
+
+        </h5>
+
+    </div>
+
+    <div class="card-body">
+
+        <div style="height:350px;">
+
+            <canvas id="marketSegmentChart"></canvas>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script id="market-segment-data" type="application/json">
+{
+    "labels": {{ market_segment.index.tolist() | tojson }},
+    "values": {{ market_segment.values.tolist() | tojson }}
+}
+</script>

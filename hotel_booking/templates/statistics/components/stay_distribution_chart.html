@@ -1,0 +1,28 @@
+<div class="card border-0 shadow-sm h-100">
+
+    <div class="card-header bg-white">
+
+        <h5 class="fw-bold mb-0">
+
+            <i class="bi bi-moon-stars-fill text-success"></i>
+
+            Stay Type Distribution
+
+        </h5>
+
+    </div>
+
+    <div class="card-body">
+
+        <canvas id="stayDistributionChart"></canvas>
+
+    </div>
+
+</div>
+
+<script id="stay-distribution-data" type="application/json">
+{
+    "labels": {{ stay_distribution.index.tolist() | tojson }},
+    "values": {{ stay_distribution.values.tolist() | tojson }}
+}
+</script>

@@ -1,0 +1,604 @@
+/* ==========================================
+   HOTEL INSIGHTS ANALYTICS PLATFORM
+   Main Stylesheet
+========================================== */
+
+/* Google Font */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ==========================================
+   Root Colors
+========================================== */
+
+:root{
+
+    --primary: #793eb8;
+    --secondary:#1E293B;
+    --success:#10B981;
+    --danger:#EF4444;
+    --warning:#F59E0B;
+    --info:#06B6D4;
+
+    --background:#F5F7FA;
+
+    --white:#FFFFFF;
+
+    --text:#334155;
+
+    --light:#E2E8F0;
+
+    --shadow:0 8px 24px rgba(0,0,0,.08);
+
+    --radius:18px;
+
+}
+
+/* ==========================================
+   Body
+========================================== */
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+    font-family:'Poppins',sans-serif;
+
+}
+
+body{
+
+    background:var(--background);
+
+    color:var(--text);
+
+}
+
+/* ==========================================
+   Scrollbar
+========================================== */
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--primary);
+
+    border-radius:20px;
+
+}
+
+/* ==========================================
+   Navbar
+========================================== */
+
+.navbar{
+
+    background:var(--white)!important;
+
+    box-shadow:var(--shadow);
+
+    height:70px;
+
+}
+
+.navbar-brand{
+
+    color:var(--primary)!important;
+
+    font-weight:700;
+
+    font-size:24px;
+
+}
+
+/* ==========================================
+   Sidebar
+========================================== */
+
+.sidebar{
+
+    background:var(--secondary);
+
+    min-height:100vh;
+
+    padding-top:30px;
+
+}
+
+.sidebar .nav-link{
+
+    color:white;
+
+    margin:8px 15px;
+
+    border-radius:12px;
+
+    padding:12px 18px;
+
+    transition:.3s;
+
+}
+
+.sidebar .nav-link:hover{
+
+    background:var(--primary);
+
+    transform:translateX(6px);
+
+}
+
+.sidebar .active{
+
+    background:var(--primary);
+
+}
+
+/* ==========================================
+   Main Content
+========================================== */
+
+.main-content{
+
+    padding:30px;
+
+}
+
+/* ==========================================
+   Cards
+========================================== */
+
+.card{
+
+    border:none;
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+    background:#FCFCFD;
+
+}
+
+.card:hover{
+
+    transform:translateY(-5px);
+
+    transition:.3s;
+
+}
+
+/* ==========================================
+   KPI Cards
+========================================== */
+
+.kpi-card{
+
+    padding:25px;
+
+    border-radius:18px;
+
+    color:white;
+
+}
+
+.kpi-card h6{
+
+    font-size:15px;
+
+    font-weight:500;
+
+}
+
+.kpi-card h2{
+
+    margin-top:10px;
+
+    font-weight:700;
+
+}
+
+/* Colors */
+
+.blue{
+
+    background:var(--primary);
+
+}
+
+.green{
+
+    background:var(--success);
+
+}
+
+.orange{
+
+    background:var(--warning);
+
+}
+
+.red{
+
+    background:var(--danger);
+
+}
+
+/* ==========================================
+   Buttons
+========================================== */
+
+.btn-primary{
+
+    background:var(--primary);
+
+    border:none;
+
+    border-radius:10px;
+
+}
+
+.btn-primary:hover{
+    background:#6432A8;
+}
+
+/* ==========================================
+   Tables
+========================================== */
+
+.table{
+
+    background:white;
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+}
+
+.table thead{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+/* ==========================================
+   Forms
+========================================== */
+
+.form-control{
+
+    border-radius:10px;
+
+}
+
+.form-select{
+
+    border-radius:10px;
+
+}
+
+/* ==========================================
+   Chart Cards
+========================================== */
+
+.chart-card{
+
+    background:white;
+
+    padding:20px;
+
+    border-radius:18px;
+
+    box-shadow:var(--shadow);
+
+}
+
+/* ==========================================
+   Insight Card
+========================================== */
+
+.insight-card{
+
+    background:white;
+
+    padding:20px;
+
+    border-left:5px solid var(--primary);
+
+    border-radius:15px;
+
+    box-shadow:var(--shadow);
+
+}
+
+/* ==========================================
+   Footer
+========================================== */
+
+footer{
+
+    margin-top:40px;
+
+    text-align:center;
+
+    padding:20px;
+
+    color:#666;
+
+}
+
+/* ==========================================
+   Responsive
+========================================== */
+
+@media(max-width:768px){
+
+.sidebar{
+
+    min-height:auto;
+
+}
+
+.main-content{
+
+    padding:15px;
+
+}
+
+.kpi-card{
+
+    margin-bottom:20px;
+
+}
+
+}
+.kpi-card{
+    transition:0.3s;
+    border-radius:15px;
+}
+
+.kpi-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 15px 35px rgba(0,0,0,.15)!important;
+}
+.insight-card{
+
+    transition:0.3s;
+
+    border-radius:15px;
+
+}
+
+.insight-card:hover{
+
+    transform:translateY(-5px);
+
+    background:#FAF7FD;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.12);
+
+}
+.navigation-card{
+
+    transition:.35s;
+
+    border:none;
+
+    border-radius:18px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+.navigation-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+
+}
+
+.table-responsive{
+
+    max-height:650px;
+
+    overflow:auto;
+
+}
+
+.table thead th{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:10;
+
+    background: #793eb8 !important;
+
+    color:white !important;
+
+    white-space:nowrap;
+
+}
+
+.table tbody tr{
+
+    transition:.25s;
+
+}
+
+.table tbody tr:hover{
+
+    background:#F5F0FC;
+
+}
+
+.table td{
+
+    white-space:nowrap;
+
+    vertical-align:middle;
+
+}
+/* =====================================================
+REPORT PAGE
+===================================================== */
+
+.report-card{
+    border-radius:18px;
+    transition:.35s;
+    overflow:hidden;
+}
+
+.report-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 18px 40px rgba(0,0,0,.15);
+
+}
+
+.report-card .card-body{
+
+    padding:28px;
+
+}
+
+.report-card h5{
+
+    font-weight:700;
+
+}
+
+.report-card p{
+
+    font-size:14px;
+
+    line-height:1.7;
+
+}
+
+.report-icon{
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+.dataset-card{
+
+    border-radius:20px;
+
+    transition:.35s;
+
+}
+
+.dataset-card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 20px 40px rgba(0,0,0,.15);
+
+}
+
+.insight-box{
+
+    border-radius:16px;
+
+    transition:.30s;
+
+}
+
+.insight-box:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 15px 30px rgba(0,0,0,.12);
+
+}
+
+.report-summary{
+
+    border-radius:18px;
+
+    transition:.30s;
+
+}
+
+.report-summary:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 15px 30px rgba(0,0,0,.12);
+
+}
+
+.report-header{
+
+    background:linear-gradient(90deg,#793EB8,#9B6DDB);
+
+    color:white;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    margin-bottom:30px;
+
+}
+
+.report-header h2{
+
+    font-weight:700;
+
+}
+
+.report-header p{
+
+    opacity:.9;
+
+    margin-bottom:0;
+
+}
+
+.btn-download{
+
+    border-radius:10px;
+
+    font-weight:600;
+
+    padding:10px 20px;
+
+}
+
+.btn-download:hover{
+
+    transform:scale(1.03);
+
+}
+
+.card hr{
+
+    opacity:.15;
+
+}

@@ -1,0 +1,32 @@
+<div class="card border-0 shadow-sm h-100">
+
+    <div class="card-header bg-white">
+
+        <h5 class="fw-bold mb-0">
+
+            <i class="bi bi-people-fill text-primary"></i>
+
+            Average ADR by Customer Type
+
+        </h5>
+
+    </div>
+
+    <div class="card-body">
+
+        <div style="height:320px;">
+
+            <canvas id="adrCustomerChart"></canvas>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script id="adr-customer-data" type="application/json">
+{
+    "labels": {{ adr_customer.index.tolist() | tojson }},
+    "values": {{ adr_customer.values.tolist() | tojson }}
+}
+</script>

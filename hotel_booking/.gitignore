@@ -1,0 +1,15 @@
+# Virtual Environment
+myenv/
+
+# Python Cache
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# PyCharm
+.idea/
+
+# Temporary Files
+*.log

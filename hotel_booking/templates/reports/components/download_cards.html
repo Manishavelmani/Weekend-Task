@@ -1,0 +1,270 @@
+<div class="mb-5">
+
+    <h4 class="fw-bold mb-4">
+        <i class="bi bi-folder2-open text-warning"></i>
+        Available Reports
+    </h4>
+
+    <div class="row g-4">
+
+        <!-- Preprocessing -->
+
+        <div class="col-lg-6">
+
+            <div class="card border-0 shadow h-100"
+                 style="border-left:6px solid #793EB8;border-radius:18px;">
+
+                <div class="card-body p-4">
+
+                    <div class="d-flex align-items-center mb-3">
+
+                        <div class="rounded-circle bg-primary bg-opacity-10 p-3 me-3">
+
+                            <i class="bi bi-file-earmark-text-fill fs-2 text-primary"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h5 class="fw-bold mb-1">
+                                Data Preprocessing
+                            </h5>
+
+                            <span class="badge bg-primary">
+                                PDF Report
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <p class="text-muted">
+
+                        Data cleaning, missing values,
+                        feature engineering, encoding,
+                        scaling and preprocessing documentation.
+
+                    </p>
+
+                    <hr>
+
+                    <div class="d-flex justify-content-between align-items-center">
+
+                        <small class="text-muted">
+                            Updated Today
+                        </small>
+
+                        <a href="{{ url_for('download_preprocessing_report') }}"
+                           class="btn btn-primary">
+
+                            <i class="bi bi-download"></i>
+
+                            Download
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- EDA -->
+
+        <div class="col-lg-6">
+
+            <div class="card border-0 shadow h-100"
+                 style="border-left:6px solid #EF4444;border-radius:18px;">
+
+                <div class="card-body p-4">
+
+                    <div class="d-flex align-items-center mb-3">
+
+                        <div class="rounded-circle bg-danger bg-opacity-10 p-3 me-3">
+
+                            <i class="bi bi-bar-chart-fill fs-2 text-danger"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h5 class="fw-bold mb-1">
+                                EDA Report
+                            </h5>
+
+                            <span class="badge bg-danger">
+                                PDF Report
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <p class="text-muted">
+
+                        Booking trends, ADR analysis,
+                        customer behaviour,
+                        revenue insights and visualizations.
+
+                    </p>
+
+                    <hr>
+
+                    <div class="d-flex justify-content-between align-items-center">
+
+                        <small class="text-muted">
+                            Updated Today
+                        </small>
+
+                        <a href="{{ url_for('download_eda_report') }}"
+                           class="btn btn-danger">
+
+                            <i class="bi bi-download"></i>
+
+                            Download
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Statistical -->
+
+        <div class="col-lg-6">
+
+            <div class="card border-0 shadow h-100"
+                 style="border-left:6px solid #F59E0B;border-radius:18px;">
+
+                <div class="card-body p-4">
+
+                    <div class="d-flex align-items-center mb-3">
+
+                        <div class="rounded-circle bg-warning bg-opacity-25 p-3 me-3">
+
+                            <i class="bi bi-graph-up-arrow fs-2 text-warning"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h5 class="fw-bold mb-1">
+                                Statistical Analysis
+                            </h5>
+
+                            <span class="badge bg-warning text-dark">
+                                PDF Report
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <p class="text-muted">
+
+                        Descriptive statistics,
+                        probability,
+                        confidence intervals,
+                        correlation and regression.
+
+                    </p>
+
+                    <hr>
+
+                    <div class="d-flex justify-content-between align-items-center">
+
+                        <small class="text-muted">
+                            Updated Today
+                        </small>
+
+                        <a href="{{ url_for('download_statistical_report') }}"
+                           class="btn btn-warning">
+
+                            <i class="bi bi-download"></i>
+
+                            Download
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Hypothesis -->
+
+        <div class="col-lg-6">
+
+            <div class="card border-0 shadow h-100"
+                 style="border-left:6px solid #06B6D4;border-radius:18px;">
+
+                <div class="card-body p-4">
+
+                    <div class="d-flex align-items-center mb-3">
+
+                        <div class="rounded-circle bg-info bg-opacity-10 p-3 me-3">
+
+                            <i class="bi bi-clipboard-data-fill fs-2 text-info"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h5 class="fw-bold mb-1">
+                                Hypothesis Testing
+                            </h5>
+
+                            <span class="badge bg-info">
+                                PDF Report
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <p class="text-muted">
+
+                        t-Test, ANOVA,
+                        Chi-Square,
+                        assumptions,
+                        statistical decisions and business conclusions.
+
+                    </p>
+
+                    <hr>
+
+                    <div class="d-flex justify-content-between align-items-center">
+
+                        <small class="text-muted">
+                            Updated Today
+                        </small>
+
+                        <a href="{{ url_for('download_hypothesis_report') }}"
+                           class="btn btn-info text-white">
+
+                            <i class="bi bi-download"></i>
+
+                            Download
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

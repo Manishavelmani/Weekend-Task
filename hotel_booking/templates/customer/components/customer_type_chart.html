@@ -1,0 +1,32 @@
+<div class="card border-0 shadow-sm h-100">
+
+    <div class="card-header bg-white">
+
+        <h5 class="fw-bold mb-0">
+
+            <i class="bi bi-person-badge text-primary"></i>
+
+            Customer Type Distribution
+
+        </h5>
+
+    </div>
+
+    <div class="card-body">
+
+        <div style="height:350px;">
+
+            <canvas id="customerTypeChart"></canvas>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script id="customer-type-data" type="application/json">
+{
+    "labels": {{ customer_type.index.tolist() | tojson }},
+    "values": {{ customer_type.values.tolist() | tojson }}
+}
+</script>

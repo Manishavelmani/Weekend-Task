@@ -1,0 +1,63 @@
+{% extends "layout/base.html" %}
+
+{% block title %}
+Statistics
+{% endblock %}
+
+{% block content %}
+
+{% include "statistics/components/statistics_header.html" %}
+
+{% include "statistics/components/statistics_kpi.html" %}
+
+<div class="row g-4 mb-4">
+
+    <div class="col-lg-6">
+
+        {% include "statistics/components/correlation_chart.html" %}
+
+    </div>
+
+    <div class="col-lg-6">
+
+        {% include "statistics/components/distribution_chart.html" %}
+
+    </div>
+
+</div>
+
+<div class="row g-4 mb-4">
+
+    <div class="col-lg-6">
+
+        {% include "statistics/components/lead_distribution_chart.html" %}
+
+    </div>
+
+    <div class="col-lg-6">
+
+        {% include "statistics/components/stay_distribution_chart.html" %}
+
+    </div>
+    <div class="row g-4 mb-4">
+
+    <div class="col-lg-6">
+
+        {% include "statistics/components/cancellation_chart.html" %}
+
+    </div>
+
+    <div class="col-lg-6">
+
+        {% include "statistics/components/adr_customer_chart.html" %}
+
+    </div>
+
+</div>
+
+</div>
+
+{% include "statistics/components/summary_table.html" %}
+{% include "statistics/components/statistical_insights.html" %}
+
+{% endblock %}

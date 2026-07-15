@@ -1,0 +1,26 @@
+{% extends "layout/base.html" %}
+
+{% block title %}
+Reports
+{% endblock %}
+
+{% block content %}
+
+<!-- Reports Header -->
+{% include "reports/components/reports_header.html" %}
+
+<!-- Summary Cards -->
+{% include "reports/components/summary_cards.html" %}
+
+<!-- Cleaned Dataset Card -->
+{% include "reports/components/dataset_card.html" %}
+
+<!-- Report Cards -->
+{% include "reports/components/download_cards.html" %}
+
+<!-- Business Insights -->
+{% include "reports/components/business_insights.html" %}
+
+{% include "reports/components/report_footer.html" %}
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "layout/base.html" %}
+
+{% block title %}
+Dataset Explorer
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid py-3">
+
+    {% include "explorer/components/explorer_header.html" %}
+
+    {% include "explorer/components/explorer_kpi.html" %}
+
+    {% include "explorer/components/filter_panel.html" %}
+
+    {% include "explorer/components/data_table.html" %}
+
+    {% include "explorer/components/pagination.html" %}
+
+</div>
+
+{% endblock %}

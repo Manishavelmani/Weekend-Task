@@ -1,0 +1,51 @@
+{% extends "layout/base.html" %}
+
+{% block title %}
+Customer Analytics
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid py-3">
+
+    {% include "customer/components/customer_header.html" %}
+
+    {% include "customer/components/customer_kpi.html" %}
+
+    <div class="row g-4 mb-4">
+
+        <div class="col-lg-6">
+            {% include "customer/components/customer_type_chart.html" %}
+        </div>
+
+        <div class="col-lg-6">
+            {% include "customer/components/guest_status_chart.html" %}
+        </div>
+
+    </div>
+
+    <div class="row g-4 mb-4">
+
+        <div class="col-lg-6">
+            {% include "customer/components/market_segment_chart.html" %}
+        </div>
+
+        <div class="col-lg-6">
+            {% include "customer/components/top_countries_chart.html" %}
+        </div>
+
+    </div>
+
+    <div class="row g-4 mb-4">
+
+        <div class="col-lg-12">
+            {% include "customer/components/special_requests_chart.html" %}
+        </div>
+
+    </div>
+
+    {% include "customer/components/customer_insights.html" %}
+
+</div>
+
+{% endblock %}

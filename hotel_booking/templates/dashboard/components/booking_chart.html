@@ -1,0 +1,25 @@
+<div class="card border-0 shadow-sm h-100">
+
+    <div class="card-header bg-white">
+
+        <h5 class="fw-bold mb-0">
+            <i class="bi bi-graph-up-arrow text-primary"></i>
+            Monthly Booking Trend
+        </h5>
+
+    </div>
+
+    <div class="card-body">
+
+        <canvas id="monthlyBookingChart"></canvas>
+
+    </div>
+
+</div>
+
+<script id="monthly-bookings-data" type="application/json">
+{
+    "labels": {{ monthly_bookings.index.tolist() | tojson }},
+    "values": {{ monthly_bookings.values.tolist() | tojson }}
+}
+</script>

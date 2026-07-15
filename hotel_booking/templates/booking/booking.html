@@ -1,0 +1,43 @@
+{% extends "layout/base.html" %}
+
+{% block title %}
+Booking Analytics
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid py-3">
+
+    {% include "booking/components/booking_header.html" %}
+
+    {% include "booking/components/booking_kpi.html" %}
+
+    <div class="row g-4 mb-4">
+
+        <div class="col-lg-8">
+            {% include "booking/components/monthly_chart.html" %}
+        </div>
+
+        <div class="col-lg-4">
+            {% include "booking/components/hotel_chart.html" %}
+        </div>
+
+    </div>
+
+    <div class="row g-4 mb-4">
+
+        <div class="col-lg-6">
+            {% include "booking/components/season_chart.html" %}
+        </div>
+
+        <div class="col-lg-6">
+            {% include "booking/components/lead_time_chart.html" %}
+        </div>
+
+    </div>
+
+    {% include "booking/components/booking_insights.html" %}
+
+</div>
+
+{% endblock %}
