@@ -375,6 +375,41 @@ Users can download:
 * Statistical Report
 * Hypothesis Testing Report
 
+# 📸 Application Screenshots
+
+## 🏠 Dashboard
+
+![Dashboard](screenshots/dashboard.png)
+
+---
+
+## 🏨 Booking Analytics
+
+![Booking Analytics](screenshots/booking.png)
+
+---
+
+## 💰 Revenue Analytics
+
+![Revenue Analytics](screenshots/revenue.png)
+
+---
+
+## 📊 Statistical Analysis
+
+![Statistical Analysis](screenshots/statistics.png)
+
+---
+
+## 🔍 Dataset Explorer
+
+![Dataset Explorer](screenshots/explorer.png)
+
+---
+
+## 📄 Reports
+
+![Reports](screenshots/reports.png)
 ---
 
 # ▶️ How to Run Project
