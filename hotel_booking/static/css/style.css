@@ -303,23 +303,7 @@ body{
 
 }
 
-/* ==========================================
-   Insight Card
-========================================== */
 
-.insight-card{
-
-    background:white;
-
-    padding:20px;
-
-    border-left:5px solid var(--primary);
-
-    border-radius:15px;
-
-    box-shadow:var(--shadow);
-
-}
 
 /* ==========================================
    Footer
@@ -521,21 +505,8 @@ REPORT PAGE
 
 }
 
-.insight-box{
 
-    border-radius:16px;
 
-    transition:.30s;
-
-}
-
-.insight-box:hover{
-
-    transform:translateY(-5px);
-
-    box-shadow:0 15px 30px rgba(0,0,0,.12);
-
-}
 
 .report-summary{
 
@@ -601,4 +572,162 @@ REPORT PAGE
 
     opacity:.15;
 
+}
+/* ==========================================
+Dashboard KPI Card Colors
+========================================== */
+
+.row .col-xl-2:nth-child(1) .kpi-card{
+    background:#F3E8FF;
+}
+
+.row .col-xl-2:nth-child(2) .kpi-card{
+    background:#FEECEC;
+}
+
+.row .col-xl-2:nth-child(3) .kpi-card{
+    background:#EAFBF4;
+}
+
+.row .col-xl-2:nth-child(4) .kpi-card{
+    background:#FFF8E6;
+}
+
+.row .col-xl-2:nth-child(5) .kpi-card{
+    background:#EAF8FC;
+}
+
+.row .col-xl-2:nth-child(6) .kpi-card{
+    background:#F2F4F7;
+}
+.kpi-card h2{
+    color:#1E293B;
+    font-weight:700;
+}
+
+.kpi-card p{
+    color:#475569;
+}
+/* ==========================================
+Insight Card
+========================================== */
+
+.insight-card{
+    padding:20px;
+    border-radius:15px;
+    border-left:5px solid var(--primary);
+    box-shadow:var(--shadow);
+    transition:.3s;
+}
+
+.insight-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 12px 30px rgba(0,0,0,.12);
+}
+
+/* Different color for each insight */
+
+.row .col-lg-6:nth-child(1) .insight-card{
+    background:#F3E8FF;
+}
+
+.row .col-lg-6:nth-child(2) .insight-card{
+    background:#EAFBF4;
+}
+
+.row .col-lg-6:nth-child(3) .insight-card{
+    background:#FFF8E6;
+}
+
+.row .col-lg-6:nth-child(4) .insight-card{
+    background:#FDECEC;
+}
+
+.row .col-lg-6:nth-child(5) .insight-card{
+    background:#EEF6FF;
+}
+
+.row .col-lg-6:nth-child(6) .insight-card{
+    background:#F3F4F6;
+}
+/* ==========================================
+Explore Analytics Cards
+========================================== */
+
+.navigation-card{
+    border:none;
+    border-radius:18px;
+    transition:.35s;
+    overflow:hidden;
+    color:#fff;
+}
+
+.navigation-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 18px 35px rgba(0,0,0,.18);
+}
+
+/* Booking */
+
+.row .col-lg-3:nth-child(1) .navigation-card{
+    background:linear-gradient(135deg,#793EB8,#A66CFF);
+}
+
+/* Customers */
+
+.row .col-lg-3:nth-child(2) .navigation-card{
+    background:linear-gradient(135deg,#10B981,#34D399);
+}
+
+/* Revenue */
+
+.row .col-lg-3:nth-child(3) .navigation-card{
+    background:linear-gradient(135deg,#F59E0B,#FBBF24);
+}
+
+/* Statistics */
+
+.row .col-lg-3:nth-child(4) .navigation-card{
+    background:linear-gradient(135deg,#EF4444,#F87171);
+}
+
+/* Text */
+
+.navigation-card h5{
+    color:white;
+    font-weight:700;
+}
+
+.navigation-card p{
+    color:rgba(255,255,255,.9)!important;
+}
+
+/* Icons */
+
+.navigation-card i{
+    color:white !important;
+}
+
+/* Buttons */
+
+.navigation-card .btn{
+    background:white;
+    border:none;
+    font-weight:600;
+}
+
+.row .col-lg-3:nth-child(1) .btn{
+    color:#793EB8;
+}
+
+.row .col-lg-3:nth-child(2) .btn{
+    color:#10B981;
+}
+
+.row .col-lg-3:nth-child(3) .btn{
+    color:#F59E0B;
+}
+
+.row .col-lg-3:nth-child(4) .btn{
+    color:#EF4444;
 }
