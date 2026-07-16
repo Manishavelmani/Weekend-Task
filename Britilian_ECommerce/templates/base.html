@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+
+{% block title %}
+
+Brazilian E-Commerce Dashboard
+
+{% endblock %}
+
+</title>
+
+<!-- Bootstrap -->
+
+<link
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+rel="stylesheet">
+
+<!-- Bootstrap Icons -->
+
+<link
+rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<!-- Google Font -->
+
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<!-- CSS -->
+
+<link
+rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<!-- Sidebar -->
+
+<div class="sidebar" id="sidebar">
+
+<div class="logo">
+
+<i class="bi bi-cart4"></i>
+
+<span>
+
+Brazilian Analytics
+
+</span>
+
+</div>
+
+<ul class="menu">
+
+<li>
+
+<a href="{{ url_for('dashboard') }}">
+
+<i class="bi bi-speedometer2"></i>
+
+Dashboard
+
+</a>
+
+</li>
+
+<li>
+
+<a href="{{ url_for('sales') }}">
+
+<i class="bi bi-graph-up-arrow"></i>
+
+Sales Analytics
+
+</a>
+
+</li>
+
+<li>
+
+<a href="{{ url_for('customers') }}">
+
+<i class="bi bi-people-fill"></i>
+
+Customer Analytics
+
+</a>
+
+</li>
+
+<li>
+
+<a href="{{ url_for('products') }}">
+
+<i class="bi bi-box-seam"></i>
+
+Product Analytics
+
+</a>
+
+</li>
+
+<li>
+
+<a href="{{ url_for('sellers') }}">
+
+<i class="bi bi-shop"></i>
+
+Seller Analytics
+
+</a>
+
+</li>
+
+<li>
+
+<a href="{{ url_for('delivery') }}">
+
+<i class="bi bi-truck"></i>
+
+Delivery Analytics
+
+</a>
+
+</li>
+
+<li>
+
+<a href="{{ url_for('payments') }}">
+
+<i class="bi bi-credit-card-2-front"></i>
+
+Payment & Reviews
+
+</a>
+
+</li>
+    <li>
+
+<a href="{{ url_for('insights') }}">
+
+<i class="bi bi-lightbulb-fill"></i>
+
+Business Insights
+
+</a>
+
+</li>
+
+<li>
+
+<a href="{{ url_for('quality') }}">
+
+<i class="bi bi-shield-check"></i>
+
+Data Quality
+
+</a>
+
+</li>
+
+<li>
+
+<a href="{{ url_for('explorer') }}">
+
+<i class="bi bi-table"></i>
+
+Dataset Explorer
+
+</a>
+
+</li>
+
+<li>
+
+<a href="{{ url_for('reports') }}">
+
+<i class="bi bi-file-earmark-bar-graph"></i>
+
+Project Report
+
+</a>
+
+</li>
+<li>
+
+<a href="{{ url_for('scorecard_page') }}">
+
+<i class="bi bi-speedometer"></i>
+
+Business Scorecard
+
+</a>
+
+</li>
+
+</ul>
+
+</div>
+
+<!-- Main Content -->
+
+<div class="main-content">
+
+<!-- Top Navbar -->
+
+<nav class="navbar navbar-expand-lg top-navbar">
+
+<div class="container-fluid">
+
+<button
+
+class="btn btn-outline-light d-lg-none"
+
+id="menu-toggle">
+
+<i class="bi bi-list fs-3"></i>
+
+</button>
+
+
+
+</div>
+
+</nav>
+
+<!-- Page Content -->
+
+<div class="content-wrapper">
+
+{% block content %}
+
+{% endblock %}
+
+</div>
+
+<!-- Footer -->
+
+<footer class="footer text-center">
+
+<div class="container-fluid">
+
+<p class="mb-0">
+
+© 2026 Brazilian E-Commerce Analytics Dashboard |
+
+Developed using Flask, Pandas, Matplotlib, Seaborn & Bootstrap 5
+
+</p>
+
+</div>
+
+</footer>
+
+</div>
+<!-- Bootstrap JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Sidebar Toggle -->
+
+<script>
+
+const menuToggle = document.getElementById("menu-toggle");
+
+const sidebar = document.getElementById("sidebar");
+
+if (menuToggle) {
+
+    menuToggle.addEventListener("click", function () {
+
+        sidebar.classList.toggle("show");
+
+    });
+
+}
+
+
+// Close sidebar after clicking a menu item (Mobile)
+
+document.querySelectorAll(".sidebar a").forEach(function(link){
+
+    link.addEventListener("click", function(){
+
+        if(window.innerWidth < 992){
+
+            sidebar.classList.remove("show");
+
+        }
+
+    });
+
+});
+
+// Highlight active menu
+
+const currentPath = window.location.pathname;
+
+document.querySelectorAll(".sidebar a").forEach(function(link){
+
+    if(link.getAttribute("href") === currentPath){
+
+        link.classList.add("active");
+
+    }
+
+});
+
+</script>
+
+</body>
+
+</html>

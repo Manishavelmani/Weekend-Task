@@ -1,0 +1,443 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+Seller Analytics
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+<div class="row mb-4">
+
+<div class="col">
+
+<h2 class="fw-bold">
+
+Seller Analytics
+
+</h2>
+
+<p class="text-muted">
+
+Seller Performance and Revenue Analysis
+
+</p>
+
+</div>
+
+</div>
+
+<!-- KPI -->
+
+<div class="row g-4">
+
+<div class="col-lg-3">
+
+<div class="card kpi-card purple-card">
+
+<div class="card-body">
+
+<h6>Total Sellers</h6>
+
+<h2>
+
+{{ "{:,}".format(summary.sellers) }}
+
+</h2>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-3">
+
+<div class="card mini-card purple-card">
+
+<div class="card-body">
+
+<h6>Average Revenue</h6>
+
+<h2>
+
+₹ {{ summary.revenue }}
+
+</h2>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-3">
+
+<div class="card mini-card purple-card">
+
+<div class="card-body">
+
+<h6>Performance Score</h6>
+
+<h2>
+
+{{ summary.avg_score }}
+
+</h2>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-3">
+
+<div class="card mini-card purple-card">
+
+<div class="card-body">
+
+<h6>Average Delivery</h6>
+
+<h2>
+
+{{ summary.avg_delivery }} Days
+
+</h2>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Charts -->
+
+<div class="row mt-4">
+
+<div class="col-lg-6">
+
+<div class="card chart-card">
+
+<div class="card-header">
+
+<h5>
+
+Top Seller Revenue
+
+</h5>
+
+</div>
+
+<div class="card-body text-center">
+
+<img
+
+src="{{ url_for('static', filename='charts/seller_revenue.png') }}"
+
+class="img-fluid rounded">
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-6">
+
+<div class="card chart-card">
+
+<div class="card-header">
+
+<h5>
+
+Revenue by Seller State
+
+</h5>
+
+</div>
+
+<div class="card-body text-center">
+
+<img
+
+src="{{ url_for('static', filename='charts/revenue_state.png') }}"
+
+class="img-fluid rounded">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="row mt-4">
+
+<div class="col-lg-12">
+
+<div class="card chart-card">
+
+<div class="card-header">
+
+<h5>
+
+Seller Performance Score Distribution
+
+</h5>
+
+</div>
+
+<div class="card-body text-center">
+
+<img
+
+src="{{ url_for('static', filename='charts/seller_performance.png') }}"
+
+class="img-fluid rounded">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Tables -->
+
+<div class="row mt-4">
+
+<div class="col-lg-6">
+
+<div class="card">
+
+<div class="card-header">
+
+<h5>
+
+Top Sellers
+
+</h5>
+
+</div>
+
+<div class="card-body">
+
+<table class="table table-hover">
+
+<thead>
+
+<tr>
+
+<th>Seller</th>
+
+<th>Orders</th>
+
+<th>Revenue</th>
+
+<th>Score</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for row in sellers %}
+
+<tr>
+
+<td>
+
+{{ row.seller_id[:18] }}...
+
+</td>
+
+<td>
+
+{{ row.Orders }}
+
+</td>
+
+<td>
+
+₹ {{ "{:,.2f}".format(row.Revenue) }}
+
+</td>
+
+<td>
+
+{{ "%.2f"|format(row.Rating) }}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-6">
+
+<div class="card">
+
+<div class="card-header">
+
+<h5>
+
+Seller States
+
+</h5>
+
+</div>
+
+<div class="card-body">
+
+<table class="table table-hover">
+
+<thead>
+
+<tr>
+
+<th>State</th>
+
+<th>Sellers</th>
+
+<th>Revenue</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for row in states %}
+
+<tr>
+
+<td>
+
+{{ row.seller_state }}
+
+</td>
+
+<td>
+
+{{ row.Sellers }}
+
+</td>
+
+<td>
+
+₹ {{ "{:,.2f}".format(row.Revenue) }}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Executive Insights -->
+
+<div class="card mt-4">
+
+<div class="card-header">
+
+<h5>
+
+Executive Seller Insights
+
+</h5>
+
+</div>
+
+<div class="card-body">
+
+<div class="alert alert-success">
+
+🏪
+
+{{ "{:,}".format(summary.sellers) }}
+
+active sellers contributed to platform sales.
+
+</div>
+
+<div class="alert alert-primary">
+
+📈
+
+Average seller revenue:
+
+<strong>
+
+₹ {{ summary.revenue }}
+
+</strong>
+
+</div>
+
+<div class="alert alert-warning">
+
+⭐
+
+Average seller performance score:
+
+<strong>
+
+{{ summary.avg_score }}
+
+</strong>
+
+</div>
+
+<div class="alert alert-info">
+
+🚚
+
+Average delivery time:
+
+<strong>
+
+{{ summary.avg_delivery }} days
+
+</strong>
+
+Efficient sellers generally maintain better delivery performance and generate higher customer satisfaction.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}
