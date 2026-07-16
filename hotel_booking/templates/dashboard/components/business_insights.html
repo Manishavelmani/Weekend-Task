@@ -1,52 +1,44 @@
-<div class="card border-0 shadow-sm mb-4">
+<div class="card-header bg-white border-0">
+    <h5 class="fw-bold mb-0">
+        <i class="bi bi-lightbulb-fill text-warning"></i>
+        Business Insights
+    </h5>
+</div>
 
-    <div class="card-header bg-white">
+<div class="card-body">
 
-        <h5 class="fw-bold mb-0">
+    <div class="row g-4">
 
-            <i class="bi bi-lightbulb-fill text-warning"></i>
+        {% for insight in business_insights %}
 
-            Business Insights
+        <div class="col-lg-6">
 
-        </h5>
+            <div class="card border-0 shadow-sm h-100 insight-card">
 
-    </div>
+                <div class="card-body p-4">
 
-    <div class="card-body">
+                    <div class="d-flex align-items-start">
 
-        <div class="row g-4">
+                        <div class="me-3">
 
-            {% for insight in business_insights %}
+                            <div class="rounded-circle d-flex align-items-center justify-content-center"
+                                 style="width:50px;height:50px;background:#FFF7E6;">
 
-            <div class="col-lg-6">
-
-                <div class="card border-0 bg-light h-100 insight-card">
-
-                    <div class="card-body">
-
-                        <div class="d-flex align-items-start">
-
-                            <div class="me-3">
-
-                                <i class="bi bi-stars text-warning fs-3"></i>
+                                <i class="bi bi-stars text-warning fs-4"></i>
 
                             </div>
 
-                            <div>
+                        </div>
 
-                                <h6 class="fw-bold mb-2">
+                        <div>
 
-                                    Insight {{ loop.index }}
+                            <h6 class="fw-bold mb-2 text-dark">
+                                Insight {{ loop.index }}
+                            </h6>
 
-                                </h6>
-
-                                <p class="text-muted mb-0">
-
-                                    {{ insight }}
-
-                                </p>
-
-                            </div>
+                            <p class="mb-0 text-secondary">
+                                {{ insight }}
+                            </p>
 
                         </div>
 
@@ -56,9 +48,9 @@
 
             </div>
 
-            {% endfor %}
-
         </div>
+
+        {% endfor %}
 
     </div>
 
