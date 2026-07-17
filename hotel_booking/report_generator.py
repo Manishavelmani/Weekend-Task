@@ -2051,7 +2051,7 @@ def generate_statistical_report():
 
         ["Variable", "ADR"],
 
-        ["p-value", "0.000"],
+        ["p-value", "7.338598392923583e-37"],
 
         ["Decision", "Reject H₀"],
 
@@ -2112,7 +2112,7 @@ def generate_statistical_report():
 
         ["Groups", "City vs Resort"],
 
-        ["p-value", "0.000"],
+        ["p-value", "0.0"],
 
         ["Decision", "Reject H₀"],
 
@@ -2524,9 +2524,9 @@ management.
 
         ["Variable", "ADR"],
 
-        ["t Statistic", "12.58"],
+        ["t Statistic", "30.287"],
 
-        ["p-value", "0.000"],
+        ["p-value", " 6.153245924852696e-200"],
 
         ["Significance Level", "0.05"],
 
@@ -2663,7 +2663,7 @@ management.
 
         ["Variable", "ADR"],
 
-        ["F Statistic", "18.42"],
+        ["F Statistic", "669.1282713505746"],
 
         ["p-value", "0.000"],
 
@@ -2803,7 +2803,7 @@ management.
 
         ["Chi-Square Statistic", "245.68"],
 
-        ["p-value", "0.000"],
+        ["p-value", "6.905961865776799e-101"],
 
         ["Alpha", "0.05"],
 
@@ -2945,13 +2945,13 @@ management.
 
         ["Variable", "ADR"],
 
-        ["U Statistic", "<Your U Statistic>"],
+        ["U Statistic", "1135645990.0"],
 
-        ["p-value", "<Your p-value>"],
+        ["p-value", "0.0"],
 
         ["Alpha", "0.05"],
 
-        ["Decision", "Reject H₀ / Fail to Reject H₀"]
+        ["Decision", "Reject H₀"]
 
     ]
     table = Table(
@@ -3043,9 +3043,9 @@ management.
     table_data = [
         ["Statistic", "Value"],
         ["Test", "Kruskal-Wallis"],
-        ["H Statistic", "<Notebook Value>"],
-        ["p-value", "<Notebook Value>"],
-        ["Decision", "Reject / Fail to Reject H₀"]
+        ["H Statistic", "2478.85"],
+        ["p-value", "0.0"],
+        ["Decision", "Reject  H₀"]
     ]
 
     table = Table(table_data, colWidths=[220, 220])
@@ -3082,9 +3082,9 @@ management.
     table_data = [
         ["Statistic", "Value"],
         ["Variables", "Lead Time vs ADR"],
-        ["Correlation", "<Notebook Value>"],
-        ["p-value", "<Notebook Value>"],
-        ["Decision", "Significant / Not Significant"]
+        ["Correlation", "0.0219"],
+        ["p-value", "8.997006162842638e-11"],
+        ["Decision", "Significant"]
     ]
 
     table = Table(table_data, colWidths=[220, 220])
@@ -3119,9 +3119,9 @@ management.
     table_data = [
         ["Statistic", "Value"],
         ["Variables", "Lead Time vs ADR"],
-        ["Correlation", "<Notebook Value>"],
-        ["p-value", "<Notebook Value>"],
-        ["Decision", "Significant / Not Significant"]
+        ["Correlation", "0.105"],
+        ["p-value", "7.675400161676427e-215"],
+        ["Decision", "Significant"]
     ]
 
     table = Table(table_data, colWidths=[220, 220])

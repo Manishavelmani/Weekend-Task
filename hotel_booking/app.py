@@ -1,12 +1,6 @@
 from flask import Flask, render_template, request, send_file
-from report_generator import (
-    generate_preprocessing_report,
-generate_statistical_report,
-generate_hypothesis_testing_report,
-
-    generate_eda_report
+from report_generator import (generate_preprocessing_report,generate_statistical_report,generate_hypothesis_testing_report,generate_eda_report
 )
-import pandas as pd
 import os
 
 from analytics import (
@@ -32,12 +26,17 @@ from analytics import (
     summary_statistics,
     correlation_matrix,
     lead_time_distribution,
-total_records,total_features,duplicate_records,missing_values,
-generate_correlation_heatmap,
+    total_records,
+    total_features,
+    duplicate_records,
+    missing_values,
+    generate_correlation_heatmap,
     adr_distribution,
     lead_time_category_distribution,
-    stay_distribution,cancellation_distribution,
-adr_by_customer_type,explorer_data,explorer_filters,
+    stay_distribution,
+    cancellation_distribution,
+    adr_by_customer_type,
+    explorer_data,explorer_filters,
 )
 
 app = Flask(__name__)
@@ -81,6 +80,8 @@ def dashboard():
 
 # ==========================================
 # BOOKING ANALYTICS
+#This method helps to calculate total_bookings,monthly_bookings,
+#hotel_distribution,lead_time_distribution,season_distribution
 # ==========================================
 
 @app.route("/booking")
@@ -104,6 +105,8 @@ def booking():
 
 # ==========================================
 # CUSTOMER ANALYTICS
+#this method calculate total_bookings,customer_
+# type,guest_status,market_segment,countries,special_requests
 # ==========================================
 
 @app.route("/customer")
@@ -129,6 +132,7 @@ def customer():
 
 # ==========================================
 # REVENUE ANALYTICS
+#avearge_adr,adr_hotel,adr_season,revenue_category,stay_hotel
 # ==========================================
 
 @app.route("/revenue")
@@ -153,6 +157,7 @@ def revenue():
 
 # ==========================================
 # STATISTICAL ANALYSIS
+#this function calculate statistical operation
 # ==========================================
 
 @app.route("/statistics")
@@ -189,6 +194,7 @@ def statistics():
     )
 # ==========================================
 # DATA EXPLORER
+#this method render data filter using pagination
 # ==========================================
 @app.route("/explorer")
 def explorer():
@@ -200,8 +206,6 @@ def explorer():
     season = request.args.get("season", "")
 
     customer_type = request.args.get("customer_type", "")
-
-    page = request.args.get("page", 1, type=int)
 
     page = request.args.get("page", 1, type=int)
 
@@ -250,6 +254,7 @@ def explorer():
 
 
     )
+#this function perform download filtered datsets in explorer page
 @app.route("/download")
 def download():
 
@@ -262,21 +267,7 @@ def download():
     customer_type = request.args.get("customer_type", "")
 
     # Get filtered data
-    data, _ = explorer_data(
-
-        search,
-
-        hotel,
-
-        season,
-
-        customer_type,
-
-        page=1,
-
-        per_page=1000000
-
-    )
+    data, _ = explorer_data(search,hotel,season,customer_type,page=1,per_page=1000000)
 
     os.makedirs("downloads", exist_ok=True)
 
@@ -298,6 +289,9 @@ def download():
     )
 # ==========================================
 # REPORTS
+#In report page it has show some details
+#about total_recored,total features,miising values,
+#duplicate records
 # ==========================================
 
 @app.route("/reports")
@@ -318,6 +312,7 @@ def reports():
         business_insights=business_insights()
 
     )
+#this methos download clened csv datasets in report page
 @app.route("/download-dataset")
 def download_dataset():
 
@@ -332,7 +327,8 @@ def download_dataset():
         download_name="hotel_bookings_final.csv"
     )
 
-
+#this method download preprocessing,statistical,eda and hypothesis testing reports
+#thr report is created by using report lab library in python
 @app.route("/download-preprocessing-report")
 def download_preprocessing_report():
 
