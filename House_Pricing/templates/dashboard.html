@@ -1,0 +1,580 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+<div class="container-fluid">
+
+
+<h2 class="mb-4">
+    <i class="bi bi-speedometer2"></i>
+    Dashboard
+</h2>
+
+
+
+<!-- KPI CARDS -->
+
+<div class="row">
+
+
+<div class="col-md-3 mb-3">
+
+<div class="card shadow p-3 text-center">
+
+
+<i class="bi bi-database-fill fs-1 text-primary"></i>
+
+
+<h6>Total Records</h6>
+
+
+<h2>{{ total_rows }}</h2>
+
+
+<p class="text-muted">
+Housing Samples
+</p>
+
+
+</div>
+
+</div>
+
+
+
+
+
+<div class="col-md-3 mb-3">
+
+<div class="card shadow p-3 text-center">
+
+
+<i class="bi bi-grid-fill fs-1 text-success"></i>
+
+
+<h6>Features</h6>
+
+
+<h2>{{ total_columns }}</h2>
+
+
+<p class="text-muted">
+Input Variables
+</p>
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+<div class="col-md-3 mb-3">
+
+<div class="card shadow p-3 text-center">
+
+
+<i class="bi bi-cpu-fill fs-1 text-warning"></i>
+
+
+<h6>Best Algorithm</h6>
+
+
+<h3>{{ best_model }}</h3>
+
+
+<p class="text-muted">
+Regression Model
+</p>
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+<div class="col-md-3 mb-3">
+
+<div class="card shadow p-3 text-center">
+
+
+<i class="bi bi-graph-up fs-1 text-danger"></i>
+
+
+<h6>Model Score</h6>
+
+
+<h2>
+{{ "%.4f"|format(r2_score) }}
+</h2>
+
+
+<p class="text-muted">
+R² Performance
+</p>
+
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- MODEL SUMMARY -->
+
+
+<div class="row mt-4">
+
+
+<div class="col-md-5">
+
+
+<div class="card shadow p-4">
+
+
+<h4>
+
+<i class="bi bi-bar-chart"></i>
+
+Model Summary
+
+</h4>
+
+
+<hr>
+
+
+
+
+<p>
+<b>Algorithm:</b>
+
+{{ best_model }}
+
+</p>
+
+
+
+
+<p>
+<b>MAE:</b>
+
+{{ "%.2f"|format(mae) }}
+
+</p>
+
+
+
+
+<p>
+<b>RMSE:</b>
+
+{{ "%.2f"|format(rmse) }}
+
+</p>
+
+
+
+
+<p>
+<b>R² Score:</b>
+
+{{ "%.4f"|format(r2_score) }}
+
+</p>
+
+
+
+<div class="alert alert-success">
+
+Model trained successfully
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+<div class="col-md-7">
+
+
+<div class="card shadow p-4">
+
+
+<h4>
+Dataset Overview
+</h4>
+
+
+<p>
+
+House Prices dataset contains information about residential properties.
+
+</p>
+
+
+<ul>
+
+<li>
+1460 housing records
+</li>
+
+
+<li>
+Feature engineering applied
+</li>
+
+
+<li>
+Missing values handled
+</li>
+
+
+<li>
+Outliers analyzed
+</li>
+
+
+<li>
+Categorical features encoded
+</li>
+
+
+<li>
+Model evaluation and hyperparameter tuning performed
+</li>
+
+
+<li>
+CatBoost selected as best model
+</li>
+
+
+</ul>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- CHARTS -->
+
+
+<div class="row mt-4">
+
+
+
+<div class="col-md-6 mb-4">
+
+<div class="card shadow p-3">
+
+
+<h5>
+Actual vs Predicted
+</h5>
+
+
+<img src="{{ url_for('static',
+filename='images/actual_vs_predicted.png') }}"
+class="img-fluid">
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+<div class="col-md-6 mb-4">
+
+<div class="card shadow p-3">
+
+
+<h5>
+Feature Importance
+</h5>
+
+
+<img src="{{ url_for('static',
+filename='images/feature_importance.png') }}"
+class="img-fluid">
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+<div class="col-md-6 mb-4">
+
+<div class="card shadow p-3">
+
+
+<h5>
+Cross Validation
+</h5>
+
+
+<img src="{{ url_for('static',
+filename='images/cross_validation.png') }}"
+class="img-fluid">
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+<div class="col-md-6 mb-4">
+
+<div class="card shadow p-3">
+
+
+<h5>
+RMSE Chart
+</h5>
+
+
+<img src="{{ url_for('static',
+filename='images/rmse_chart.png') }}"
+class="img-fluid">
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+<div class="col-md-6 mb-4">
+
+<div class="card shadow p-3">
+
+
+<h5>
+MAE Comparison
+</h5>
+
+
+<img src="{{ url_for('static',
+filename='images/mae_comparison.png') }}"
+class="img-fluid">
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+<div class="col-md-6 mb-4">
+
+<div class="card shadow p-3">
+
+
+<h5>
+SalePrice Distribution
+</h5>
+
+
+<img src="{{ url_for('static',
+filename='images/saleprice_distribution.png') }}"
+class="img-fluid">
+
+
+</div>
+
+</div>
+
+
+<!-- PROJECT SUMMARY CARD -->
+
+
+<div class="row mt-4">
+
+
+<div class="col-md-12">
+
+
+<div class="card shadow p-4">
+
+
+<h4>
+
+<i class="bi bi-file-earmark-text"></i>
+
+Project Summary
+
+</h4>
+
+
+<hr>
+
+
+
+<div class="row text-center">
+
+
+
+<div class="col-md-3">
+
+
+<i class="bi bi-house-door fs-2 text-primary"></i>
+
+
+<h6>Project</h6>
+
+
+<p>
+House Price Prediction
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="col-md-3">
+
+
+<i class="bi bi-bar-chart-line fs-2 text-success"></i>
+
+
+<h6>Problem Type</h6>
+
+
+<p>
+Regression
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="col-md-3">
+
+
+<i class="bi bi-robot fs-2 text-warning"></i>
+
+
+<h6>Best Model</h6>
+
+
+<p>
+{{ best_model }}
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="col-md-3">
+
+
+<i class="bi bi-check-circle fs-2 text-danger"></i>
+
+
+<h6>Status</h6>
+
+
+<p>
+Completed
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+<p class="mt-3">
+
+This project predicts residential house prices using machine learning
+regression algorithms. Data preprocessing, feature engineering,
+EDA analysis, model training, and evaluation were performed.
+
+CatBoost achieved the best performance among the tested models.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+{% endblock %}

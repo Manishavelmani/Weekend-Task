@@ -1,0 +1,527 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+<div class="container-fluid">
+
+
+<!-- HEADER -->
+
+
+<div class="card shadow p-4 mb-4">
+
+
+<h2 class="text-center">
+
+<i class="bi bi-file-earmark-richtext"></i>
+
+Project Documentation Center
+
+</h2>
+
+
+<p class="text-center text-muted">
+
+Complete reports and analysis documents of
+House Price Prediction Machine Learning Project.
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- PROJECT SUMMARY -->
+
+
+<div class="card shadow p-4 mb-4">
+
+
+<h4>
+
+<i class="bi bi-info-circle"></i>
+
+Project Overview
+
+</h4>
+
+
+<hr>
+
+
+
+<div class="row text-center">
+
+
+
+<div class="col-md-3">
+
+<h3>
+1460
+</h3>
+
+<p>
+Housing Records
+</p>
+
+</div>
+
+
+
+
+
+<div class="col-md-3">
+
+<h3>
+79+
+</h3>
+
+<p>
+Original Features
+</p>
+
+</div>
+
+
+
+
+
+<div class="col-md-3">
+
+<h3>
+7
+</h3>
+
+<p>
+Models Tested
+</p>
+
+</div>
+
+
+
+
+
+<div class="col-md-3">
+
+<h3>
+CatBoost
+</h3>
+
+<p>
+Final Model
+</p>
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- REPORT CARDS -->
+
+
+<div class="row">
+
+
+
+
+
+<!-- DATA PREPROCESSING -->
+
+
+<div class="col-md-6 mb-4">
+
+
+<div class="card shadow p-4 h-100">
+
+
+<h4>
+
+<i class="bi bi-database-fill text-primary"></i>
+
+Data Preprocessing Report
+
+</h4>
+
+
+<hr>
+
+
+<p>
+
+Complete data preparation process including:
+
+</p>
+
+
+<ul>
+
+<li>Missing Value Handling</li>
+
+<li>Duplicate Removal</li>
+
+<li>Categorical Encoding</li>
+
+<li>Feature Engineering</li>
+
+<li>Data Transformation</li>
+
+</ul>
+
+
+
+<a href="/download/Data_Preprocessing_Report.pdf"
+class="btn btn-primary">
+
+
+<i class="bi bi-download"></i>
+
+Download Report
+
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- EDA -->
+
+
+<div class="col-md-6 mb-4">
+
+
+<div class="card shadow p-4 h-100">
+
+
+<h4>
+
+<i class="bi bi-bar-chart-fill text-success"></i>
+
+Exploratory Data Analysis
+
+</h4>
+
+
+<hr>
+
+
+<p>
+
+Dataset exploration and statistical analysis:
+
+</p>
+
+
+<ul>
+
+<li>Distribution Analysis</li>
+
+<li>Correlation Study</li>
+
+<li>Outlier Detection</li>
+
+<li>Feature Relationship</li>
+
+</ul>
+
+
+
+<a href="/download/EDA_Report.pdf"
+class="btn btn-success">
+
+
+<i class="bi bi-download"></i>
+
+Download Report
+
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- MODEL COMPARISON -->
+
+
+<div class="col-md-6 mb-4">
+
+
+<div class="card shadow p-4 h-100">
+
+
+<h4>
+
+<i class="bi bi-cpu-fill text-warning"></i>
+
+Model Evaluation Report
+
+</h4>
+
+
+<hr>
+
+
+<p>
+
+Comparison of regression algorithms:
+
+</p>
+
+
+<ul>
+
+<li>Linear Regression</li>
+
+<li>Random Forest</li>
+
+<li>XGBoost</li>
+
+<li>LightGBM</li>
+
+<li>CatBoost</li>
+
+</ul>
+
+
+
+<a href="/download/Model_Comparison_Report.pdf"
+class="btn btn-warning">
+
+
+<i class="bi bi-download"></i>
+
+Download Report
+
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- OPTIMIZATION -->
+
+
+<div class="col-md-6 mb-4">
+
+
+<div class="card shadow p-4 h-100">
+
+
+<h4>
+
+<i class="bi bi-sliders text-danger"></i>
+
+Model Optimization Report
+
+</h4>
+
+
+<hr>
+
+
+<p>
+
+Improvement techniques applied:
+
+</p>
+
+
+<ul>
+
+<li>Cross Validation</li>
+
+<li>Hyperparameter Tuning</li>
+
+<li>Grid Search</li>
+
+<li>Final Model Selection</li>
+
+</ul>
+
+
+
+<a href="/download/Model_Optimization_Report.pdf"
+class="btn btn-danger">
+
+
+<i class="bi bi-download"></i>
+
+Download Report
+
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- PREDICTION REPORT -->
+
+<div class="col-md-12 mb-4">
+
+    <div class="card shadow-lg border-0">
+
+        <div class="card-body">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-9">
+
+                    <h4>
+                        <i class="bi bi-file-earmark-pdf-fill text-danger"></i>
+                        Prediction Report
+                    </h4>
+
+                    <hr>
+
+                    <p class="text-muted">
+
+                        Download the latest house price prediction report generated
+                        by the CatBoost regression model.
+
+                    </p>
+
+                    <ul>
+
+                        <li>Predicted House Price</li>
+
+                        <li>Input Property Features</li>
+
+                        <li>Machine Learning Model Information</li>
+
+                        <li>Prediction Summary</li>
+
+                        <li>Generated Date & Time</li>
+
+                    </ul>
+
+                </div>
+
+                <div class="col-md-3 text-center">
+
+                    <i class="bi bi-file-earmark-pdf-fill text-danger"
+                       style="font-size:80px;"></i>
+
+                    <br><br>
+
+                    <a href="/download/Prediction_Report.pdf"
+                       class="btn btn-danger">
+
+                        <i class="bi bi-download"></i>
+
+                        Download PDF
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- FINAL MODEL -->
+
+
+<div class="alert alert-success shadow mt-4">
+
+
+<h5>
+
+<i class="bi bi-check-circle"></i>
+
+Final Model Selection
+
+</h5>
+
+
+<p>
+
+CatBoost Regression was selected as the final model
+because it achieved the highest prediction performance
+with R² Score around 0.91.
+
+</p>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+{% endblock %}

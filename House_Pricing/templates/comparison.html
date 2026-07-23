@@ -1,0 +1,646 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+<div class="container-fluid">
+
+
+<h2 class="mb-4">
+
+<i class="bi bi-graph-up-arrow"></i>
+
+Model Evaluation Report
+
+</h2>
+
+
+
+<!-- PHASE 4 SUMMARY -->
+
+<div class="card shadow p-4 mb-4">
+
+
+<h4>
+
+<i class="bi bi-cpu"></i>
+
+Initial Model Training
+
+</h4>
+
+
+<hr>
+
+
+<p>
+
+Multiple regression algorithms were trained and evaluated.
+Models were compared using MAE, RMSE and R² Score.
+
+</p>
+
+
+
+<div class="row text-center mt-3">
+
+
+<div class="col-md-4">
+
+
+<div class="card bg-light p-3">
+
+
+<h6>Total Models Tested</h6>
+
+
+<h2>7</h2>
+
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="col-md-4">
+
+
+<div class="card bg-light p-3">
+
+
+<h6>Best Model</h6>
+
+
+<h3>CatBoost</h3>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="col-md-4">
+
+
+<div class="card bg-light p-3">
+
+
+<h6>Best R² Score</h6>
+
+
+<h2>0.9094</h2>
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<!-- PHASE 4 TABLE -->
+
+
+<div class="card shadow p-4 mb-4">
+
+
+<h4>
+Model Performance
+</h4>
+
+
+<table class="table table-hover table-bordered mt-3">
+
+
+<thead class="table-dark">
+
+
+<tr>
+
+<th>Model</th>
+
+<th>MAE</th>
+
+<th>RMSE</th>
+
+<th>R² Score</th>
+
+<th>Performance</th>
+
+</tr>
+
+
+</thead>
+
+
+
+<tbody>
+
+
+{% for row in model_results %}
+
+
+<tr>
+
+
+<td>{{ row["Model"] }}</td>
+
+
+<td>{{ row["MAE"] }}</td>
+
+
+<td>{{ row["RMSE"] }}</td>
+
+
+<td>{{ row["R2 Score"] }}</td>
+
+
+<td>
+
+{% if row["Model"] == "CatBoost" %}
+
+<span class="badge bg-success">
+Best
+</span>
+
+{% else %}
+
+<span class="badge bg-secondary">
+Evaluated
+</span>
+
+{% endif %}
+
+
+</td>
+
+
+</tr>
+
+
+{% endfor %}
+
+
+</tbody>
+
+
+</table>
+
+
+</div>
+
+
+
+
+
+
+<!-- PHASE 5 OPTIMIZATION -->
+
+
+<div class="card shadow p-4 mb-4">
+
+
+<h4>
+
+<i class="bi bi-sliders"></i>
+
+Model Optimization
+
+</h4>
+
+
+<hr>
+
+
+<p>
+
+Hyperparameter tuning was applied to improve the selected model.
+CatBoost parameters were optimized using GridSearchCV.
+
+</p>
+
+
+
+<div class="row text-center">
+
+
+<div class="col-md-4">
+
+
+<div class="card bg-light p-3">
+
+
+<h6>Algorithm</h6>
+
+<h3>CatBoost</h3>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="col-md-4">
+
+
+<div class="card bg-light p-3">
+
+
+<h6>Best Parameters</h6>
+
+<p>
+
+Depth: 6<br>
+
+Iterations: 300<br>
+
+Learning Rate: 0.1
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="col-md-4">
+
+
+<div class="card bg-light p-3">
+
+
+<h6>CV Score</h6>
+
+<h3>0.8874</h3>
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+<!-- OPTIMIZED TABLE -->
+
+
+<div class="card shadow p-4 mb-4">
+
+
+<h4>
+Optimized Model Result
+</h4>
+
+
+
+<table class="table table-bordered mt-3">
+
+
+<thead class="table-success">
+
+
+<tr>
+
+<th>Model</th>
+
+<th>MAE</th>
+
+<th>RMSE</th>
+
+<th>R² Score</th>
+
+</tr>
+
+
+</thead>
+
+
+
+<tbody>
+
+
+{% for row in optimized_results %}
+
+
+<tr>
+
+
+<td>{{ row["Model"] }}</td>
+
+
+<td>{{ row["MAE"] }}</td>
+
+
+<td>{{ row["RMSE"] }}</td>
+
+
+<td>{{ row["R2 Score"] }}</td>
+
+
+</tr>
+
+
+{% endfor %}
+
+
+
+</tbody>
+
+
+</table>
+
+
+
+</div>
+
+
+
+
+
+
+<!-- IMPROVEMENT SUMMARY -->
+
+
+<div class="card shadow p-4 mb-4">
+
+
+<h4>
+
+<i class="bi bi-arrow-up-circle"></i>
+
+Model Improvement Summary
+
+</h4>
+
+
+<hr>
+
+
+
+<div class="row text-center">
+
+
+<div class="col-md-4">
+
+
+<h6>Before Optimization</h6>
+
+
+<h3>0.9094</h3>
+
+
+<p>
+CatBoost R² Score
+</p>
+
+
+</div>
+
+
+
+
+<div class="col-md-4">
+
+
+<h6>After Optimization</h6>
+
+
+<h3>0.9074</h3>
+
+
+<p>
+Tuned CatBoost R² Score
+</p>
+
+
+</div>
+
+
+
+
+<div class="col-md-4">
+
+
+<h6>Final Model</h6>
+
+
+<h3 class="text-success">
+
+CatBoost
+
+</h3>
+
+
+<p>
+Selected Model
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+<!-- CHARTS -->
+
+<div class="row">
+
+
+<!-- R2 SCORE -->
+
+<div class="col-md-6 mb-4">
+
+<div class="card shadow p-3">
+
+
+<h5 class="text-center">
+
+R² Score Comparison
+
+</h5>
+
+
+<img src="{{ url_for('static',
+filename='images/r2_score.png') }}"
+class="img-fluid">
+
+
+</div>
+
+</div>
+
+
+
+
+
+<!-- RMSE -->
+
+<div class="col-md-6 mb-4">
+
+<div class="card shadow p-3">
+
+
+<h5 class="text-center">
+
+RMSE Comparison
+
+</h5>
+
+
+<img src="{{ url_for('static',
+filename='images/rmse_chart.png') }}"
+class="img-fluid">
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+<!-- CROSS VALIDATION -->
+
+<div class="col-md-6 mb-4">
+
+<div class="card shadow p-3">
+
+
+<h5 class="text-center">
+
+Cross Validation Stability
+
+</h5>
+
+
+<img src="{{ url_for('static',
+filename='images/cross_validation.png') }}"
+class="img-fluid">
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+<!-- FEATURE IMPORTANCE -->
+
+<div class="col-md-6 mb-4">
+
+<div class="card shadow p-3">
+
+
+<h5 class="text-center">
+
+Important Features in Best Model
+
+</h5>
+
+
+<img src="{{ url_for('static',
+filename='images/feature_importance.png') }}"
+class="img-fluid">
+
+
+</div>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+<!-- FINAL CONCLUSION -->
+
+
+<div class="alert alert-success shadow">
+
+
+<h5>
+
+<i class="bi bi-check-circle"></i>
+
+Final Model Selection
+
+</h5>
+
+
+<p>
+
+After comparing multiple regression algorithms,
+CatBoost achieved the highest prediction performance.
+Hyperparameter optimization was performed and the final
+CatBoost model was selected for house price prediction.
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+{% endblock %}

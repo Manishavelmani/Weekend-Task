@@ -1,0 +1,165 @@
+/* =========================
+   GLOBAL
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background: linear-gradient(to bottom right, #8879d6, #a896f5);
+    color:#333;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    width:240px;
+    height:100vh;
+    background: linear-gradient(180deg, #5b21b6, #7a68d8);
+    overflow-y:auto;
+}
+
+.logo{
+    color:#fff;
+    text-align:center;
+    font-size:25px;
+    font-weight:bold;
+    padding:25px 0;
+}
+
+.sidebar a{
+    display:block;
+    color:#fff;
+    text-decoration:none;
+    padding:15px 25px;
+    transition:.3s;
+}
+
+.sidebar a:hover,
+.sidebar a.active{
+    background:#8b5cf6;
+}
+
+.sidebar i{
+    margin-right:10px;
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.main-content{
+    margin-left:240px;
+    padding:30px;
+}
+
+/* =========================
+   HEADINGS
+========================= */
+
+h2,h4,h5,h6{
+    color:#5b21b6;
+    font-weight:bold;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.card{
+    border:none;
+    border-radius:15px;
+    background:#ffffff;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn{
+    border-radius:10px;
+    font-weight:600;
+}
+
+.btn-primary{
+    background:#7c3aed;
+    border:none;
+}
+
+.btn-primary:hover{
+    background:#6d28d9;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.form-control{
+    border-radius:10px;
+}
+
+.form-control:focus{
+    border-color:#7c3aed;
+    box-shadow:0 0 5px rgba(124,58,237,.3);
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.table{
+    border-radius:10px;
+    overflow:hidden;
+}
+
+/* =========================
+   IMAGES
+========================= */
+
+img{
+    width:100%;
+    border-radius:10px;
+}
+
+/* =========================
+   ALERT
+========================= */
+
+.alert{
+    border:none;
+    border-radius:10px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:992px){
+
+    .sidebar{
+        position:relative;
+        width:100%;
+        height:auto;
+    }
+
+    .main-content{
+        margin-left:0;
+        padding:20px;
+    }
+
+}

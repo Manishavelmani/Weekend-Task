@@ -1,0 +1,533 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+<div class="container-fluid">
+
+
+
+<!-- HEADER -->
+
+<h2 class="mb-4">
+
+<i class="bi bi-bar-chart-fill"></i>
+
+Analytics Dashboard
+
+</h2>
+
+
+<p class="text-muted">
+
+Visual analysis of model performance, prediction accuracy,
+feature contribution, and error behavior.
+
+</p>
+
+
+
+
+
+
+<!-- SUMMARY CARDS -->
+
+
+<div class="row mt-4">
+
+
+<div class="col-md-3 mb-3">
+
+
+<div class="card shadow p-3 text-center">
+
+
+<i class="bi bi-lightbulb fs-1 text-warning"></i>
+
+
+<h6>Important Analysis</h6>
+
+
+<h4>Feature Impact</h4>
+
+
+<p class="text-muted">
+Top contributing features
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="col-md-3 mb-3">
+
+
+<div class="card shadow p-3 text-center">
+
+
+<i class="bi bi-bullseye fs-1 text-success"></i>
+
+
+<h6>Prediction Quality</h6>
+
+
+<h4>High Accuracy</h4>
+
+
+<p class="text-muted">
+Actual vs Predicted
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="col-md-3 mb-3">
+
+
+<div class="card shadow p-3 text-center">
+
+
+<i class="bi bi-activity fs-1 text-danger"></i>
+
+
+<h6>Error Analysis</h6>
+
+
+<h4>Residual Check</h4>
+
+
+<p class="text-muted">
+Model reliability
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="col-md-3 mb-3">
+
+
+<div class="card shadow p-3 text-center">
+
+
+<i class="bi bi-graph-down fs-1 text-primary"></i>
+
+
+<h6>Evaluation</h6>
+
+
+<h4>Error Metrics</h4>
+
+
+<p class="text-muted">
+Prediction errors
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- ANALYTICS CHARTS -->
+
+
+<div class="row mt-4">
+
+<!-- EDA ANALYSIS -->
+
+
+<div class="row mt-4">
+
+
+
+<!-- NEW FEATURE CORRELATION -->
+
+
+<div class="col-md-6 mb-4">
+
+
+<div class="card shadow p-3">
+
+
+<h5 class="text-center">
+
+<i class="bi bi-diagram-3"></i>
+
+New Feature Correlation
+
+</h5>
+
+
+<hr>
+
+
+<img
+src="{{ url_for('static',
+filename='images/new_features_correlation.png') }}"
+class="img-fluid">
+
+
+
+<p class="text-muted mt-3">
+
+Shows the relationship between engineered features
+and SalePrice. Highly correlated features have stronger
+impact on house price prediction.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- SALEPRICE DISTRIBUTION -->
+
+
+<div class="col-md-6 mb-4">
+
+
+<div class="card shadow p-3">
+
+
+<h5 class="text-center">
+
+<i class="bi bi-bar-chart-line"></i>
+
+SalePrice Distribution
+
+</h5>
+
+
+<hr>
+
+
+<img
+src="{{ url_for('static',
+filename='images/saleprice_distribution.png') }}"
+class="img-fluid">
+
+
+
+<p class="text-muted mt-3">
+
+Displays the distribution of house prices.
+Skewness analysis helps understand data imbalance
+and transformation requirements.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+<!-- FEATURE IMPORTANCE -->
+
+<div class="col-md-6 mb-4">
+
+
+<div class="card shadow p-3">
+
+
+<h5 class="text-center">
+
+<i class="bi bi-bar-chart"></i>
+
+Feature Importance
+
+</h5>
+
+
+<hr>
+
+
+<img
+src="{{ url_for('static',
+filename='images/feature_importance.png') }}"
+class="img-fluid">
+
+
+<p class="text-muted mt-3">
+
+Shows the contribution of each feature in the
+final prediction model. Higher importance indicates
+greater influence on house price prediction.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<!-- ACTUAL VS PREDICTED -->
+
+
+<div class="col-md-6 mb-4">
+
+
+<div class="card shadow p-3">
+
+
+<h5 class="text-center">
+
+<i class="bi bi-bullseye"></i>
+
+Actual vs Predicted
+
+</h5>
+
+
+<hr>
+
+
+<img
+src="{{ url_for('static',
+filename='images/actual_vs_predicted.png') }}"
+class="img-fluid">
+
+
+<p class="text-muted mt-3">
+
+Compares actual house prices with predicted values.
+Points closer to the diagonal line indicate better
+prediction performance.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- RESIDUAL -->
+
+
+<div class="col-md-6 mb-4">
+
+
+<div class="card shadow p-3">
+
+
+<h5 class="text-center">
+
+<i class="bi bi-activity"></i>
+
+Residual Analysis
+
+</h5>
+
+
+<hr>
+
+
+<img
+src="{{ url_for('static',
+filename='images/residual_plot.png') }}"
+class="img-fluid">
+
+
+<p class="text-muted mt-3">
+
+Residual analysis helps identify prediction errors
+and check whether errors are randomly distributed.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- ERROR -->
+
+
+<div class="col-md-6 mb-4">
+
+
+<div class="card shadow p-3">
+
+
+<h5 class="text-center">
+
+<i class="bi bi-exclamation-triangle"></i>
+
+Prediction Error Distribution
+
+</h5>
+
+
+<hr>
+
+
+<img
+src="{{ url_for('static',
+filename='images/prediction_error.png') }}"
+class="img-fluid">
+
+
+<p class="text-muted mt-3">
+
+Displays the difference between actual and predicted
+values to understand model error patterns.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- FINAL INSIGHTS -->
+
+
+<div class="card shadow p-4 mt-3">
+
+
+<h4>
+
+<i class="bi bi-check-circle"></i>
+
+Analytics Insights
+
+</h4>
+
+
+<hr>
+
+
+
+<ul>
+
+
+<li>
+
+Feature importance identifies the major factors affecting house prices.
+
+</li>
+
+
+<li>
+
+Actual vs Predicted analysis confirms the model's prediction capability.
+
+</li>
+
+
+<li>
+
+Residual analysis checks model errors and possible patterns.
+
+</li>
+
+
+<li>
+
+Prediction error analysis helps evaluate model reliability.
+
+</li>
+
+
+</ul>
+
+
+
+<div class="alert alert-success mt-3">
+
+
+<b>Conclusion:</b>
+
+The analytics results show that the selected regression model
+provides reliable house price predictions with good generalization
+performance.
+
+</div>
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+{% endblock %}
