@@ -133,6 +133,37 @@ The application contains the following pages:
 Users can enter house details and receive an estimated house price. A prediction report is automatically generated in PDF format.
 
 ---
+---
+
+## 📷 Application Screenshots
+
+### 🏠 Dashboard
+
+![Dashboard](screenshots/dashboard.png)
+
+---
+
+### 💰 House Price Prediction
+
+![Prediction](screenshots/prediction.png)
+
+---
+
+### 📊 Analytics
+
+![Analytics](screenshots/analytics.png)
+
+---
+
+### 📈 Model Comparison
+
+![Comparison](screenshots/comparison.png)
+
+---
+
+### 📄 Reports
+
+![Reports](screenshots/reports.png)
 
 ## ▶️ Installation
 
