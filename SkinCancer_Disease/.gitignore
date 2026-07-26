@@ -1,0 +1,14 @@
+# Dataset
+dataset/ham10000_images_part_1/
+dataset/ham10000_images_part_2/
+
+# Python
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Virtual Environment
+.venv/
+.env
