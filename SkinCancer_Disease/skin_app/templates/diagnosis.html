@@ -1,0 +1,493 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<!-- Page Header -->
+
+<div class="card shadow-lg border-0 mb-4"
+     style="background:linear-gradient(135deg,#1B1464,#3B2E8F);color:white;">
+
+    <div class="card-body text-center py-4">
+
+        <h2 class="fw-bold">
+
+            🩺 Skin Disease Diagnosis
+
+        </h2>
+
+        <p class="mb-0 fs-5">
+
+            AI-powered skin disease prediction using ResNet50 Deep Learning Model
+
+        </p>
+
+    </div>
+
+</div>
+
+
+
+
+<!-- Upload Section -->
+
+
+<div class="card shadow border-0 mb-4">
+
+
+    <div class="card-header text-white"
+         style="background:#3B2E8F;">
+
+
+        <h5 class="mb-0">
+
+            📤 Upload Skin Image
+
+        </h5>
+
+
+    </div>
+
+
+
+
+    <div class="card-body">
+
+
+        <form
+
+        action="{{ url_for('diagnosis') }}"
+
+        method="POST"
+
+        enctype="multipart/form-data">
+
+
+            <div class="row align-items-end">
+
+
+                <div class="col-md-9">
+
+
+                    <label class="form-label fw-bold">
+
+                        Select Dermoscopic Image
+
+                    </label>
+
+
+                    <input
+
+                    type="file"
+
+                    class="form-control"
+
+                    name="image"
+
+                    required>
+
+
+                </div>
+
+
+
+
+                <div class="col-md-3 mt-3">
+
+
+                    <button
+
+                    class="btn w-100"
+
+                    style="background:#14b8a6;color:white;"
+
+                    type="submit">
+
+
+                        🔍 Predict Disease
+
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+
+        </form>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+{% if image_path %}
+
+
+
+<!-- Prediction Result -->
+
+
+<div class="row mb-4">
+
+
+    <div class="col-lg-5">
+
+
+        <div class="card shadow h-100">
+
+
+            <div class="card-header bg-success text-white">
+
+                📷 Uploaded Image
+
+            </div>
+
+
+
+            <div class="card-body text-center">
+
+
+                <img
+
+                src="{{ url_for('static', filename=image_path) }}"
+
+                class="img-fluid rounded shadow"
+
+                style="max-height:350px;">
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <div class="col-lg-7">
+
+
+        <div class="card shadow h-100">
+
+
+            <div class="card-header text-white"
+                 style="background:#1B1464;">
+
+
+                🎯 Prediction Result
+
+
+            </div>
+
+
+
+
+            <div class="card-body text-center">
+
+
+                <h6 class="text-muted">
+
+                    Predicted Disease
+
+                </h6>
+
+
+                <h2 class="fw-bold text-danger">
+
+                    {{ disease }}
+
+                </h2>
+
+
+
+                <hr>
+
+
+
+                <h6 class="text-muted">
+
+                    Confidence Score
+
+                </h6>
+
+
+
+                <div class="progress mb-4"
+                     style="height:35px;">
+
+
+                    <div
+
+                    class="progress-bar"
+
+                    style="width:{{ confidence*100 }}%;background:#14b8a6;">
+
+
+                    {{ "%.2f"|format(confidence*100) }} %
+
+
+                    </div>
+
+
+                </div>
+
+
+
+
+
+                <div class="alert alert-info">
+
+
+                    🤖 <strong>Model Used:</strong>
+
+                    ResNet50
+
+
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+<!-- Probability Table -->
+
+
+<div class="card shadow border-0 mb-4">
+
+
+    <div class="card-header text-white"
+         style="background:#0ea5e9;">
+
+
+        📊 Probability Distribution
+
+
+    </div>
+
+
+
+
+    <div class="card-body">
+
+
+        <div class="table-responsive">
+
+
+            <table class="table table-bordered table-hover text-center">
+
+
+                <thead class="table-dark">
+
+
+                    <tr>
+
+                        <th>Disease Class</th>
+
+                        <th>Probability</th>
+
+                    </tr>
+
+
+                </thead>
+
+
+
+
+                <tbody>
+
+
+                {% for i in range(class_names|length) %}
+
+
+                <tr>
+
+
+                    <td>
+
+                        {{ class_names[i] }}
+
+                    </td>
+
+
+
+                    <td>
+
+                        {{ "%.2f"|format(probabilities[i]*100) }} %
+
+                    </td>
+
+
+                </tr>
+
+
+                {% endfor %}
+
+
+                </tbody>
+
+
+
+            </table>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- Explainable AI -->
+
+
+<div class="card shadow border-0 mb-4">
+
+
+    <div class="card-header text-white"
+         style="background:#f59e0b;">
+
+
+        🧠 Explainable AI Results
+
+
+    </div>
+
+
+
+
+    <div class="card-body">
+
+
+        <div class="row g-4">
+
+
+            <div class="col-lg-6">
+
+
+                <div class="card shadow h-100">
+
+
+                    <div class="card-header bg-danger text-white text-center">
+
+
+                        🔥 Grad-CAM
+
+
+                    </div>
+
+
+
+
+                    <div class="card-body text-center">
+
+
+                        <img
+
+                        src="{{ url_for('static', filename=gradcam_path) }}"
+
+                        class="img-fluid rounded shadow"
+
+                        style="max-height:350px;">
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+            <div class="col-lg-6">
+
+
+                <div class="card shadow h-100">
+
+
+                    <div class="card-header bg-warning text-dark text-center">
+
+
+                        ✨ Saliency Map
+
+
+                    </div>
+
+
+
+
+                    <div class="card-body text-center">
+
+
+                        <img
+
+                        src="{{ url_for('static', filename=saliency_path) }}"
+
+                        class="img-fluid rounded shadow"
+
+                        style="max-height:350px;">
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+{% endif %}
+
+
+
+{% endblock %}

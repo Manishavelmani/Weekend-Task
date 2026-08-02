@@ -8,7 +8,24 @@ __pycache__/
 
 # Jupyter
 .ipynb_checkpoints/
+notebooks/ipynb_checkpoints/
 
 # Virtual Environment
 .venv/
 .env
+
+# Notebook tuning folders
+notebooks/eff_tuner/
+notebooks/tuner/
+notebooks/mobilenet_tuner/
+
+# Model files (ignore all)
+models/
+*.keras
+*.h5
+*.weights.h5
+# Model files
+skin_app/models/
+*.keras
+*.h5
+*.weights.h5

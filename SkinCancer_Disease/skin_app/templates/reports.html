@@ -1,0 +1,426 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<!-- Header -->
+
+<div class="card shadow-lg border-0 mb-4"
+     style="background:linear-gradient(135deg,#1B1464,#3B2E8F);color:white;">
+
+    <div class="card-body text-center py-4">
+
+        <h2 class="fw-bold">
+
+            🩺 Skin Disease Diagnosis Report
+
+        </h2>
+
+        <p class="mb-0 fs-5">
+
+            AI-based prediction with Explainable AI analysis
+
+        </p>
+
+    </div>
+
+</div>
+
+
+
+
+<!-- Diagnosis Result -->
+
+<div class="card shadow border-0 mb-4">
+
+
+    <div class="card-header text-white"
+         style="background:#3B2E8F;">
+
+
+        <h5 class="mb-0">
+
+            🔍 Diagnosis Result
+
+        </h5>
+
+
+    </div>
+
+
+
+    <div class="card-body">
+
+
+        <div class="row text-center">
+
+
+            <div class="col-md-6">
+
+
+                <div class="p-4">
+
+
+                    <h6 class="text-muted">
+
+                        Predicted Disease
+
+                    </h6>
+
+
+                    <h3 class="fw-bold text-danger">
+
+                        {{ disease }}
+
+                    </h3>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="col-md-6">
+
+
+                <div class="p-4">
+
+
+                    <h6 class="text-muted">
+
+                        Confidence Score
+
+                    </h6>
+
+
+                    <h3 class="fw-bold text-success">
+
+                        {{ "%.2f"|format(confidence*100) }} %
+
+                    </h3>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+<!-- Explainable AI -->
+
+
+<div class="card shadow border-0 mb-4">
+
+
+    <div class="card-header text-white"
+         style="background:#14b8a6;">
+
+
+        <h5 class="mb-0">
+
+            🧠 Explainable AI Visualization
+
+        </h5>
+
+
+    </div>
+
+
+
+
+    <div class="card-body">
+
+
+        <div class="row g-4">
+
+
+            <!-- Original Image -->
+
+
+            <div class="col-md-4">
+
+
+                <div class="card shadow h-100">
+
+
+                    <div class="card-header bg-success text-white text-center">
+
+                        📷 Uploaded Image
+
+                    </div>
+
+
+                    <div class="card-body text-center">
+
+
+                        <img
+
+                        src="{{ url_for('static', filename=image_path) }}"
+
+                        class="img-fluid rounded shadow"
+
+                        style="height:260px;width:100%;object-fit:cover;">
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+            <!-- GradCAM -->
+
+
+            <div class="col-md-4">
+
+
+                <div class="card shadow h-100">
+
+
+                    <div class="card-header bg-danger text-white text-center">
+
+                        🔥 Grad-CAM Heatmap
+
+                    </div>
+
+
+
+                    <div class="card-body text-center">
+
+
+                        <img
+
+                        src="{{ url_for('static', filename=gradcam_path) }}"
+
+                        class="img-fluid rounded shadow"
+
+                        style="height:260px;width:100%;object-fit:cover;">
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+            <!-- Saliency -->
+
+
+            <div class="col-md-4">
+
+
+                <div class="card shadow h-100">
+
+
+                    <div class="card-header bg-warning text-dark text-center">
+
+                        ✨ Saliency Map
+
+                    </div>
+
+
+
+                    <div class="card-body text-center">
+
+
+                        <img
+
+                        src="{{ url_for('static', filename=saliency_path) }}"
+
+                        class="img-fluid rounded shadow"
+
+                        style="height:260px;width:100%;object-fit:cover;">
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+<!-- AI Explanation -->
+
+
+<div class="card shadow border-0 mb-4">
+
+
+    <div class="card-header text-white"
+         style="background:#0ea5e9;">
+
+
+        <h5 class="mb-0">
+
+            💡 AI Explanation
+
+        </h5>
+
+
+    </div>
+
+
+
+    <div class="card-body">
+
+
+        <div class="row text-center">
+
+
+            <div class="col-md-4">
+
+                <h2>🔥</h2>
+
+                <p>
+
+                    Grad-CAM identifies important image regions.
+
+                </p>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <h2>✨</h2>
+
+                <p>
+
+                    Saliency map highlights important pixels.
+
+                </p>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <h2>🎯</h2>
+
+                <p>
+
+                    Confidence represents prediction strength.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- Download Reports -->
+
+
+<div class="card shadow border-0 mb-4">
+
+
+    <div class="card-header text-white text-center"
+         style="background:#1B1464;">
+
+
+        <h5 class="mb-0">
+
+            📄 Download Reports
+
+        </h5>
+
+
+    </div>
+
+
+
+
+    <div class="card-body text-center">
+
+
+        <a href="{{ url_for('download_diagnosis_report') }}"
+
+           class="btn btn-lg me-3"
+
+           style="background:#14b8a6;color:white;">
+
+
+            📄 Download Diagnosis Report
+
+
+        </a>
+
+
+
+
+        <a href="{{ url_for('download_model_report') }}"
+
+           class="btn btn-lg"
+
+           style="background:#3B2E8F;color:white;">
+
+
+            📊 Download Model Comparison Report
+
+
+        </a>
+
+
+    </div>
+
+
+</div>
+
+
+{% endblock %}

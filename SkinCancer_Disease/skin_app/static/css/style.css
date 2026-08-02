@@ -1,0 +1,281 @@
+/* ---------- GENERAL ---------- */
+
+body{
+
+    margin:0;
+
+    padding:0;
+
+    background:#eef2f7;
+
+    font-family:"Segoe UI",sans-serif;
+
+    color:#2c3e50;
+
+}
+
+
+/* ---------- SIDEBAR ---------- */
+
+.sidebar{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:260px;
+
+    height:100vh;
+
+    background:linear-gradient(
+        180deg,
+        #1B1464,
+        #3B2E8F
+    );
+
+    color:white;
+
+    box-shadow:4px 0px 15px rgba(0,0,0,0.2);
+
+    overflow-y:auto;
+
+}
+
+
+
+.logo{
+
+    text-align:center;
+
+    padding:30px 20px;
+
+    border-bottom:1px solid rgba(255,255,255,.2);
+
+}
+
+
+
+.logo h3{
+
+    margin:0;
+
+    font-weight:bold;
+
+    color:#ffffff;
+
+}
+
+
+
+.logo p{
+
+    margin-top:8px;
+
+    font-size:14px;
+
+    opacity:.9;
+
+}
+
+
+
+.sidebar a{
+
+    display:block;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:16px 25px;
+
+    font-size:16px;
+
+    transition:.3s;
+
+}
+
+
+
+.sidebar a:hover{
+
+    background:rgba(255,255,255,.18);
+
+    padding-left:35px;
+
+}
+
+
+/* ---------- CONTENT ---------- */
+
+
+.main-content{
+
+    margin-left:260px;
+
+    padding:35px;
+
+}
+
+
+
+/* ---------- CARDS ---------- */
+
+
+.card{
+
+    border:none;
+
+    border-radius:18px;
+
+    background:#ffffff;
+
+    box-shadow:
+
+    0 8px 25px rgba(0,0,0,.10);
+
+    margin-bottom:25px;
+
+}
+
+
+
+.card-header{
+
+    border-radius:18px 18px 0 0 !important;
+
+    font-weight:bold;
+
+}
+
+
+
+/* ---------- BUTTON ---------- */
+
+
+.btn{
+
+    border-radius:12px;
+
+    padding:10px 22px;
+
+    font-weight:600;
+
+}
+
+
+
+/* ---------- TABLE ---------- */
+
+
+.table{
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+}
+
+
+
+.table th{
+
+    text-align:center;
+
+    background:#3B2E8F;
+
+    color:white;
+
+}
+
+
+
+.table td{
+
+    text-align:center;
+
+    vertical-align:middle;
+
+}
+
+
+
+/* ---------- IMAGE ---------- */
+
+
+img{
+
+    border-radius:15px;
+
+    box-shadow:
+
+    0 5px 15px rgba(0,0,0,.15);
+
+}
+
+
+
+/* ---------- DASHBOARD CARDS ---------- */
+
+
+.dashboard-card{
+
+    transition:.3s;
+
+    border-radius:18px;
+
+}
+
+
+
+.dashboard-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:
+
+    0 12px 30px rgba(0,0,0,.2);
+
+}
+
+
+
+/* ---------- ANALYTICS CARD ---------- */
+
+
+.analytics-card{
+
+    border-left:5px solid #14b8a6;
+
+}
+
+
+
+/* ---------- RESPONSIVE ---------- */
+
+
+@media(max-width:768px){
+
+
+    .sidebar{
+
+        width:100%;
+
+        height:auto;
+
+        position:relative;
+
+    }
+
+
+    .main-content{
+
+        margin-left:0;
+
+        padding:20px;
+
+    }
+
+}
