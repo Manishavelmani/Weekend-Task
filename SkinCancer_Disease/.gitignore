@@ -29,3 +29,10 @@ skin_app/models/
 *.keras
 *.h5
 *.weights.h5
+# Flask generated files
+skin_app/static/uploads/
+skin_app/static/outputs/
+skin_app/static/reports/
+
+# Temporary files
+*.swp
