@@ -1,7 +1,13 @@
 # Dataset
-SkinCancer_Disease/Datasets/
-SkinCancer_Disease/dataset/ham10000_images_part_1/
-SkinCancer_Disease/dataset/ham10000_images_part_2/
+dataset/
+
+# Models
+models/
+skin_app/models/
+
+# Uploads
+skin_app/static/uploads/
+skin_app/static/outputs/
 
 # Python
 __pycache__/
@@ -9,28 +15,14 @@ __pycache__/
 
 # Jupyter
 .ipynb_checkpoints/
-notebooks/ipynb_checkpoints/
 
 # Virtual Environment
+venv/
 .venv/
-.env
+myenv/
 
-# Notebook tuning folders
-notebooks/eff_tuner/
-notebooks/tuner/
-notebooks/mobilenet_tuner/
+# VS Code
+.vscode/
 
-# Model files
-models/
-skin_app/models/
-*.keras
-*.h5
-*.weights.h5
-
-# Flask generated files
-skin_app/static/uploads/
-skin_app/static/outputs/
-skin_app/static/reports/
-
-# Temporary files
-*.swp
+# PyCharm
+.idea/
