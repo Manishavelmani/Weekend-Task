@@ -1,6 +1,7 @@
 # Dataset
-dataset/ham10000_images_part_1/
-dataset/ham10000_images_part_2/
+SkinCancer_Disease/Datasets/
+SkinCancer_Disease/dataset/ham10000_images_part_1/
+SkinCancer_Disease/dataset/ham10000_images_part_2/
 
 # Python
 __pycache__/
@@ -19,16 +20,13 @@ notebooks/eff_tuner/
 notebooks/tuner/
 notebooks/mobilenet_tuner/
 
-# Model files (ignore all)
-models/
-*.keras
-*.h5
-*.weights.h5
 # Model files
+models/
 skin_app/models/
 *.keras
 *.h5
 *.weights.h5
+
 # Flask generated files
 skin_app/static/uploads/
 skin_app/static/outputs/
