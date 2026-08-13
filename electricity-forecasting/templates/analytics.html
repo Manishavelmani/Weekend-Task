@@ -1,0 +1,322 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="page-container">
+
+    <!-- ================= HEADER ================= -->
+
+    <div class="page-header text-center">
+
+        <div class="header-icon">
+            <i class="bi bi-graph-up-arrow"></i>
+        </div>
+
+        <h2>Forecast Analytics Dashboard</h2>
+
+        <p>
+            Model comparison, validation performance, and forecasting analysis
+        </p>
+
+    </div>
+
+
+    <!-- ================= CHARTS ROW 1 ================= -->
+
+    <div class="row g-4 mb-4">
+
+        <div class="col-lg-6">
+
+            <div class="dashboard-card h-100">
+
+                <div class="card-heading">
+
+                    <div>
+
+                        <i class="bi bi-graph-up"></i>
+
+                        <h5>Actual vs Forecast</h5>
+
+                    </div>
+
+                </div>
+
+                <img
+                    src="{{ url_for('static', filename='images/actual_vs_forecast_validation.png') }}"
+                    class="img-fluid analytics-chart"
+                    alt="Actual vs Forecast"
+                >
+
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-6">
+
+            <div class="dashboard-card h-100">
+
+                <div class="card-heading">
+
+                    <div>
+
+                        <i class="bi bi-calendar3"></i>
+
+                        <h5>30-Day Forecast Performance</h5>
+
+                    </div>
+
+                </div>
+
+                <img
+                    src="{{ url_for('static', filename='images/actual_vs_forecast_30day_validation.png') }}"
+                    class="img-fluid analytics-chart"
+                    alt="30-Day Forecast"
+                >
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= CHARTS ROW 2 ================= -->
+
+    <div class="row g-4 mb-5">
+
+        <div class="col-lg-6">
+
+            <div class="dashboard-card h-100">
+
+                <div class="card-heading">
+
+                    <div>
+
+                        <i class="bi bi-bar-chart"></i>
+
+                        <h5>Daily Forecast Error</h5>
+
+                    </div>
+
+                </div>
+
+                <img
+                    src="{{ url_for('static', filename='images/daily_error_validation.png') }}"
+                    class="img-fluid analytics-chart"
+                    alt="Daily Error"
+                >
+
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-6">
+
+            <div class="dashboard-card h-100">
+
+                <div class="card-heading">
+
+                    <div>
+
+                        <i class="bi bi-exclamation-triangle"></i>
+
+                        <h5>Peak Demand Error</h5>
+
+                    </div>
+
+                </div>
+
+                <img
+                    src="{{ url_for('static', filename='images/peak_demand_error_validation.png') }}"
+                    class="img-fluid analytics-chart"
+                    alt="Peak Demand Error"
+                >
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= PHASE 4 ================= -->
+
+    <div class="dashboard-card mb-5">
+
+        <div class="card-heading">
+
+            <div>
+
+                <h5> Baseline Models</h5>
+
+            </div>
+
+        </div>
+
+
+        <div class="table-responsive">
+
+            <table class="custom-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Model</th>
+                        <th>MAE</th>
+                        <th>RMSE</th>
+                        <th>MAPE</th>
+                        <th>R²</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for row in phase4 %}
+
+                    <tr>
+
+                        <td><strong>{{ row['Model'] }}</strong></td>
+                        <td>{{ row['MAE'] }}</td>
+                        <td>{{ row['RMSE'] }}</td>
+                        <td>{{ row['MAPE'] }}</td>
+                        <td>{{ row['R²'] }}</td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= PHASE 5 ================= -->
+
+    <div class="dashboard-card mb-5">
+
+        <div class="card-heading">
+
+            <div>
+
+               <h5> Deep Learning Models</h5>
+
+            </div>
+
+        </div>
+
+
+        <div class="table-responsive">
+
+            <table class="custom-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Model</th>
+                        <th>MAE</th>
+                        <th>RMSE</th>
+                        <th>MAPE</th>
+                        <th>R²</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for row in phase5 %}
+
+                    <tr>
+
+                        <td><strong>{{ row['Model'] }}</strong></td>
+                        <td>{{ row['MAE'] }}</td>
+                        <td>{{ row['RMSE'] }}</td>
+                        <td>{{ row['MAPE'] }}</td>
+                        <td>{{ row['R²'] }}</td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= PHASE 6 ================= -->
+
+    <div class="dashboard-card">
+
+        <div class="card-heading">
+
+            <div>
+  
+                <h5>Improved Models</h5>
+
+            </div>
+
+        </div>
+
+
+        <div class="table-responsive">
+
+            <table class="custom-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Model</th>
+                        <th>MAE</th>
+                        <th>RMSE</th>
+                        <th>MAPE</th>
+                        <th>R²</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for row in phase6 %}
+
+                    <tr>
+
+                        <td><strong>{{ row['Model'] }}</strong></td>
+                        <td>{{ row['MAE'] }}</td>
+                        <td>{{ row['RMSE'] }}</td>
+                        <td>{{ row['MAPE'] }}</td>
+                        <td>{{ row['R²'] }}</td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,300 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="page-container">
+
+    <!-- ================= HEADER ================= -->
+
+    <div class="page-header text-center">
+
+        <div class="header-icon">
+            <i class="bi bi-lightning-charge-fill"></i>
+        </div>
+
+        <h2>Electricity Demand Forecasting</h2>
+
+        <p>
+            End-to-End Electricity Demand Forecasting using Deep Learning
+        </p>
+
+    </div>
+
+
+    <!-- ================= SUMMARY CARDS ================= -->
+
+    <div class="row g-4 mb-5">
+
+        <!-- Latest Demand -->
+        <div class="col-md-6 col-xl-3">
+
+            <div class="metric-card metric-blue">
+
+                <div class="metric-icon">
+                    <i class="bi bi-lightning-charge-fill"></i>
+                </div>
+
+                <div class="metric-content">
+
+                    <p>Latest Demand</p>
+
+                    <h3>{{ latest_demand }} <span>MW</span></h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Best Model -->
+        <div class="col-md-6 col-xl-3">
+
+            <div class="metric-card metric-purple">
+
+                <div class="metric-icon">
+                    <i class="bi bi-cpu-fill"></i>
+                </div>
+
+                <div class="metric-content">
+
+                    <p>Best Model</p>
+
+                    <h5>{{ best_model }}</h5>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RMSE -->
+        <div class="col-md-6 col-xl-3">
+
+            <div class="metric-card metric-green">
+
+                <div class="metric-icon">
+                    <i class="bi bi-speedometer2"></i>
+                </div>
+
+                <div class="metric-content">
+
+                    <p>Validation RMSE</p>
+
+                    <h3>{{ metrics.rmse }}</h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- R2 -->
+        <div class="col-md-6 col-xl-3">
+
+            <div class="metric-card metric-orange">
+
+                <div class="metric-icon">
+                    <i class="bi bi-graph-up-arrow"></i>
+                </div>
+
+                <div class="metric-content">
+
+                    <p>Validation R²</p>
+
+                    <h3>{{ metrics.r2 }}</h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= CHARTS ================= -->
+
+    <div class="section-title">
+        <h4>Demand Analysis</h4>
+        <p>Historical electricity demand patterns</p>
+    </div>
+
+
+    <div class="row g-4 mb-5">
+
+        <!-- Hourly Demand -->
+        <div class="col-lg-6">
+
+            <div class="dashboard-card h-100">
+
+                <div class="card-heading">
+
+                    <div>
+                        <i class="bi bi-bar-chart-line"></i>
+
+                        <h5>Average Hourly Electricity Demand</h5>
+                    </div>
+
+                </div>
+
+                <img
+                    src="{{ url_for('static', filename='images/hourly.png') }}"
+                    class="img-fluid analytics-chart"
+                    alt="Hourly Demand"
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- Weekday Weekend -->
+        <div class="col-lg-6">
+
+            <div class="dashboard-card h-100">
+
+                <div class="card-heading">
+
+                    <div>
+                        <i class="bi bi-calendar-week"></i>
+
+                        <h5>Weekday vs Weekend Demand</h5>
+                    </div>
+
+                </div>
+
+                <img
+                    src="{{ url_for('static', filename='images/compare.png') }}"
+                    class="img-fluid analytics-chart"
+                    alt="Weekday vs Weekend"
+                >
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= CORRELATION ================= -->
+
+    <div class="dashboard-card mb-5">
+
+        <div class="card-heading">
+
+            <div>
+
+                <i class="bi bi-grid-3x3-gap"></i>
+
+                <h5>Correlation Heatmap</h5>
+
+            </div>
+
+        </div>
+
+        <img
+            src="{{ url_for('static', filename='images/correlation.png') }}"
+            class="img-fluid analytics-chart"
+            alt="Correlation Heatmap"
+        >
+
+    </div>
+
+
+    <!-- ================= PROJECT OVERVIEW ================= -->
+
+    <div class="dashboard-card project-overview">
+
+        <div class="card-heading">
+
+            <div>
+
+                <i class="bi bi-info-circle"></i>
+
+                <h5>Project Overview</h5>
+
+            </div>
+
+        </div>
+
+
+        <p class="overview-text">
+
+            This dashboard presents an end-to-end electricity demand forecasting
+            system developed using historical PJM hourly energy consumption data
+            and deep learning techniques.
+
+        </p>
+
+
+        <div class="row text-center mt-4">
+
+            <div class="col-md-3 mb-4">
+
+                <div class="overview-item">
+
+                    <i class="bi bi-database"></i>
+
+                    <h6>Dataset</h6>
+
+                    <p>PJM Hourly Energy Consumption</p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-3 mb-4">
+
+                <div class="overview-item">
+
+                    <i class="bi bi-clock-history"></i>
+
+                    <h6>Sequence Length</h6>
+
+                    <p>168 Hours</p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-3 mb-4">
+
+                <div class="overview-item">
+
+                    <i class="bi bi-calendar-check"></i>
+
+                    <h6>Forecast Horizon</h6>
+
+                    <p>24 Hours</p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-3 mb-4">
+
+                <div class="overview-item">
+
+                    <i class="bi bi-cpu"></i>
+
+                    <h6>Final Model</h6>
+
+                    <p>Bidirectional LSTM</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

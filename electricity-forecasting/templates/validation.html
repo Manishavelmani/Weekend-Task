@@ -1,0 +1,279 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="page-container">
+
+    <!-- ================= HEADER ================= -->
+
+    <div class="page-header text-center">
+
+        <div class="header-icon">
+            <i class="bi bi-check-circle"></i>
+        </div>
+
+        <h2>Validation Results</h2>
+
+        <p>
+            30-Day and 60-Day Forecast Validation Performance
+        </p>
+
+    </div>
+
+
+    <!-- ================= METRIC CARDS ================= -->
+
+    <div class="row g-4 mb-5">
+
+        <div class="col-md-6 col-xl-3">
+
+            <div class="metric-card metric-blue">
+
+                <div class="metric-icon">
+                    <i class="bi bi-bar-chart-fill"></i>
+                </div>
+
+                <div class="metric-content">
+
+                    <p>MAE</p>
+
+                    <h3>1428.19</h3>
+
+                    <small>Best Validation</small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-6 col-xl-3">
+
+            <div class="metric-card metric-green">
+
+                <div class="metric-icon">
+                    <i class="bi bi-speedometer2"></i>
+                </div>
+
+                <div class="metric-content">
+
+                    <p>RMSE</p>
+
+                    <h3>1880.21</h3>
+
+                    <small>Best Validation</small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-6 col-xl-3">
+
+            <div class="metric-card metric-purple">
+
+                <div class="metric-icon">
+                    <i class="bi bi-percent"></i>
+                </div>
+
+                <div class="metric-content">
+
+                    <p>MAPE</p>
+
+                    <h3>4.36%</h3>
+
+                    <small>Best Validation</small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-6 col-xl-3">
+
+            <div class="metric-card metric-orange">
+
+                <div class="metric-icon">
+                    <i class="bi bi-graph-up-arrow"></i>
+                </div>
+
+                <div class="metric-content">
+
+                    <p>R² Score</p>
+
+                    <h3>0.877</h3>
+
+                    <small>Best Validation</small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TABLE ================= -->
+
+    <div class="dashboard-card mb-5">
+
+        <div class="card-heading">
+
+            <div>
+
+                <i class="bi bi-table"></i>
+
+                <h5>Validation Metrics Summary</h5>
+
+            </div>
+
+        </div>
+
+
+        <div class="table-responsive">
+
+            <table class="custom-table">
+
+                <thead>
+
+                    <tr>
+                        <th>Validation Period</th>
+                        <th>MAE</th>
+                        <th>RMSE</th>
+                        <th>MAPE (%)</th>
+                        <th>R²</th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+
+                        <td><strong>30 Days</strong></td>
+
+                        <td>1658.17</td>
+
+                        <td>2142.01</td>
+
+                        <td>4.73%</td>
+
+                        <td>0.8295</td>
+
+                    </tr>
+
+
+                    <tr class="best-row">
+
+                        <td>
+                            <strong>60 Days</strong>
+                            <span class="best-badge">Best</span>
+                        </td>
+
+                        <td><strong>1428.19</strong></td>
+
+                        <td><strong>1880.21</strong></td>
+
+                        <td><strong>4.36%</strong></td>
+
+                        <td><strong>0.8770</strong></td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <div class="insight-box">
+
+            <i class="bi bi-lightbulb-fill"></i>
+
+            <div>
+
+                <strong>Observation</strong>
+
+                <p>
+                    The 60-Day validation period achieved better overall performance
+                    with lower MAE, RMSE, and MAPE, and a higher R² score, indicating
+                    stronger forecasting capability on unseen historical data.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= VALIDATION CHARTS ================= -->
+
+    <div class="row g-4">
+
+        <div class="col-lg-6">
+
+            <div class="dashboard-card h-100">
+
+                <div class="card-heading">
+
+                    <div>
+
+                        <i class="bi bi-graph-up"></i>
+
+                        <h5>Actual vs Forecast</h5>
+
+                    </div>
+
+                </div>
+
+                <img
+                    src="{{ url_for('static', filename='images/actual_vs_forecast_validation.png') }}"
+                    class="img-fluid analytics-chart"
+                    alt="Actual vs Forecast"
+                >
+
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-6">
+
+            <div class="dashboard-card h-100">
+
+                <div class="card-heading">
+
+                    <div>
+
+                        <i class="bi bi-bar-chart"></i>
+
+                        <h5>Forecast Error Distribution</h5>
+
+                    </div>
+
+                </div>
+
+                <img
+                    src="{{ url_for('static', filename='images/forecast_error_distribution_validation.png') }}"
+                    class="img-fluid analytics-chart"
+                    alt="Forecast Error Distribution"
+                >
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

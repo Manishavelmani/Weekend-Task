@@ -1,0 +1,300 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="page-container">
+
+    <!-- ================= HERO ================= -->
+
+    <div class="forecast-hero mb-5">
+
+        <div class="forecast-hero-icon">
+            <i class="bi bi-lightning-charge-fill"></i>
+        </div>
+
+        <h2>24-Hour Electricity Demand Forecast</h2>
+
+        <p>
+            Short-term electricity demand prediction using the
+            <strong>Bidirectional LSTM (Bi-LSTM)</strong> model
+        </p>
+
+    </div>
+
+
+    <!-- ================= FORECAST CARDS ================= -->
+
+    <div class="row g-4 mb-5">
+
+        <!-- Peak -->
+        <div class="col-md-6 col-xl-3">
+
+            <div class="forecast-card">
+
+                <div class="forecast-icon peak">
+                    <i class="bi bi-arrow-up-right-circle-fill"></i>
+                </div>
+
+                <p>Peak Demand</p>
+
+                <h3>{{ highest_value }} MW</h3>
+
+                <span>{{ highest_day }}</span>
+
+                <small>{{ highest_time }}</small>
+
+            </div>
+
+        </div>
+
+
+        <!-- Low -->
+        <div class="col-md-6 col-xl-3">
+
+            <div class="forecast-card">
+
+                <div class="forecast-icon low">
+                    <i class="bi bi-arrow-down-right-circle-fill"></i>
+                </div>
+
+                <p>Low Demand</p>
+
+                <h3>{{ lowest_value }} MW</h3>
+
+                <span>{{ lowest_day }}</span>
+
+                <small>{{ lowest_time }}</small>
+
+            </div>
+
+        </div>
+
+
+        <!-- Average -->
+        <div class="col-md-6 col-xl-3">
+
+            <div class="forecast-card">
+
+                <div class="forecast-icon average">
+                    <i class="bi bi-bar-chart-fill"></i>
+                </div>
+
+                <p>Average Load</p>
+
+                <h3>{{ average_demand }} MW</h3>
+
+                <span>Expected Demand</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- Window -->
+        <div class="col-md-6 col-xl-3">
+
+            <div class="forecast-card">
+
+                <div class="forecast-icon window">
+                    <i class="bi bi-clock-history"></i>
+                </div>
+
+                <p>Forecast Window</p>
+
+                <h3>24 Hours</h3>
+
+                <span>Short-Term Forecast</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= FORECAST TABLE ================= -->
+
+    <div class="dashboard-card mb-5">
+
+        <div class="card-heading forecast-heading">
+
+            <div>
+
+                <i class="bi bi-calendar-event"></i>
+
+                <h5>Forecast Schedule</h5>
+
+            </div>
+
+            <span class="status-badge">
+                Next 24 Hours
+            </span>
+
+        </div>
+
+
+        <div class="table-responsive">
+
+            <table class="custom-table forecast-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Date</th>
+
+                        <th>Day</th>
+
+                        <th>Time</th>
+
+                        <th>Predicted Demand (MW)</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for row in forecast_table %}
+
+                    <tr>
+
+                        <td>
+                            {{ row.Datetime.strftime('%d-%m-%Y') }}
+                        </td>
+
+                        <td>
+                            <span class="day-badge">
+                                {{ row.Day }}
+                            </span>
+                        </td>
+
+                        <td>
+                            {{ row.Datetime.strftime('%I:%M %p') }}
+                        </td>
+
+                        <td class="prediction-value">
+
+                            {{ "%.2f"|format(row.Predicted_Demand) }} MW
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= INSIGHT ================= -->
+
+    <div class="dashboard-card">
+
+        <div class="card-heading">
+
+            <div>
+
+                <i class="bi bi-lightbulb"></i>
+
+                <h5>Forecast Insight</h5>
+
+            </div>
+
+        </div>
+
+
+        <p class="overview-text">
+
+            The Bidirectional LSTM model predicts electricity demand for the upcoming
+            <strong>24-hour period</strong> using the latest
+            <strong>168 hours of historical consumption data</strong>, including
+            lag features, rolling statistics, and calendar-based variables.
+
+        </p>
+
+
+        <div class="row text-center mt-4">
+
+            <div class="col-md-4 mb-3">
+
+                <div class="insight-item">
+
+                    <i class="bi bi-arrow-up-circle"></i>
+
+                    <p>Peak Demand</p>
+
+                    <h5>{{ highest_time }}</h5>
+
+                    <span>{{ highest_day }}</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4 mb-3">
+
+                <div class="insight-item">
+
+                    <i class="bi bi-arrow-down-circle"></i>
+
+                    <p>Off-Peak Demand</p>
+
+                    <h5>{{ lowest_time }}</h5>
+
+                    <span>{{ lowest_day }}</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4 mb-3">
+
+                <div class="insight-item">
+
+                    <i class="bi bi-bar-chart"></i>
+
+                    <p>Average Forecast</p>
+
+                    <h5>{{ average_demand }} MW</h5>
+
+                    <span>Expected Daily Load</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="insight-box mt-4">
+
+            <i class="bi bi-info-circle-fill"></i>
+
+            <div>
+
+                <strong>Demand Trend</strong>
+
+                <p>
+                    Electricity demand is expected to rise gradually during the
+                    morning, reach its maximum during the afternoon, and decrease
+                    during the late evening period.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

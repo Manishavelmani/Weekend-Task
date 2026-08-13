@@ -1,0 +1,1503 @@
+/* =========================================================
+   ELECTRICITY DEMAND FORECASTING DASHBOARD
+   Clean Professional Blue + Cyan Theme
+========================================================= */
+
+/* ================= GLOBAL ================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+
+    --bg-main: #f1f5f9;
+    --bg-sidebar: #0f2a43;
+
+    --card-bg: #ffffff;
+    --card-bg-light: #f8fafc;
+
+    --border: #e2e8f0;
+
+    --text-primary: #172033;
+    --text-secondary: #64748b;
+    --text-muted: #94a3b8;
+
+    --blue: #0284c7;
+    --blue-dark: #0369a1;
+
+    --cyan: #0891b2;
+    --green: #059669;
+    --purple: #7c3aed;
+    --orange: #ea580c;
+    --danger: #dc2626;
+
+}
+
+
+/* ================= GLOBAL BODY ================= */
+
+body {
+
+    font-family:
+        "Segoe UI",
+        Tahoma,
+        Geneva,
+        Verdana,
+        sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f8fafc 0%,
+            #eef6fb 50%,
+            #eaf4f8 100%
+        );
+
+    color: var(--text-primary);
+
+    min-height: 100vh;
+
+    overflow-x: hidden;
+}
+
+
+/* ================= MAIN WRAPPER ================= */
+
+.dashboard-wrapper {
+
+    min-height: 100vh;
+
+}
+
+
+/* ================= SIDEBAR ================= */
+
+.sidebar {
+
+    width: 250px;
+
+    height: 100vh;
+
+    position: fixed;
+
+    left: 0;
+    top: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #0f2a43 0%,
+            #123b5d 55%,
+            #0f2a43 100%
+        );
+
+    border-right: 1px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+        5px 0 20px rgba(15, 42, 67, 0.15);
+
+    z-index: 1000;
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+/* ================= SIDEBAR HEADER ================= */
+
+.sidebar-header {
+
+    text-align: center;
+
+    padding: 32px 20px 24px;
+
+}
+
+
+.logo-icon {
+
+    width: 58px;
+    height: 58px;
+
+    margin: 0 auto 14px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0284c7,
+            #06b6d4
+        );
+
+    color: white;
+
+    font-size: 1.8rem;
+
+    box-shadow:
+        0 8px 20px rgba(2,132,199,0.25);
+
+}
+
+
+.sidebar-header h4 {
+
+    color: #ffffff;
+
+    font-size: 1.15rem;
+
+    font-weight: 700;
+
+    margin-bottom: 6px;
+
+}
+
+
+.sidebar-header p {
+
+    color: #cbd5e1;
+
+    font-size: 0.78rem;
+
+    margin: 0;
+
+}
+
+
+/* ================= SIDEBAR DIVIDER ================= */
+
+.sidebar-divider {
+
+    height: 1px;
+
+    background: rgba(255,255,255,0.12);
+
+    margin: 0 22px 20px;
+
+}
+
+
+/* ================= SIDEBAR NAV ================= */
+
+.sidebar-nav {
+
+    padding: 0 14px;
+
+}
+
+
+.sidebar-link {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    color: #cbd5e1;
+
+    text-decoration: none;
+
+    padding: 13px 16px;
+
+    margin-bottom: 7px;
+
+    border-radius: 10px;
+
+    font-size: 0.92rem;
+
+    font-weight: 500;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+
+}
+
+
+.sidebar-link i {
+
+    font-size: 1.1rem;
+
+    width: 22px;
+
+    text-align: center;
+
+}
+
+
+.sidebar-link:hover {
+
+    color: #ffffff;
+
+    background:
+        rgba(56,189,248,0.12);
+
+    transform: translateX(4px);
+
+}
+
+
+.sidebar-link.active {
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(14,165,233,0.30),
+            rgba(6,182,212,0.12)
+        );
+
+    border-left: 3px solid #38bdf8;
+
+}
+
+
+/* ================= SIDEBAR FOOTER ================= */
+
+.sidebar-footer {
+
+    margin-top: auto;
+
+    padding: 20px;
+
+    color: #94a3b8;
+
+    font-size: 0.75rem;
+
+    border-top: 1px solid rgba(255,255,255,0.08);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+}
+
+
+.sidebar-footer i {
+
+    color: #38bdf8;
+
+    font-size: 1rem;
+
+}
+
+
+/* ================= MAIN CONTENT ================= */
+
+.main-content {
+
+    margin-left: 250px;
+
+    min-height: 100vh;
+
+    padding: 30px;
+
+}
+
+
+/* ================= PAGE CONTAINER ================= */
+
+.page-container {
+
+    max-width: 1500px;
+
+    margin: auto;
+
+}
+
+
+/* ================= PAGE HEADER ================= */
+
+.page-header {
+
+    margin-bottom: 42px;
+
+}
+
+
+.header-icon {
+
+    width: 64px;
+    height: 64px;
+
+    margin: 0 auto 16px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    background: #e0f2fe;
+
+    border: 1px solid #bae6fd;
+
+    color: #0284c7;
+
+    font-size: 1.7rem;
+
+}
+
+
+.page-header h2 {
+
+    color: #172033;
+
+    font-size: 2rem;
+
+    font-weight: 700;
+
+    margin-bottom: 10px;
+
+}
+
+
+.page-header p {
+
+    color: #64748b;
+
+    margin: 0;
+
+    font-size: 0.95rem;
+
+}
+
+
+/* ================= METRIC CARDS ================= */
+
+.metric-card {
+
+    min-height: 150px;
+
+    padding: 25px;
+
+    border-radius: 16px;
+
+    border: 1px solid var(--border);
+
+    background: #ffffff;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    box-shadow:
+        0 4px 15px rgba(15,23,42,0.06);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+
+}
+
+
+.metric-card:hover {
+
+    transform: translateY(-4px);
+
+    border-color: #bae6fd;
+
+    box-shadow:
+        0 10px 25px rgba(15,23,42,0.10);
+
+}
+
+
+.metric-icon {
+
+    width: 58px;
+    height: 58px;
+
+    min-width: 58px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 15px;
+
+    font-size: 1.5rem;
+
+}
+
+
+.metric-content {
+
+    min-width: 0;
+
+}
+
+
+.metric-content p {
+
+    color: #64748b;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.7px;
+
+    font-size: 0.72rem;
+
+    font-weight: 600;
+
+    margin-bottom: 7px;
+
+}
+
+
+.metric-content h3 {
+
+    color: #172033;
+
+    font-size: 1.55rem;
+
+    font-weight: 700;
+
+    margin: 0;
+
+    word-break: break-word;
+
+}
+
+
+.metric-content h3 span {
+
+    color: #64748b;
+
+    font-size: 0.8rem;
+
+    font-weight: 500;
+
+}
+
+
+.metric-content h5 {
+
+    color: #172033;
+
+    font-size: 1.05rem;
+
+    font-weight: 700;
+
+    margin: 0;
+
+}
+
+
+.metric-content small {
+
+    color: #94a3b8;
+
+    font-size: 0.72rem;
+
+}
+
+
+/* ================= METRIC COLORS ================= */
+
+.metric-blue .metric-icon {
+
+    color: #0284c7;
+
+    background: #e0f2fe;
+
+}
+
+
+.metric-purple .metric-icon {
+
+    color: #7c3aed;
+
+    background: #ede9fe;
+
+}
+
+
+.metric-green .metric-icon {
+
+    color: #059669;
+
+    background: #d1fae5;
+
+}
+
+
+.metric-orange .metric-icon {
+
+    color: #ea580c;
+
+    background: #ffedd5;
+
+}
+
+
+/* ================= SECTION TITLE ================= */
+
+.section-title {
+
+    margin-bottom: 18px;
+
+}
+
+
+.section-title h4 {
+
+    color: #172033;
+
+    font-size: 1.15rem;
+
+    font-weight: 650;
+
+    margin-bottom: 4px;
+
+}
+
+
+.section-title p {
+
+    color: #64748b;
+
+    font-size: 0.82rem;
+
+    margin: 0;
+
+}
+
+
+/* ================= DASHBOARD CARD ================= */
+
+.dashboard-card {
+
+    background: #ffffff;
+
+    border: 1px solid var(--border);
+
+    border-radius: 16px;
+
+    padding: 24px;
+
+    box-shadow:
+        0 4px 15px rgba(15,23,42,0.06);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+
+.dashboard-card:hover {
+
+    box-shadow:
+        0 8px 22px rgba(15,23,42,0.09);
+
+}
+
+
+/* ================= CARD HEADING ================= */
+
+.card-heading {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+
+}
+
+
+.card-heading > div {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+
+.card-heading i {
+
+    color: #0284c7;
+
+    font-size: 1.15rem;
+
+}
+
+
+.card-heading h5 {
+
+    color: #172033;
+
+    font-size: 1rem;
+
+    font-weight: 650;
+
+    margin: 0;
+
+}
+
+
+/* ================= CHARTS ================= */
+
+.analytics-chart {
+
+    width: 100%;
+
+    height: 430px;
+
+    object-fit: contain;
+
+    display: block;
+
+    border-radius: 10px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e2e8f0;
+
+    padding: 6px;
+
+}
+
+
+/* ================= PROJECT OVERVIEW ================= */
+
+.overview-text {
+
+    color: #64748b;
+
+    line-height: 1.7;
+
+    font-size: 0.9rem;
+
+    max-width: 1000px;
+
+}
+
+
+.overview-item {
+
+    padding: 18px;
+
+    border-radius: 12px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e2e8f0;
+
+}
+
+
+.overview-item i {
+
+    color: #0284c7;
+
+    font-size: 1.5rem;
+
+    margin-bottom: 10px;
+
+}
+
+
+.overview-item h6 {
+
+    color: #334155;
+
+    font-size: 0.82rem;
+
+    font-weight: 650;
+
+    margin-bottom: 7px;
+
+}
+
+
+.overview-item p {
+
+    color: #64748b;
+
+    font-size: 0.78rem;
+
+    margin: 0;
+
+}
+
+
+/* ================= TABLE ================= */
+
+.custom-table {
+
+    width: 100%;
+
+    border-collapse: separate;
+
+    border-spacing: 0;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    color: #475569;
+
+    font-size: 0.85rem;
+
+}
+
+
+.custom-table thead {
+
+    background: #e0f2fe;
+
+}
+
+
+.custom-table th {
+
+    color: #0f3d5c;
+
+    font-size: 0.75rem;
+
+    font-weight: 650;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.4px;
+
+    padding: 14px 16px;
+
+    text-align: center;
+
+    border-bottom: 1px solid #bae6fd;
+
+}
+
+
+.custom-table td {
+
+    padding: 14px 16px;
+
+    text-align: center;
+
+    border-bottom: 1px solid #e2e8f0;
+
+    color: #475569;
+
+}
+
+
+.custom-table tbody tr {
+
+    background: #ffffff;
+
+    transition: background 0.2s ease;
+
+}
+
+
+.custom-table tbody tr:hover {
+
+    background: #f0f9ff;
+
+}
+
+
+.custom-table tbody tr:last-child td {
+
+    border-bottom: none;
+
+}
+
+
+/* ================= BEST ROW ================= */
+
+.custom-table .best-row {
+
+    background: #ecfdf5;
+
+}
+
+
+.custom-table .best-row:hover {
+
+    background: #d1fae5;
+
+}
+
+
+.best-badge {
+
+    display: inline-block;
+
+    margin-left: 7px;
+
+    padding: 3px 8px;
+
+    border-radius: 20px;
+
+    background: #d1fae5;
+
+    color: #047857;
+
+    font-size: 0.65rem;
+
+    font-weight: 600;
+
+}
+
+
+/* ================= INSIGHT BOX ================= */
+
+.insight-box {
+
+    margin-top: 22px;
+
+    padding: 17px 18px;
+
+    display: flex;
+
+    gap: 13px;
+
+    align-items: flex-start;
+
+    border-radius: 12px;
+
+    background: #eff6ff;
+
+    border: 1px solid #bfdbfe;
+
+}
+
+
+.insight-box > i {
+
+    color: #0284c7;
+
+    font-size: 1.1rem;
+
+    margin-top: 2px;
+
+}
+
+
+.insight-box strong {
+
+    color: #334155;
+
+    font-size: 0.85rem;
+
+}
+
+
+.insight-box p {
+
+    color: #64748b;
+
+    font-size: 0.8rem;
+
+    line-height: 1.6;
+
+    margin: 5px 0 0;
+
+}
+
+
+/* ================= FORECAST HERO ================= */
+
+.forecast-hero {
+
+    padding: 45px 25px;
+
+    text-align: center;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #075985,
+            #0891b2
+        );
+
+    border: 1px solid #67e8f9;
+
+    box-shadow:
+        0 12px 30px rgba(8,145,178,0.18);
+
+}
+
+
+.forecast-hero-icon {
+
+    width: 76px;
+    height: 76px;
+
+    margin: 0 auto 18px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.15);
+
+    color: #facc15;
+
+    font-size: 2rem;
+
+}
+
+
+.forecast-hero h2 {
+
+    color: white;
+
+    font-size: 1.9rem;
+
+    font-weight: 700;
+
+    margin-bottom: 10px;
+
+}
+
+
+.forecast-hero p {
+
+    color: rgba(255,255,255,0.85);
+
+    font-size: 0.9rem;
+
+    margin: 0;
+
+}
+
+
+/* ================= FORECAST CARDS ================= */
+
+.forecast-card {
+
+    min-height: 190px;
+
+    padding: 25px;
+
+    text-align: center;
+
+    border-radius: 16px;
+
+    background: #ffffff;
+
+    border: 1px solid #e2e8f0;
+
+    box-shadow:
+        0 4px 15px rgba(15,23,42,0.06);
+
+}
+
+
+.forecast-icon {
+
+    width: 55px;
+    height: 55px;
+
+    margin: 0 auto 14px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    font-size: 1.4rem;
+
+}
+
+
+.forecast-icon.peak {
+
+    color: #dc2626;
+
+    background: #fee2e2;
+
+}
+
+
+.forecast-icon.low {
+
+    color: #059669;
+
+    background: #d1fae5;
+
+}
+
+
+.forecast-icon.average {
+
+    color: #0284c7;
+
+    background: #e0f2fe;
+
+}
+
+
+.forecast-icon.window {
+
+    color: #7c3aed;
+
+    background: #ede9fe;
+
+}
+
+
+.forecast-card > p {
+
+    color: #64748b;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.7px;
+
+    font-size: 0.7rem;
+
+    font-weight: 650;
+
+    margin-bottom: 7px;
+
+}
+
+
+.forecast-card h3 {
+
+    color: #172033;
+
+    font-size: 1.35rem;
+
+    font-weight: 700;
+
+    margin-bottom: 6px;
+
+}
+
+
+.forecast-card span,
+.forecast-card small {
+
+    display: block;
+
+    color: #64748b;
+
+    font-size: 0.76rem;
+
+    margin-top: 3px;
+
+}
+
+
+/* ================= STATUS BADGE ================= */
+
+.status-badge {
+
+    padding: 7px 13px;
+
+    border-radius: 20px;
+
+    background: #e0f2fe;
+
+    color: #0369a1;
+
+    border: 1px solid #bae6fd;
+
+    font-size: 0.7rem;
+
+    font-weight: 600;
+
+}
+
+
+/* ================= DAY BADGE ================= */
+
+.day-badge {
+
+    display: inline-block;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    background: #e0f2fe;
+
+    color: #0369a1;
+
+    font-size: 0.7rem;
+
+    font-weight: 600;
+
+}
+
+
+/* ================= PREDICTION VALUE ================= */
+
+.prediction-value {
+
+    color: #059669 !important;
+
+    font-weight: 700;
+
+}
+
+
+/* ================= INSIGHT ITEMS ================= */
+
+.insight-item {
+
+    padding: 18px;
+
+    border-radius: 12px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e2e8f0;
+
+}
+
+
+.insight-item i {
+
+    color: #0284c7;
+
+    font-size: 1.35rem;
+
+    margin-bottom: 9px;
+
+}
+
+
+.insight-item p {
+
+    color: #64748b;
+
+    font-size: 0.72rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.6px;
+
+    margin-bottom: 6px;
+
+}
+
+
+.insight-item h5 {
+
+    color: #172033;
+
+    font-size: 1rem;
+
+    font-weight: 700;
+
+    margin-bottom: 4px;
+
+}
+
+
+.insight-item span {
+
+    color: #94a3b8;
+
+    font-size: 0.72rem;
+
+}
+
+
+/* ================= BOOTSTRAP TEXT OVERRIDES ================= */
+
+.text-light {
+
+    color: #334155 !important;
+
+}
+
+
+.text-secondary {
+
+    color: #64748b !important;
+
+}
+
+
+.text-info {
+
+    color: #0284c7 !important;
+
+}
+
+
+/* Keep white text inside hero/sidebar */
+
+.forecast-hero .text-light,
+.forecast-hero .text-white,
+.sidebar .text-light,
+.sidebar .text-white {
+
+    color: #ffffff !important;
+
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 992px) {
+
+    .sidebar {
+
+        width: 220px;
+
+    }
+
+    .main-content {
+
+        margin-left: 220px;
+
+        padding: 24px;
+
+    }
+
+    .page-header h2 {
+
+        font-size: 1.7rem;
+
+    }
+
+}
+
+
+@media (max-width: 768px) {
+
+    .sidebar {
+
+        width: 75px;
+
+    }
+
+    .sidebar-header {
+
+        padding: 20px 8px;
+
+    }
+
+    .sidebar-header h4,
+    .sidebar-header p,
+    .sidebar-link span,
+    .sidebar-footer span {
+
+        display: none;
+
+    }
+
+    .logo-icon {
+
+        width: 45px;
+
+        height: 45px;
+
+        font-size: 1.3rem;
+
+    }
+
+    .sidebar-divider {
+
+        margin: 0 12px 15px;
+
+    }
+
+    .sidebar-link {
+
+        justify-content: center;
+
+        padding: 13px 8px;
+
+        margin-bottom: 8px;
+
+    }
+
+    .sidebar-link i {
+
+        font-size: 1.2rem;
+
+    }
+
+    .sidebar-footer {
+
+        justify-content: center;
+
+        padding: 18px 5px;
+
+    }
+
+    .main-content {
+
+        margin-left: 75px;
+
+        padding: 18px;
+
+    }
+
+    .page-header {
+
+        margin-bottom: 30px;
+
+    }
+
+    .page-header h2 {
+
+        font-size: 1.5rem;
+
+    }
+
+    .dashboard-card {
+
+        padding: 18px;
+
+    }
+
+    .analytics-chart {
+
+        height: 360px;
+
+    }
+
+}
+
+
+@media (max-width: 576px) {
+
+    .sidebar {
+
+        width: 60px;
+
+    }
+
+    .main-content {
+
+        margin-left: 60px;
+
+        padding: 12px;
+
+    }
+
+    .header-icon {
+
+        width: 55px;
+
+        height: 55px;
+
+    }
+
+    .page-header h2 {
+
+        font-size: 1.3rem;
+
+    }
+
+    .page-header p {
+
+        font-size: 0.78rem;
+
+    }
+
+    .metric-card {
+
+        padding: 18px;
+
+    }
+
+    .metric-icon {
+
+        width: 48px;
+
+        height: 48px;
+
+        min-width: 48px;
+
+        font-size: 1.2rem;
+
+    }
+
+    .metric-content h3 {
+
+        font-size: 1.25rem;
+
+    }
+
+    .forecast-hero {
+
+        padding: 30px 18px;
+
+    }
+
+    .forecast-hero h2 {
+
+        font-size: 1.4rem;
+
+    }
+
+    .card-heading {
+
+        align-items: flex-start;
+
+        gap: 10px;
+
+    }
+
+    .status-badge {
+
+        font-size: 0.6rem;
+
+    }
+
+    .custom-table {
+
+        font-size: 0.72rem;
+
+    }
+
+    .custom-table th,
+    .custom-table td {
+
+        padding: 10px 8px;
+
+    }
+
+    .analytics-chart {
+
+        height: 300px;
+
+    }
+
+}
