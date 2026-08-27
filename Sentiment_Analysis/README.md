@@ -240,7 +240,7 @@ Then add them to this section:
 ```markdown
 ### Dashboard
 
-![Dashboard]("./screenshots/dashboard.png")
+![Dashboard](screenshots/dashboard.png)
 
 ### Sentiment Prediction
 
