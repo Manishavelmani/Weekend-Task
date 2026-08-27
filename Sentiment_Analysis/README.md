@@ -225,15 +225,12 @@ Sentiment_Analysis/
 
 ![Dashboard](static/images/dashboard.png)
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 ![Dashboard](screenshots/dashboard.png)
 =======
 ![Dashboard](screenshot/dashboard.png)
->>>>>>> abd111f (readme file commit)
+
 =======
 ### 🔮 Sentiment Prediction
->>>>>>> 1f03554 (README.md file updated)
 
 ![Sentiment Prediction](static/images/prediction.png)
 
