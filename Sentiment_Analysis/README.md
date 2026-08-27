@@ -221,42 +221,31 @@ Sentiment_Analysis/
 
 Add screenshots of the actual Flask pages to:
 
-```text
-docs/screenshots/
-```
-
-Recommended filenames:
-
-```text
-dashboard.png
-prediction.png
-comparison.png
-analytics.png
-batch_prediction.png
-```
-
-Then add them to this section:
 
 ```markdown
 ### Dashboard
 
+<<<<<<< HEAD
 ![Dashboard](screenshots/dashboard.png)
+=======
+![Dashboard](screenshot/dashboard.png)
+>>>>>>> abd111f (readme file commit)
 
 ### Sentiment Prediction
 
-![Sentiment Prediction](./screenshots/prediction.png)
+![Sentiment Prediction](screenshot/prediction.png)
 
 ### Model Comparison
 
-![Model Comparison](../screenshots/comparison.png)
+![Model Comparison](screenshot/comparison.png)
 
 ### Analytics
 
-![Analytics](../screenshots/analytics.png)
+![Analytics](screenshot/analytics.png)
 
 ### Batch Prediction
 
-![Batch Prediction](../screenshots/batch_prediction.png)
+![Batch Prediction](screenshot/batch_prediction.png)
 ```
 
 ## Technologies Used
