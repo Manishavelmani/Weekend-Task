@@ -225,11 +225,7 @@ Sentiment_Analysis/
 
 ![Dashboard](static/images/dashboard.png)
 
-![Dashboard](screenshots/dashboard.png)
-=======
-![Dashboard](screenshot/dashboard.png)
 
-=======
 ### 🔮 Sentiment Prediction
 
 ![Sentiment Prediction](static/images/prediction.png)
