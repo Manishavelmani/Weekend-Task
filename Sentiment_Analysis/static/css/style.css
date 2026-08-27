@@ -1,0 +1,234 @@
+/* =========================================================
+   GENERAL PAGE
+========================================================= */
+
+body {
+    background: linear-gradient(
+        135deg,
+        #eef4ff 0%,
+        #f5f3ff 50%,
+        #f8fbff 100%
+    );
+
+    color: #212529;
+    min-height: 100vh;
+}
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar {
+    padding: 8px 0;
+    background-color: #172b4d !important;
+}
+
+.navbar-brand {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.nav-link {
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+.nav-link:hover {
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.container {
+    max-width: 1100px;
+}
+
+
+/* =========================================================
+   HEADINGS
+========================================================= */
+
+h1 {
+    font-size: 32px;
+}
+
+h2 {
+    font-size: 26px;
+}
+
+h3 {
+    font-size: 22px;
+}
+
+h4 {
+    font-size: 20px;
+}
+
+h5 {
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.card {
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.btn {
+    font-size: 14px;
+    padding: 8px 16px;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+}
+
+
+/* =========================================================
+   TABLES
+========================================================= */
+
+.table {
+    font-size: 13px;
+    background-color: #ffffff;
+}
+
+.table th,
+.table td {
+    padding: 8px;
+}
+
+
+/* =========================================================
+   TEXTAREA
+========================================================= */
+
+textarea {
+    font-size: 14px !important;
+    background-color: #f8f9fa !important;
+}
+
+textarea:focus {
+    background-color: #ffffff !important;
+}
+
+
+/* =========================================================
+   PROGRESS BARS
+========================================================= */
+
+.progress {
+    height: 18px;
+}
+
+
+/* =========================================================
+   DASHBOARD CARDS
+========================================================= */
+
+.card h2 {
+    font-size: 26px;
+}
+
+
+/* =========================================================
+   IMAGES
+========================================================= */
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* =========================================================
+   IMAGE / CHART CARDS
+========================================================= */
+
+.chart-container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+
+/* =========================================================
+   REDUCE SECTION SPACING
+========================================================= */
+
+.mb-5 {
+    margin-bottom: 2rem !important;
+}
+
+.mt-5 {
+    margin-top: 2rem !important;
+}
+
+.my-5 {
+    margin-top: 2rem !important;
+    margin-bottom: 2rem !important;
+}
+
+
+/* =========================================================
+   ALERT
+========================================================= */
+
+.alert {
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    h1 {
+        font-size: 26px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .card-body {
+        padding: 15px;
+    }
+
+    .navbar-brand {
+        font-size: 18px;
+    }
+
+    .nav-link {
+        margin-left: 0;
+    }
+
+}

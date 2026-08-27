@@ -1,0 +1,272 @@
+{% extends "base.html" %}
+
+{% block title %}Batch Prediction{% endblock %}
+
+{% block content %}
+
+<div class="text-center mb-4">
+
+    <h2 class="fw-bold">
+        <i class="bi bi-upload text-primary"></i>
+        Batch Sentiment Prediction
+    </h2>
+
+    <p class="text-muted">
+        Upload a CSV file and predict sentiment for multiple reviews.
+    </p>
+
+</div>
+
+
+<!-- Upload -->
+
+<div class="card shadow-sm border-0 mb-4">
+
+    <div class="card-body">
+
+        <h5 class="fw-bold mb-3">
+            <i class="bi bi-file-earmark-text me-2"></i>
+            Upload CSV
+        </h5>
+
+        <p class="text-muted">
+            Your CSV file must contain a column named
+            <strong>Review</strong>.
+        </p>
+
+        <form method="POST"
+              enctype="multipart/form-data">
+
+            <div class="mb-3">
+
+                <input
+                    type="file"
+                    name="file"
+                    class="form-control"
+                    accept=".csv"
+                    required>
+
+            </div>
+
+            <button type="submit"
+                    class="btn btn-primary">
+
+                <i class="bi bi-magic me-2"></i>
+                Upload & Predict
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- Error -->
+
+{% if error %}
+
+<div class="alert alert-danger">
+
+    <i class="bi bi-exclamation-triangle me-2"></i>
+
+    {{ error }}
+
+</div>
+
+{% endif %}
+
+
+<!-- Summary -->
+
+{% if summary %}
+
+<h4 class="fw-bold mt-4 mb-3">
+    Prediction Summary
+</h4>
+
+<div class="row g-3">
+
+
+    <!-- Total -->
+
+    <div class="col-md-4">
+
+        <div class="card shadow-sm border-0">
+
+            <div class="card-body text-center">
+
+                <i class="bi bi-files text-primary fs-2"></i>
+
+                <h6 class="text-muted mt-2">
+                    Total Reviews
+                </h6>
+
+                <h3 class="fw-bold">
+                    {{ summary.total }}
+                </h3>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Positive -->
+
+    <div class="col-md-4">
+
+        <div class="card shadow-sm border-0">
+
+            <div class="card-body text-center">
+
+                <i class="bi bi-emoji-smile text-success fs-2"></i>
+
+                <h6 class="text-muted mt-2">
+                    Positive
+                </h6>
+
+                <h3 class="fw-bold text-success">
+                    {{ summary.positive }}
+                </h3>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Negative -->
+
+    <div class="col-md-4">
+
+        <div class="card shadow-sm border-0">
+
+            <div class="card-body text-center">
+
+                <i class="bi bi-emoji-frown text-danger fs-2"></i>
+
+                <h6 class="text-muted mt-2">
+                    Negative
+                </h6>
+
+                <h3 class="fw-bold text-danger">
+                    {{ summary.negative }}
+                </h3>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Download -->
+
+<div class="text-center my-4">
+
+    <a href="{{ url_for('download') }}"
+       class="btn btn-success">
+
+        <i class="bi bi-download me-2"></i>
+        Download Results
+
+    </a>
+
+</div>
+
+{% endif %}
+
+
+<!-- Results -->
+
+{% if results %}
+
+<div class="card shadow-sm border-0 mt-4">
+
+    <div class="card-body">
+
+        <h4 class="fw-bold mb-3">
+
+            <i class="bi bi-table me-2"></i>
+            Prediction Results
+
+        </h4>
+
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle">
+
+                <thead class="table-dark">
+
+                    <tr>
+
+                        <th>Review</th>
+                        <th>Sentiment</th>
+                        <th>Confidence</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for row in results %}
+
+                    <tr>
+
+                        <td>
+                            {{ row.Review }}
+                        </td>
+
+
+                        <td>
+
+                            {% if row.Sentiment == "Positive" %}
+
+                                <span class="badge bg-success">
+                                    Positive
+                                </span>
+
+                            {% else %}
+
+                                <span class="badge bg-danger">
+                                    Negative
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+
+                        <td>
+
+                            {{ "%.2f"|format(
+                                row.Confidence * 100
+                            ) }}%
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endif %}
+
+{% endblock %}
+
