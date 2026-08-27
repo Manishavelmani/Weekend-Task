@@ -217,46 +217,6 @@ Sentiment_Analysis/
 └── README.md
 ```
 
-## Evaluation Charts
-
-The generated evaluation images are stored in:
-
-```text
-static/images/
-```
-
-### Confusion Matrix
-
-![Confusion Matrix](static/images/confusion_matrix.png)
-
-### Model Evaluation Comparison
-
-![Evaluation Comparison](static/images/evaluation_comparison.png)
-
-### Model Accuracy Comparison
-
-![Model Accuracy Comparison](static/images/model_accuracy_comparison.png)
-
-### Precision-Recall Curve
-
-![Precision Recall](static/images/precision_recall.png)
-
-### ROC Curve
-
-![ROC Curve](static/images/roc_curve.png)
-
-### Word Cloud
-
-![Word Cloud](static/images/wordcloud.png)
-
-## Project Structure Screenshots
-
-The screenshots provided with the project show the organization of the notebooks, models, static files, templates, and Flask application.
-
-![Project Structure 1](docs/screenshots/project_structure_1.png)
-
-![Project Structure 2](docs/screenshots/project_structure_2.png)
-
 ## Web Application Screenshots
 
 Add screenshots of the actual Flask pages to:
@@ -280,23 +240,23 @@ Then add them to this section:
 ```markdown
 ### Dashboard
 
-![Dashboard](static/screenshots/dashboard.png)
+![Dashboard](screenshots/dashboard.png)
 
 ### Sentiment Prediction
 
-![Sentiment Prediction](static/screenshots/prediction.png)
+![Sentiment Prediction](screenshots/prediction.png)
 
 ### Model Comparison
 
-![Model Comparison](static/screenshots/comparison.png)
+![Model Comparison](screenshots/comparison.png)
 
 ### Analytics
 
-![Analytics](static/screenshots/analytics.png)
+![Analytics](screenshots/analytics.png)
 
 ### Batch Prediction
 
-![Batch Prediction](static/screenshots/batch_prediction.png)
+![Batch Prediction](screenshots/batch_prediction.png)
 ```
 
 ## Technologies Used
