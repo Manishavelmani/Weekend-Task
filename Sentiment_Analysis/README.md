@@ -240,23 +240,23 @@ Then add them to this section:
 ```markdown
 ### Dashboard
 
-![Dashboard](screenshots/dashboard.png)
+![Dashboard](../screenshots/dashboard.png)
 
 ### Sentiment Prediction
 
-![Sentiment Prediction](screenshots/prediction.png)
+![Sentiment Prediction](../screenshots/prediction.png)
 
 ### Model Comparison
 
-![Model Comparison](screenshots/comparison.png)
+![Model Comparison](../screenshots/comparison.png)
 
 ### Analytics
 
-![Analytics](screenshots/analytics.png)
+![Analytics](../screenshots/analytics.png)
 
 ### Batch Prediction
 
-![Batch Prediction](screenshots/batch_prediction.png)
+![Batch Prediction](../screenshots/batch_prediction.png)
 ```
 
 ## Technologies Used
