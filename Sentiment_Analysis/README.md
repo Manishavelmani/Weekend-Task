@@ -217,36 +217,39 @@ Sentiment_Analysis/
 └── README.md
 ```
 
-## Web Application Screenshots
+---
 
-Add screenshots of the actual Flask pages to:
+## 📸 Application Screenshots
 
+### 🏠 Dashboard
 
-```markdown
-### Dashboard
+![Dashboard](static/images/dashboard.png)
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 ![Dashboard](screenshots/dashboard.png)
 =======
 ![Dashboard](screenshot/dashboard.png)
 >>>>>>> abd111f (readme file commit)
+=======
+### 🔮 Sentiment Prediction
+>>>>>>> 1f03554 (README.md file updated)
 
-### Sentiment Prediction
+![Sentiment Prediction](static/images/prediction.png)
 
-![Sentiment Prediction](screenshot/prediction.png)
+### 📊 Model Comparison
 
-### Model Comparison
+![Model Comparison](static/images/comparison.png)
 
-![Model Comparison](screenshot/comparison.png)
+### 📈 Analytics
 
-### Analytics
+![Analytics](static/images/analytics.png)
 
-![Analytics](screenshot/analytics.png)
+### 📋 Batch Prediction
 
-### Batch Prediction
+![Batch Prediction](static/images/batch_prediction.png)
 
-![Batch Prediction](screenshot/batch_prediction.png)
-```
+---
 
 ## Technologies Used
 
