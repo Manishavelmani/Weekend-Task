@@ -1,0 +1,4 @@
+Model,Best Parameters
+XGBoost,"{'subsample': 0.8, 'n_estimators': 100, 'max_depth': 3, 'learning_rate': 0.1, 'colsample_bytree': 0.9}"
+Random Forest,"{'n_estimators': 100, 'min_samples_split': 10, 'min_samples_leaf': 2, 'max_features': 'log2', 'max_depth': None}"
+Logistic Regression,"{'solver': 'liblinear', 'C': 0.01}"

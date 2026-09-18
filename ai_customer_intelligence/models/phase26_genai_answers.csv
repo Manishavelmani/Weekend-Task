@@ -1,0 +1,90 @@
+id,category,question,customer_id,answer,status
+1,Customer Lookup,Show the profile of customer 7590-VHVEG.,7590-VHVEG,"customerID gender  SeniorCitizen Partner Dependents  tenure PhoneService    MultipleLines InternetService OnlineSecurity OnlineBackup DeviceProtection TechSupport StreamingTV StreamingMovies       Contract PaperlessBilling    PaymentMethod  MonthlyCharges  TotalCharges Churn
+7590-VHVEG Female              0     Yes         No       1           No No phone service             DSL             No          Yes               No          No          No              No Month-to-month              Yes Electronic check           29.85         29.85    No",Success
+2,Customer Lookup,What is the tenure of customer 7590-VHVEG?,7590-VHVEG,Customer 7590-VHVEG has a tenure of 1 months.,Success
+3,Customer Lookup,What contract type does customer 7590-VHVEG have?,7590-VHVEG,Customer 7590-VHVEG has a contract type of Month-to-month.,Success
+4,Customer Lookup,What payment method does customer 7590-VHVEG use?,7590-VHVEG,Customer 7590-VHVEG uses Electronic check.,Success
+5,Churn Prediction,What is the churn probability of customer 7590-VHVEG?,7590-VHVEG,The churn probability for customer 7590-VHVEG is 88.42%.,Success
+6,Churn Prediction,Is customer 7590-VHVEG predicted to churn?,7590-VHVEG,"Yes. Customer 7590-VHVEG is predicted to churn, with a churn probability of 88.42%.",Success
+7,Churn Prediction,How risky is customer 7590-VHVEG according to the churn model?,7590-VHVEG,"Customer 7590-VHVEG has a churn probability of 88.42%, according to the churn model.",Success
+8,SHAP Explanation,Why is customer 7590-VHVEG predicted to churn?,7590-VHVEG,"The main features pushing customer 7590-VHVEG's prediction toward churn are:
+- num__ServiceCombinationRisk: +0.9060
+- num__tenure: +0.7580
+- num__TotalCharges: +0.3864
+- cat__OnlineSecurity_No: +0.1664
+- cat__PaperlessBilling_No: +0.1475",Success
+9,SHAP Explanation,Which features pushed the model toward churn for customer 7590-VHVEG?,7590-VHVEG,"Features that pushed the model toward churn:
+- num__ServiceCombinationRisk: +0.9060
+- num__tenure: +0.7580
+- num__TotalCharges: +0.3864
+- cat__OnlineSecurity_No: +0.1664
+- cat__PaperlessBilling_No: +0.1475",Success
+10,SHAP Explanation,Which features pushed the model away from churn for customer 7590-VHVEG?,7590-VHVEG,"Features that pushed the model away from churn:
+- num__ChargeToTenure: -0.4610
+- num__PaymentMethodRisk: -0.1704
+- num__FiberOptic: -0.1059
+- cat__StreamingTV_No: -0.0354
+- cat__StreamingTV_Yes: -0.0325",Success
+11,Knowledge Base,How can I cancel my service?,,"Cancellation information:
+- Customers should submit a cancellation request through the approved support process.
+- Customers can submit a cancellation request through the approved customer support process.
+- Cancellation requests should be processed using the approved cancellation procedure.
+- Customers may request the current status of their cancellation request through support.
+- Cancellation eligibility depends on the customer's service agreement and applicable cancellation conditions.",Success
+12,Knowledge Base,What is the cancellation process?,,"Cancellation information:
+- Cancellation requests should be processed using the approved cancellation procedure.
+- Customers can submit a cancellation request through the approved customer support process.
+- Customers should submit a cancellation request through the approved support process.
+- Cancellation eligibility depends on the customer's service agreement and applicable cancellation conditions.
+- Cancellation requests are reviewed according to the customer's contract and applicable business rules.",Success
+13,Knowledge Base,How can I check my cancellation status?,,Customers may request the current status of their cancellation request through support.,Success
+14,Knowledge Base,What are the cancellation eligibility conditions?,,"Cancellation information:
+- Cancellation eligibility depends on the customer's service agreement and applicable cancellation conditions.
+- Cancellation requests are subject to the terms and conditions stated in the customer's contract.
+- Cancellation requests should be processed using the approved cancellation procedure.
+- Customers may request the current status of their cancellation request through support.
+- Billing-related conditions associated with cancellation should be reviewed before final processing.",Success
+15,Hallucination Test,What is the company's office dress code?,,The available information is insufficient to answer this question.,Success
+16,Hallucination Test,What is the company's employee vacation policy?,,The available information is insufficient to answer this question.,Success
+17,Combined,What is customer 7590-VHVEG's churn probability and why?,7590-VHVEG,"Customer 7590-VHVEG has a predicted churn probability of 88.42%.
+
+The following features pushed the model toward churn:
+- num__ServiceCombinationRisk: +0.9060
+- num__tenure: +0.7580
+- num__TotalCharges: +0.3864
+- cat__OnlineSecurity_No: +0.1664
+- cat__PaperlessBilling_No: +0.1475",Success
+18,Combined,What are the main churn factors for customer 7590-VHVEG and how can the customer cancel the service?,7590-VHVEG,"The main churn factors for customer 7590-VHVEG are:
+- num__ServiceCombinationRisk: +0.9060
+- num__tenure: +0.7580
+- num__TotalCharges: +0.3864
+- cat__OnlineSecurity_No: +0.1664
+- cat__PaperlessBilling_No: +0.1475
+
+These features pushed the model toward churn.
+
+Cancellation information:
+- Customers should submit a cancellation request through the approved support process.
+- Support representatives should offer retention options that are appropriate for the customer's situation.",Success
+19,Combined,"Give me the customer profile, churn prediction, and important SHAP factors for customer 7590-VHVEG.",7590-VHVEG,"CUSTOMER PROFILE:
+customerID gender  SeniorCitizen Partner Dependents  tenure PhoneService    MultipleLines InternetService OnlineSecurity OnlineBackup DeviceProtection TechSupport StreamingTV StreamingMovies       Contract PaperlessBilling    PaymentMethod  MonthlyCharges  TotalCharges Churn
+7590-VHVEG Female              0     Yes         No       1           No No phone service             DSL             No          Yes               No          No          No              No Month-to-month              Yes Electronic check           29.85         29.85    No
+
+CHURN MODEL RESULT:
+Churn probability: 88.42%
+Churn prediction: 1
+
+SHAP FEATURES PUSHING TOWARD CHURN:
+- num__ServiceCombinationRisk: +0.9060
+- num__tenure: +0.7580
+- num__TotalCharges: +0.3864
+- cat__OnlineSecurity_No: +0.1664
+- cat__PaperlessBilling_No: +0.1475",Success
+20,Combined,"Is customer 7590-VHVEG likely to churn, and what cancellation information is available?",7590-VHVEG,"Customer 7590-VHVEG has a predicted churn probability of 88.42%.
+
+Cancellation information:
+- Customers may request the current status of their cancellation request through support.
+- Customers should submit a cancellation request through the approved support process.
+- Customers should receive confirmation after their cancellation request has been processed.
+- Customers can submit a cancellation request through the approved customer support process.
+- Customers should receive appropriate communication regarding the status of their cancellation request.",Success

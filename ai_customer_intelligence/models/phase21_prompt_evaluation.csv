@@ -1,0 +1,5 @@
+Prompt,Correctness,Relevance,Consistency,Groundedness,Hallucination
+Basic,3,4,4,1,2
+Context-based,4,4,4,4,4
+Structured,3,5,4,3,3
+Evidence-grounded,5,5,5,5,5

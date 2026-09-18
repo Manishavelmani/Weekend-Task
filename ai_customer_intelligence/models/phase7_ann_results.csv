@@ -1,0 +1,2 @@
+Model,Accuracy,Precision,Recall,F1-Score,ROC-AUC,PR-AUC,Training Time (sec),Inference Time (sec)
+Small ANN,0.7637,0.5382,0.7727,0.6345,0.8383,0.6145,12.1524,0.4156
