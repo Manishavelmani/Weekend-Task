@@ -1,0 +1,103 @@
+chunk_id,document_id,category,title,text
+CH001,SP001,service_policies,Service Availability,Customer support services are available during the company's standard support hours.
+CH002,SP002,service_policies,Service Requests,Customers can contact the support team for questions related to their services and products.
+CH003,SP003,service_policies,Service Quality,Support requests should be handled according to the company's service quality standards.
+CH004,FAQ001,support_faqs,How can I contact support?,Customers can contact support through the approved customer support channels.
+CH005,FAQ002,support_faqs,What information should I provide?,Customers should provide a clear description of their issue and relevant account or product information.
+CH006,FAQ003,support_faqs,How is my issue handled?,Support requests are reviewed based on the issue type and assigned support priority.
+CH007,CON001,contract_information,Contract Duration,The contract duration depends on the service plan selected by the customer.
+CH008,CON002,contract_information,Contract Terms,Customers should review the applicable contract terms before making changes to their service.
+CH009,CAN001,cancellation_policies,Cancellation Request,Customers can submit a cancellation request through the approved customer support process.
+CH010,CAN002,cancellation_policies,Cancellation Review,Cancellation requests are reviewed according to the customer's contract and applicable business rules.
+CH011,CAN003,cancellation_policies,Cancellation Confirmation,Customers should receive confirmation after their cancellation request has been processed.
+CH012,BIL001,billing_policies,Billing Questions,Customers with billing questions should provide relevant billing information so the issue can be investigated.
+CH013,BIL002,billing_policies,Payment Issues,Payment issues should be reviewed against the customer's account and available payment records.
+CH014,BIL003,billing_policies,Billing Review,Billing concerns should be investigated before any account-related billing action is taken.
+CH015,RET001,retention_guidelines,Understanding Customer Concerns,Support representatives should understand the customer's concern before discussing retention options.
+CH016,RET002,retention_guidelines,Retention Options,Retention options should follow the company's approved retention guidelines.
+CH017,SUP001,support_procedures,Ticket Creation,A support ticket should contain enough information to understand and investigate the customer's issue.
+CH018,SUP002,support_procedures,Troubleshooting,Support representatives should follow the approved troubleshooting procedure for technical issues.
+CH019,SUP003,support_procedures,Issue Escalation,Issues that cannot be resolved through normal support procedures should be escalated to the appropriate support team.
+CH020,BR001,business_rules,Customer Verification,Customer information should be verified before performing account-specific actions.
+CH021,BR002,business_rules,Customer Data Handling,Customer information should be handled according to the company's approved data-handling rules.
+CH022,SP004,service_policies,Service Eligibility,Customers should meet the eligibility requirements associated with the selected service.
+CH023,SP005,service_policies,Service Activation,Service activation should follow the standard activation process defined for the selected service.
+CH024,SP006,service_policies,Service Changes,Requests to change a service should be reviewed before the requested change is applied.
+CH025,SP007,service_policies,Service Requests Priority,Service requests should be prioritized according to their urgency and business priority.
+CH026,SP008,service_policies,Service Notifications,Customers should be informed about important service changes or planned interruptions when applicable.
+CH027,SP009,service_policies,Service Limitations,Certain services may have limitations based on the selected plan and applicable service conditions.
+CH028,SP010,service_policies,Service Requests Review,Requests requiring additional verification should be reviewed before a final action is taken.
+CH029,SP011,service_policies,Service Continuity,Support teams should work to minimize service disruption and restore affected services as efficiently as possible.
+CH030,SP012,service_policies,Service Communication,Important service-related communication should be provided through approved customer communication channels.
+CH031,SP013,service_policies,Service Support Scope,Customer support should handle issues that fall within the approved service support scope.
+CH032,SP014,service_policies,Service Request Tracking,Service requests should be tracked until the requested action or resolution has been completed.
+CH033,FAQ004,support_faqs,How do I report a product problem?,Customers should describe the product problem and provide relevant details when contacting support.
+CH034,FAQ005,support_faqs,What happens after I submit a ticket?,The support team reviews the ticket and handles it according to its issue type and priority.
+CH035,FAQ006,support_faqs,Can I update my support request?,Customers may provide additional information to support when further details are required.
+CH036,FAQ007,support_faqs,How is ticket priority determined?,Ticket priority is determined according to the urgency and impact of the reported issue.
+CH037,FAQ008,support_faqs,What if my issue is not resolved?,Customers can request further assistance when an issue remains unresolved after normal troubleshooting.
+CH038,FAQ009,support_faqs,Can technical issues be escalated?,Technical issues that cannot be resolved through normal procedures may be escalated.
+CH039,FAQ010,support_faqs,How do I ask about billing?,Customers can contact support with their billing question and relevant account information.
+CH040,FAQ011,support_faqs,How do I request cancellation?,Customers should submit a cancellation request through the approved support process.
+CH041,FAQ012,support_faqs,Can support check account information?,Support may review account information after the required customer verification is completed.
+CH042,FAQ013,support_faqs,What should I include in a support ticket?,"A support ticket should include the issue description, relevant product or account details, and useful troubleshooting information."
+CH043,FAQ014,support_faqs,How can I follow up?,Customers can follow up through the approved support channel and provide their existing ticket information.
+CH044,FAQ015,support_faqs,Can support help with account access?,Support can assist with account access issues after completing the required verification process.
+CH045,FAQ016,support_faqs,What if I entered incorrect information?,Customers should contact support to request correction of incorrect account or service information.
+CH046,FAQ017,support_faqs,Can I ask for a status update?,Customers can request an update on an existing support request through the approved support channel.
+CH047,FAQ018,support_faqs,What if I have several issues?,Customers should clearly describe each issue so that support can determine the appropriate handling process.
+CH048,CON003,contract_information,Contract Start,The contract becomes effective according to the activation or start terms associated with the selected service.
+CH049,CON004,contract_information,Contract Renewal,Contract renewal should follow the renewal terms associated with the customer's agreement.
+CH050,CON005,contract_information,Contract Cancellation Terms,Cancellation requests are subject to the terms and conditions stated in the customer's contract.
+CH051,CON006,contract_information,Contract Changes,Changes to contract-related information should follow the applicable contract modification process.
+CH052,CON007,contract_information,Contract Responsibilities,Customers and service providers should follow the responsibilities defined by the applicable contract.
+CH053,CON008,contract_information,Contract Review,Customers should review important contract conditions before requesting account or service changes.
+CH054,CON009,contract_information,Contract Eligibility,Contract options may depend on the customer's selected service and eligibility conditions.
+CH055,CON010,contract_information,Contract Information Requests,Requests for contract information should be handled after verifying the customer's account.
+CH056,CON011,contract_information,Contract Exceptions,Contract exceptions should be reviewed according to approved business procedures.
+CH057,CON012,contract_information,Contract Records,Relevant contract information should be maintained in the appropriate customer records.
+CH058,CAN004,cancellation_policies,Cancellation Eligibility,Cancellation eligibility depends on the customer's service agreement and applicable cancellation conditions.
+CH059,CAN005,cancellation_policies,Cancellation Processing,Cancellation requests should be processed using the approved cancellation procedure.
+CH060,CAN006,cancellation_policies,Cancellation Verification,Customer identity and account information should be verified before processing cancellation.
+CH061,CAN007,cancellation_policies,Cancellation Status,Customers may request the current status of their cancellation request through support.
+CH062,CAN008,cancellation_policies,Cancellation Documentation,Cancellation requests should contain sufficient information for support to identify the correct account and service.
+CH063,CAN009,cancellation_policies,Cancellation Escalation,Cancellation issues that cannot be resolved through the normal process should be escalated.
+CH064,CAN010,cancellation_policies,Cancellation and Billing,Billing-related conditions associated with cancellation should be reviewed before final processing.
+CH065,CAN011,cancellation_policies,Cancellation Communication,Customers should receive appropriate communication regarding the status of their cancellation request.
+CH066,CAN012,cancellation_policies,Cancellation Record,Completed cancellation requests should be recorded in the appropriate customer account records.
+CH067,BIL004,billing_policies,Billing Verification,Customer identity and relevant account information should be verified before discussing account-specific billing details.
+CH068,BIL005,billing_policies,Billing Dispute,Billing disputes should be reviewed against the available account and billing records.
+CH069,BIL006,billing_policies,Billing Corrections,Billing corrections should be made only after the issue has been reviewed and verified.
+CH070,BIL007,billing_policies,Payment Method Issues,Payment method problems should be investigated using the relevant account and payment information.
+CH071,BIL008,billing_policies,Billing Information Requests,Requests for billing information should follow the customer verification procedure.
+CH072,BIL009,billing_policies,Billing Escalation,Complex billing issues may be escalated to the appropriate billing support team.
+CH073,BIL010,billing_policies,Billing Records,Relevant billing information should be maintained in the appropriate customer records.
+CH074,BIL011,billing_policies,Billing Communication,Customers should receive clear communication regarding investigated billing issues.
+CH075,BIL012,billing_policies,Billing Review Process,Billing concerns should be reviewed systematically before a final decision is made.
+CH076,RET003,retention_guidelines,Identify Customer Concerns,Retention discussions should begin by identifying the customer's primary concern.
+CH077,RET004,retention_guidelines,Offer Appropriate Support,Support representatives should offer retention options that are appropriate for the customer's situation.
+CH078,RET005,retention_guidelines,Respect Customer Decisions,Customer retention activities should respect the customer's final decision regarding the service.
+CH079,RET006,retention_guidelines,Retention Escalation,Complex retention cases may be escalated according to the applicable support process.
+CH080,RET007,retention_guidelines,Retention Documentation,Important retention interactions should be recorded in the appropriate customer support records.
+CH081,RET008,retention_guidelines,Retention and Service Quality,Retention activities should focus on solving customer concerns and maintaining service quality.
+CH082,RET009,retention_guidelines,Retention Follow Up,Follow-up may be used when further action is required to address a customer's concern.
+CH083,RET010,retention_guidelines,Retention Guidelines Review,Retention actions should remain consistent with approved company guidelines.
+CH084,SUP004,support_procedures,Ticket Verification,Support representatives should review the ticket information before starting investigation.
+CH085,SUP005,support_procedures,Ticket Categorization,Tickets should be categorized according to the type of customer issue.
+CH086,SUP006,support_procedures,Priority Assignment,Tickets should receive an appropriate priority based on urgency and customer impact.
+CH087,SUP007,support_procedures,Initial Investigation,Support representatives should perform an initial investigation before recommending further action.
+CH088,SUP008,support_procedures,Troubleshooting Documentation,Important troubleshooting steps should be recorded in the support ticket.
+CH089,SUP009,support_procedures,Escalation Criteria,Issues that exceed normal support capabilities should be escalated according to procedure.
+CH090,SUP010,support_procedures,Resolution Recording,The resolution or recommended action should be recorded after an issue has been handled.
+CH091,SUP011,support_procedures,Customer Follow Up,Support representatives should follow up when additional customer information is required.
+CH092,SUP012,support_procedures,Unresolved Tickets,Unresolved tickets should remain active until the required next step has been completed.
+CH093,BR003,business_rules,Account Access,Account-specific actions should only be performed after the required customer verification.
+CH094,BR004,business_rules,Customer Privacy,Customer information should only be used and shared according to approved business rules.
+CH095,BR005,business_rules,Support Authorization,Only authorized support personnel should perform restricted account actions.
+CH096,BR006,business_rules,Data Accuracy,Customer and service records should be kept accurate and updated when corrections are verified.
+CH097,BR007,business_rules,Issue Escalation Rule,Issues requiring specialized handling should be escalated to the appropriate team.
+CH098,BR008,business_rules,Customer Communication,Customer communication should use approved support channels and appropriate language.
+CH099,BR009,business_rules,Record Keeping,Important support actions and decisions should be recorded in the appropriate system.
+CH100,BR010,business_rules,Priority Handling,High-priority customer issues should receive appropriate attention according to support rules.
+CH101,BR011,business_rules,Information Verification,Important customer information should be verified before account-specific decisions are made.
+CH102,BR012,business_rules,Policy Compliance,Support actions should follow the applicable company policies and business rules.

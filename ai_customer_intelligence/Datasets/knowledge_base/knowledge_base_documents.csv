@@ -1,0 +1,22 @@
+document_id,category,title,text
+SP001,service_policies,Service Availability,Customer support services are available during the company's standard support hours.
+SP002,service_policies,Service Requests,Customers can contact the support team for questions related to their services and products.
+SP003,service_policies,Service Quality,Support requests should be handled according to the company's service quality standards.
+FAQ001,support_faqs,How can I contact support?,Customers can contact support through the approved customer support channels.
+FAQ002,support_faqs,What information should I provide?,Customers should provide a clear description of their issue and relevant account or product information.
+FAQ003,support_faqs,How is my issue handled?,Support requests are reviewed based on the issue type and assigned support priority.
+CON001,contract_information,Contract Duration,The contract duration depends on the service plan selected by the customer.
+CON002,contract_information,Contract Terms,Customers should review the applicable contract terms before making changes to their service.
+CAN001,cancellation_policies,Cancellation Request,Customers can submit a cancellation request through the approved customer support process.
+CAN002,cancellation_policies,Cancellation Review,Cancellation requests are reviewed according to the customer's contract and applicable business rules.
+CAN003,cancellation_policies,Cancellation Confirmation,Customers should receive confirmation after their cancellation request has been processed.
+BIL001,billing_policies,Billing Questions,Customers with billing questions should provide relevant billing information so the issue can be investigated.
+BIL002,billing_policies,Payment Issues,Payment issues should be reviewed against the customer's account and available payment records.
+BIL003,billing_policies,Billing Review,Billing concerns should be investigated before any account-related billing action is taken.
+RET001,retention_guidelines,Understanding Customer Concerns,Support representatives should understand the customer's concern before discussing retention options.
+RET002,retention_guidelines,Retention Options,Retention options should follow the company's approved retention guidelines.
+SUP001,support_procedures,Ticket Creation,A support ticket should contain enough information to understand and investigate the customer's issue.
+SUP002,support_procedures,Troubleshooting,Support representatives should follow the approved troubleshooting procedure for technical issues.
+SUP003,support_procedures,Issue Escalation,Issues that cannot be resolved through normal support procedures should be escalated to the appropriate support team.
+BR001,business_rules,Customer Verification,Customer information should be verified before performing account-specific actions.
+BR002,business_rules,Customer Data Handling,Customer information should be handled according to the company's approved data-handling rules.
