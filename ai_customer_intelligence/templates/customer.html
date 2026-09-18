@@ -1,0 +1,258 @@
+{% extends "base.html" %}
+{% block title %}
+Customer Profile | Customer AI
+{% endblock %}
+{% block section_name %}
+Customer Profile
+{% endblock %}
+{% block content %}
+<div class="page-heading">
+    <div>
+        <h1>Customer Profile</h1>
+        <p>
+            Search and view complete customer information.
+        </p>
+    </div>
+</div>
+<!-- =====================================================
+     SEARCH
+====================================================== -->
+<div class="search-card">
+    <form
+        method="POST"
+        action="{{ url_for('customer') }}"
+    >
+        <div class="search-label">
+            <i class="bi bi-search"></i>
+            <span>
+                Search Customer
+            </span>
+        </div>
+        <div class="search-row">
+            <input
+                type="text"
+                name="customer_id"
+                class="form-control customer-input"
+                placeholder="Enter Customer ID e.g. 7590-VHVEG"
+                value="{{ customer_id or '' }}"
+                required
+            >
+            <button
+                type="submit"
+                class="btn btn-primary-custom search-button"
+            >
+                <i class="bi bi-search"></i>
+                Search
+            </button>
+        </div>
+    </form>
+</div>
+<!-- =====================================================
+     CUSTOMER NOT FOUND
+====================================================== -->
+{% if customer_id and not customer %}
+<div class="alert-custom error-alert">
+    <i class="bi bi-exclamation-circle-fill"></i>
+    <div>
+        <strong>
+            Customer Not Found
+        </strong>
+        <p>
+            No customer was found with ID
+            <strong>{{ customer_id }}</strong>.
+        </p>
+    </div>
+</div>
+{% endif %}
+<!-- =====================================================
+     CUSTOMER PROFILE
+====================================================== -->
+{% if customer %}
+<div class="profile-header">
+    <div class="profile-avatar">
+        <i class="bi bi-person-fill"></i>
+    </div>
+    <div>
+        <h2>
+            {{ customer.get('customerID', 'Customer') }}
+        </h2>
+        <p>
+            Customer Profile
+        </p>
+    </div>
+</div>
+<div class="row g-4">
+    <!-- Personal Information -->
+    <div class="col-lg-6">
+        <div class="info-panel">
+            <div class="info-panel-title">
+                <i class="bi bi-person"></i>
+                <div>
+                    <h5>Customer Information</h5>
+                    <span>Personal details</span>
+                </div>
+            </div>
+            <div class="info-grid">
+                <div class="info-item">
+                    <label>Gender</label>
+                    <strong>
+                        {{ customer.get('gender', 'N/A') }}
+                    </strong>
+                </div>
+                <div class="info-item">
+                    <label>Senior Citizen</label>
+                    <strong>
+                        {{ customer.get('SeniorCitizen', 'N/A') }}
+                    </strong>
+                </div>
+                <div class="info-item">
+                    <label>Partner</label>
+                    <strong>
+                        {{ customer.get('Partner', 'N/A') }}
+                    </strong>
+                </div>
+                <div class="info-item">
+                    <label>Dependents</label>
+                    <strong>
+                        {{ customer.get('Dependents', 'N/A') }}
+                    </strong>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contract -->
+    <div class="col-lg-6">
+        <div class="info-panel">
+            <div class="info-panel-title">
+                <i class="bi bi-file-earmark-text"></i>
+                <div>
+                    <h5>Contract Details</h5>
+                    <span>Customer agreement</span>
+                </div>
+            </div>
+            <div class="info-grid">
+                <div class="info-item">
+                    <label>Contract</label>
+                    <strong>
+                        {{ customer.get('Contract', 'N/A') }}
+                    </strong>
+                </div>
+                <div class="info-item">
+                    <label>Tenure</label>
+                    <strong>
+                        {{ customer.get('tenure', 'N/A') }} months
+                    </strong>
+                </div>
+                <div class="info-item">
+                    <label>Paperless Billing</label>
+                    <strong>
+                        {{ customer.get('PaperlessBilling', 'N/A') }}
+                    </strong>
+                </div>
+                <div class="info-item">
+                    <label>Payment Method</label>
+                    <strong>
+                        {{ customer.get('PaymentMethod', 'N/A') }}
+                    </strong>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Services -->
+    <div class="col-12">
+        <div class="info-panel">
+            <div class="info-panel-title">
+                <i class="bi bi-boxes"></i>
+                <div>
+                    <h5>Services</h5>
+                    <span>Subscribed services</span>
+                </div>
+            </div>
+            <div class="service-grid">
+                <div class="service-item">
+                    <span>Phone Service</span>
+                    <strong>
+                        {{ customer.get('PhoneService', 'N/A') }}
+                    </strong>
+                </div>
+                <div class="service-item">
+                    <span>Multiple Lines</span>
+                    <strong>
+                        {{ customer.get('MultipleLines', 'N/A') }}
+                    </strong>
+                </div>
+                <div class="service-item">
+                    <span>Internet Service</span>
+                    <strong>
+                        {{ customer.get('InternetService', 'N/A') }}
+                    </strong>
+                </div>
+                <div class="service-item">
+                    <span>Online Security</span>
+                    <strong>
+                        {{ customer.get('OnlineSecurity', 'N/A') }}
+                    </strong>
+                </div>
+                <div class="service-item">
+                    <span>Online Backup</span>
+                    <strong>
+                        {{ customer.get('OnlineBackup', 'N/A') }}
+                    </strong>
+                </div>
+                <div class="service-item">
+                    <span>Device Protection</span>
+                    <strong>
+                        {{ customer.get('DeviceProtection', 'N/A') }}
+                    </strong>
+                </div>
+                <div class="service-item">
+                    <span>Tech Support</span>
+                    <strong>
+                        {{ customer.get('TechSupport', 'N/A') }}
+                    </strong>
+                </div>
+                <div class="service-item">
+                    <span>Streaming TV</span>
+                    <strong>
+                        {{ customer.get('StreamingTV', 'N/A') }}
+                    </strong>
+                </div>
+                <div class="service-item">
+                    <span>Streaming Movies</span>
+                    <strong>
+                        {{ customer.get('StreamingMovies', 'N/A') }}
+                    </strong>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Charges -->
+    <div class="col-lg-6">
+        <div class="charge-card">
+            <span>
+                Monthly Charges
+            </span>
+            <h2>
+                ${{ customer.get('MonthlyCharges', 'N/A') }}
+            </h2>
+            <small>
+                Current monthly billing
+            </small>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="charge-card charge-secondary">
+            <span>
+                Total Charges
+            </span>
+            <h2>
+                ${{ customer.get('TotalCharges', 'N/A') }}
+            </h2>
+            <small>
+                Total customer charges
+            </small>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

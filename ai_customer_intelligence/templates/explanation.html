@@ -1,0 +1,477 @@
+{% extends "base.html" %}
+
+{% block title %}
+SHAP Explanation | Customer AI
+{% endblock %}
+
+{% block section_name %}
+SHAP Explanation
+{% endblock %}
+
+
+{% block content %}
+
+<div class="page-heading">
+
+    <div>
+
+        <h1>SHAP Explanation</h1>
+
+        <p>
+            Understand which features influenced the customer's
+            churn prediction.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     CUSTOMER SEARCH
+====================================================== -->
+
+<div class="search-card">
+
+    <form
+        method="POST"
+        action="{{ url_for('explanation') }}"
+    >
+
+        <div class="search-label">
+
+            <i class="bi bi-bar-chart-line-fill"></i>
+
+            <span>
+                Explain Customer Prediction
+            </span>
+
+        </div>
+
+
+        <div class="search-row">
+
+            <input
+                type="text"
+                name="customer_id"
+                class="form-control customer-input"
+                placeholder="Enter Customer ID e.g. 5575-GNVDE"
+                value="{{ customer_id or '' }}"
+                required
+            >
+
+
+            <button
+                type="submit"
+                class="btn btn-primary-custom search-button"
+            >
+
+                <i class="bi bi-search"></i>
+
+                Explain Risk
+
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+
+<!-- =====================================================
+     ERROR
+====================================================== -->
+
+{% if error %}
+
+<div class="alert-custom error-alert mt-4">
+
+    <i class="bi bi-exclamation-triangle-fill"></i>
+
+    <div>
+
+        <strong>
+            SHAP Error
+        </strong>
+
+        <p>
+            {{ error }}
+        </p>
+
+    </div>
+
+</div>
+
+{% endif %}
+
+
+<!-- =====================================================
+     CUSTOMER RESULT
+====================================================== -->
+
+{% if customer %}
+
+<div class="profile-mini mt-4">
+
+
+    <div class="profile-avatar small-avatar">
+
+        <i class="bi bi-person-fill"></i>
+
+    </div>
+
+
+    <div>
+
+        <span>
+            Customer
+        </span>
+
+        <h4>
+            {{ customer.get('customerID', customer_id) }}
+        </h4>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     CHURN SUMMARY
+====================================================== -->
+
+{% if probability is not none %}
+
+<div class="row g-4 mt-3">
+
+
+    <!-- Probability -->
+
+    <div class="col-md-6">
+
+        <div class="risk-card">
+
+            <span>
+                Churn Probability
+            </span>
+
+            <div class="probability-value">
+
+                {{ "%.2f"|format(probability * 100) }}%
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Risk -->
+
+    <div class="col-md-6">
+
+        <div class="risk-card">
+
+            <span>
+                Risk Level
+            </span>
+
+
+            {% if probability >= 0.75 %}
+
+                <div class="risk-badge high-risk">
+
+                    <i class="bi bi-exclamation-triangle-fill"></i>
+
+                    High Risk
+
+                </div>
+
+            {% elif probability >= 0.50 %}
+
+                <div class="risk-badge medium-risk">
+
+                    <i class="bi bi-dash-circle-fill"></i>
+
+                    Medium Risk
+
+                </div>
+
+            {% else %}
+
+                <div class="risk-badge low-risk">
+
+                    <i class="bi bi-check-circle-fill"></i>
+
+                    Low Risk
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endif %}
+
+
+<!-- =====================================================
+     SHAP EXPLANATION
+====================================================== -->
+
+<div class="shap-container mt-4">
+
+
+    <div class="shap-header">
+
+        <div>
+
+            <h4>
+                Important Churn Factors
+            </h4>
+
+            <p>
+                SHAP values explain how individual model features
+                influenced this customer's prediction.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         FACTORS INCREASING CHURN
+    ================================================== -->
+
+    <div class="mt-4">
+
+        <h5 class="mb-3">
+
+            <i class="bi bi-arrow-up-circle-fill"></i>
+
+            Factors Increasing Churn Risk
+
+        </h5>
+
+
+        {% if positive_factors %}
+
+        <div class="shap-list">
+
+
+            {% for item in positive_factors %}
+
+            <div class="shap-row">
+
+
+                <div class="shap-feature">
+
+                    <span>
+                        {{ item.Feature }}
+                    </span>
+
+                </div>
+
+
+                <div class="shap-value positive-shap">
+
+                    +
+                    {{ "%.4f"|format(item.SHAP_Value) }}
+
+                </div>
+
+
+            </div>
+
+            {% endfor %}
+
+
+        </div>
+
+
+        {% else %}
+
+        <div class="empty-state">
+
+            <p>
+                No positive SHAP factors were found.
+            </p>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- =================================================
+         FACTORS REDUCING CHURN
+    ================================================== -->
+
+    <div class="mt-5">
+
+        <h5 class="mb-3">
+
+            <i class="bi bi-arrow-down-circle-fill"></i>
+
+            Factors Reducing Churn Risk
+
+        </h5>
+
+
+        {% if protective_factors %}
+
+        <div class="shap-list">
+
+
+            {% for item in protective_factors %}
+
+            <div class="shap-row">
+
+
+                <div class="shap-feature">
+
+                    <span>
+                        {{ item.Feature }}
+                    </span>
+
+                </div>
+
+
+                <div class="shap-value negative-shap">
+
+                    {{ "%.4f"|format(item.SHAP_Value) }}
+
+                </div>
+
+
+            </div>
+
+            {% endfor %}
+
+
+        </div>
+
+
+        {% else %}
+
+        <div class="empty-state">
+
+            <p>
+                No negative SHAP factors were found.
+            </p>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+
+</div>
+
+
+<!-- =====================================================
+     EXPLANATION GUIDE
+====================================================== -->
+
+<div class="explanation-guide mt-4">
+
+
+    <div class="guide-item">
+
+        <div class="guide-icon positive-guide">
+
+            <i class="bi bi-arrow-up"></i>
+
+        </div>
+
+
+        <div>
+
+            <strong>
+                Positive SHAP Value
+            </strong>
+
+            <p>
+                The feature pushes the model prediction
+                toward higher churn risk.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="guide-item">
+
+        <div class="guide-icon negative-guide">
+
+            <i class="bi bi-arrow-down"></i>
+
+        </div>
+
+
+        <div>
+
+            <strong>
+                Negative SHAP Value
+            </strong>
+
+            <p>
+                The feature pushes the model prediction
+                toward lower churn risk.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     ACTIONS
+====================================================== -->
+
+<div class="prediction-actions mt-4">
+
+
+    <!-- Back to prediction -->
+
+    <a
+        href="{{ url_for('prediction') }}"
+        class="btn btn-outline-custom"
+    >
+
+        <i class="bi bi-arrow-left"></i>
+
+        Back to Prediction
+
+    </a>
+
+
+    <!-- AI Assistant -->
+
+    <a
+        href="{{ url_for('assistant', customer_id=customer_id) }}"
+        class="btn btn-primary-custom"
+    >
+
+        <i class="bi bi-robot"></i>
+
+        Ask AI Assistant
+
+    </a>
+
+</div>
+
+
+{% endif %}
+
+{% endblock %}

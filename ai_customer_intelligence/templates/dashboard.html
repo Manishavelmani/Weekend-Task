@@ -1,0 +1,307 @@
+{% extends "base.html" %}
+{% block title %}
+Dashboard | Customer AI
+{% endblock %}
+{% block content %}
+<div class="dashboard-header">
+    <div>
+        <h1>Customer Intelligence Dashboard</h1>
+        <p>
+            Monitor customer behavior, churn patterns and AI-driven risk.
+        </p>
+    </div>
+    <a
+        href="{{ url_for('customer') }}"
+        class="btn btn-primary-custom"
+    >
+        <i class="bi bi-search"></i>
+        Search Customer
+    </a>
+</div>
+<!-- =====================================================
+     STAT CARDS
+====================================================== -->
+<div class="row g-4 mt-2">
+    <!-- Total Customers -->
+    <div class="col-xl-3 col-md-6">
+        <div class="stat-card card-blue">
+            <div class="stat-icon">
+                <i class="bi bi-people-fill"></i>
+            </div>
+            <div>
+                <p>Total Customers</p>
+                <h2>
+                    {{ total_customers }}
+                </h2>
+                <span>
+                    Customer records
+                </span>
+            </div>
+        </div>
+    </div>
+    <!-- Churned Customers -->
+    <div class="col-xl-3 col-md-6">
+        <div class="stat-card card-red">
+            <div class="stat-icon">
+                <i class="bi bi-person-x-fill"></i>
+            </div>
+
+            <div>
+
+                <p>Churned Customers</p>
+
+                <h2>
+                    {{ churned_customers }}
+                </h2>
+
+                <span>
+                    Customers lost
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Churn Rate -->
+
+    <div class="col-xl-3 col-md-6">
+
+        <div class="stat-card card-purple">
+
+            <div class="stat-icon">
+                <i class="bi bi-graph-up-arrow"></i>
+            </div>
+
+            <div>
+
+                <p>Churn Rate</p>
+
+                <h2>
+                    {{ churn_rate }}%
+                </h2>
+
+                <span>
+                    Overall churn
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Model -->
+
+    <div class="col-xl-3 col-md-6">
+
+        <div class="stat-card card-green">
+
+            <div class="stat-icon">
+                <i class="bi bi-shield-check"></i>
+            </div>
+
+            <div>
+
+                <p>AI Model</p>
+
+                <h2 class="model-text">
+                    XGBoost
+                </h2>
+
+                <span>
+                    Churn prediction
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     DASHBOARD VISUALS
+====================================================== -->
+
+<div class="row g-4 mt-2">
+
+
+    <!-- Churn Distribution -->
+
+    <div class="col-lg-6">
+
+        <div class="dashboard-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h5>
+                        <i class="bi bi-pie-chart-fill"></i>
+                        Churn Distribution
+                    </h5>
+
+                    <p>
+                        Current customer churn overview
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="churn-visual">
+
+                <div
+                    class="churn-circle"
+                    style="--churn: {{ churn_rate }}%;"
+                >
+
+                    <div class="circle-inner">
+
+                        <strong>
+                            {{ churn_rate }}%
+                        </strong>
+
+                        <span>
+                            Churn Rate
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="distribution-details">
+
+                    <div class="legend-row">
+
+                        <span class="legend-dot churn-dot"></span>
+
+                        <div>
+                            <strong>
+                                Churned
+                            </strong>
+
+                            <small>
+                                {{ churned_customers }} customers
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="legend-row">
+
+                        <span class="legend-dot active-dot"></span>
+
+                        <div>
+                            <strong>
+                                Active
+                            </strong>
+
+                            <small>
+                                {{ total_customers - churned_customers }}
+                                customers
+                            </small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Customer Base -->
+
+    <div class="col-lg-6">
+
+        <div class="dashboard-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h5>
+                        <i class="bi bi-bar-chart-fill"></i>
+                        Customer Base
+                    </h5>
+
+                    <p>
+                        Customer status summary
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="horizontal-chart">
+
+                <div class="chart-item">
+
+                    <div class="chart-label">
+
+                        <span>
+                            Active Customers
+                        </span>
+
+                        <strong>
+                            {{ total_customers - churned_customers }}
+                        </strong>
+
+                    </div>
+
+                    <div class="progress-custom">
+
+                        <div
+                            class="progress-fill active-fill"
+                            style="width: {{ ((total_customers - churned_customers) / total_customers * 100) if total_customers else 0 }}%;"
+                        ></div>
+
+                    </div>
+                </div>
+                <div class="chart-item">
+                    <div class="chart-label">
+                        <span>
+                            Churned Customers
+                        </span>
+                        <strong>
+                            {{ churned_customers }}
+                        </strong>
+                    </div>
+                    <div class="progress-custom">
+                        <div
+                            class="progress-fill churn-fill"
+                            style="width: {{ churn_rate }}%;"
+                        ></div>
+                    </div>
+                </div>
+                <div class="dashboard-message">
+                    <i class="bi bi-lightbulb-fill"></i>
+                    <div>
+                        <strong>
+                            Customer Risk Monitoring
+                        </strong>
+                        <p>
+                            Use customer search and churn prediction
+                            to investigate individual customer risk.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,275 @@
+{% extends "base.html" %}
+{% block title %}
+AI Assistant | Customer AI
+{% endblock %}
+{% block section_name %}
+AI Customer Assistant
+{% endblock %}
+{% block content %}
+<div class="assistant-page">
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+    <div class="assistant-header">
+        <div class="assistant-icon-large">
+            <i class="bi bi-robot"></i>
+        </div>
+        <div>
+            <h1>AI Customer Assistant</h1>
+            <p>
+                Ask questions about customer churn,
+                risk factors, policies and customer
+                intelligence.
+            </p>
+        </div>
+    </div>
+    <!-- =====================================================
+         CUSTOMER + QUESTION CARD
+    ====================================================== -->
+    <div class="assistant-card">
+        <form
+            method="POST"
+            action="{{ url_for('assistant') }}"
+        >
+            <!-- CUSTOMER ID -->
+            <label class="assistant-label">
+                <i class="bi bi-person-circle"></i>
+                Customer ID
+                <span class="text-muted" style="font-weight: normal;">(Optional)</span>
+            </label>
+            <input
+                type="text"
+                name="customer_id"
+                class="form-control assistant-input mb-3"
+                value="{{ customer_id or '' }}"
+                placeholder="Example: 7590-VHVEG"
+            >
+            <!-- CUSTOMER FOUND -->
+            {% if customer %}
+            <div class="alert alert-success mb-4">
+                <i class="bi bi-check-circle-fill"></i>
+                Customer selected:
+                <strong>{{ customer_id }}</strong>
+            </div>
+            {% endif %}
+            <!-- QUESTION -->
+            <label class="assistant-label">
+                <i class="bi bi-chat-left-text"></i>
+                Ask your question
+            </label>
+            <textarea
+                name="question"
+                class="form-control assistant-input"
+                rows="5"
+                placeholder="Example: Why is this customer at high churn risk?"
+                required
+            >{{ question or '' }}</textarea>
+            <!-- FORM FOOTER -->
+            <div class="assistant-footer">
+                <span>
+                    <i class="bi bi-stars"></i>
+                    Powered by RAG + FAISS + Llama
+                </span>
+                <button
+                    type="submit"
+                    class="btn btn-primary-custom"
+                >
+                    <i class="bi bi-send-fill"></i>
+                    Ask Assistant
+                </button>
+            </div>
+        </form>
+    </div>
+    <!-- =====================================================
+         ERROR
+    ====================================================== -->
+    {% if error %}
+    <div class="alert-custom error-alert mt-4">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        <div>
+            <strong>
+                Assistant Error
+            </strong>
+            <p>
+                {{ error }}
+            </p>
+        </div>
+    </div>
+    {% endif %}
+    <!-- =====================================================
+         CUSTOMER INFORMATION
+    ====================================================== -->
+    {% if customer %}
+    <div class="assistant-card mt-4">
+        <div class="answer-header">
+            <div class="answer-ai-icon">
+                <i class="bi bi-person-vcard"></i>
+            </div>
+            <div>
+                <span>
+                    Selected Customer
+                </span>
+                <h5>
+                    {{ customer_id }}
+                </h5>
+            </div>
+        </div>
+        <div class="customer-summary">
+            <div class="row g-3">
+                <!-- TENURE -->
+                {% if customer.get("tenure") is not none %}
+                <div class="col-md-3">
+                    <div class="summary-item">
+                        <small>
+                            Tenure
+                        </small>
+                        <strong>
+                            {{ customer.get("tenure") }}
+                        </strong>
+                    </div>
+                </div>
+                {% endif %}
+                <!-- MONTHLY CHARGES -->
+                {% if customer.get("MonthlyCharges") is not none %}
+                <div class="col-md-3">
+                    <div class="summary-item">
+                        <small>
+                            Monthly Charges
+                        </small>
+                        <strong>
+                            {{ customer.get("MonthlyCharges") }}
+                        </strong>
+                    </div>
+                </div>
+                {% endif %}
+                <!-- CONTRACT -->
+                {% if customer.get("Contract") is not none %}
+                <div class="col-md-3">
+                    <div class="summary-item">
+                        <small>
+                            Contract
+                        </small>
+                        <strong>
+                            {{ customer.get("Contract") }}
+                        </strong>
+                    </div>
+                </div>
+                {% endif %}
+                <!-- INTERNET -->
+                {% if customer.get("InternetService") is not none %}
+                <div class="col-md-3">
+                    <div class="summary-item">
+                        <small>
+                            Internet Service
+                        </small>
+                        <strong>
+                            {{ customer.get("InternetService") }}
+                        </strong>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <!-- =====================================================
+         EXAMPLE QUESTIONS
+    ====================================================== -->
+    <div class="example-section">
+        <h5>
+            What can I ask?
+        </h5>
+        <div class="row g-3">
+            <!-- CHURN -->
+            <div class="col-lg-6">
+                <div class="question-example">
+                    <div class="example-icon">
+                        <i class="bi bi-shield-exclamation"></i>
+                    </div>
+                    <div>
+                        <strong>
+                            Churn Risk
+                        </strong>
+                        <p>
+                            Why is this customer at high churn risk?
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- RISK FACTORS -->
+            <div class="col-lg-6">
+                <div class="question-example">
+                    <div class="example-icon">
+                        <i class="bi bi-graph-up-arrow"></i>
+                    </div>
+                    <div>
+                        <strong>
+                            Risk Factors
+                        </strong>
+                        <p>
+                            What factors increase churn probability?
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- CANCELLATION -->
+            <div class="col-lg-6">
+                <div class="question-example">
+                    <div class="example-icon">
+                        <i class="bi bi-file-earmark-text"></i>
+                    </div>
+                    <div>
+                        <strong>
+                            Cancellation Policy
+                        </strong>
+                        <p>
+                            What cancellation policy applies to a customer?
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- CUSTOMER EXPLANATION -->
+            <div class="col-lg-6">
+                <div class="question-example">
+                    <div class="example-icon">
+                        <i class="bi bi-lightbulb"></i>
+                    </div>
+                    <div>
+                        <strong>
+                            Customer Explanation
+                        </strong>
+                        <p>
+                            Explain this customer's churn risk.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- =====================================================
+         AI ANSWER
+    ====================================================== -->
+    {% if answer %}
+    <div class="answer-card">
+        <!-- ANSWER HEADER -->
+        <div class="answer-header">
+            <div class="answer-ai-icon">
+                <i class="bi bi-robot"></i>
+            </div>
+            <div>
+                <span>
+                    AI Customer Assistant
+                </span>
+                <h5>
+                    Response
+                </h5>
+            </div>
+        </div>
+        <!-- ANSWER BODY -->
+        <div class="answer-content">
+            {{ answer }}
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

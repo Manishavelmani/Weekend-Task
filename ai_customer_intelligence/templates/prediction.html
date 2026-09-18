@@ -1,0 +1,454 @@
+{% extends "base.html" %}
+
+{% block title %}
+Churn Prediction | Customer AI
+{% endblock %}
+
+{% block section_name %}
+Churn Prediction
+{% endblock %}
+
+{% block content %}
+
+<div class="page-heading">
+
+    <div>
+
+        <h1>Churn Prediction</h1>
+
+        <p>
+            Use the trained XGBoost model to estimate customer churn risk.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     CUSTOMER SEARCH
+====================================================== -->
+
+<div class="search-card">
+
+    <form
+        method="POST"
+        action="{{ url_for('prediction') }}"
+    >
+
+        <div class="search-label">
+
+            <i class="bi bi-shield-exclamation"></i>
+
+            <span>
+                Analyze Customer Risk
+            </span>
+
+        </div>
+
+
+        <div class="search-row">
+
+            <input
+                type="text"
+                name="customer_id"
+                class="form-control customer-input"
+                placeholder="Enter Customer ID e.g. 5575-GNVDE"
+                value="{{ customer_id or '' }}"
+                required
+            >
+
+            <button
+                type="submit"
+                class="btn btn-primary-custom search-button"
+            >
+
+                <i class="bi bi-cpu"></i>
+
+                Predict Churn
+
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+
+<!-- =====================================================
+     ERROR
+====================================================== -->
+
+{% if error %}
+
+<div class="alert-custom error-alert mt-4">
+
+    <i class="bi bi-exclamation-triangle-fill"></i>
+
+    <div>
+
+        <strong>
+            Prediction Error
+        </strong>
+
+        <p>
+            {{ error }}
+        </p>
+
+    </div>
+
+</div>
+
+{% endif %}
+
+
+<!-- =====================================================
+     RESULT
+====================================================== -->
+
+{% if probability is not none and customer %}
+
+<div class="prediction-result mt-4">
+
+
+    <!-- =================================================
+         TOP SECTION
+    ================================================== -->
+
+    <div class="prediction-top">
+
+        <div>
+
+            <span class="result-label">
+                Customer
+            </span>
+
+            <h2>
+                {{ customer.get('customerID', customer_id) }}
+            </h2>
+
+        </div>
+
+
+        <div class="model-label">
+
+            <i class="bi bi-cpu-fill"></i>
+
+            XGBoost Model
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         THREE RESULT CARDS
+    ================================================== -->
+
+    <div class="row g-4 mt-1">
+
+
+        <!-- =============================================
+             CHURN PROBABILITY
+        ============================================== -->
+
+        <div class="col-lg-4">
+
+            <div class="risk-card">
+
+                <span>
+                    Churn Probability
+                </span>
+
+
+                <div class="probability-value">
+
+                    {{ "%.2f"|format(probability * 100) }}%
+
+                </div>
+
+
+                <div class="risk-progress">
+
+                    <div
+                        class="risk-progress-fill"
+                        style="width: {{ probability * 100 }}%;"
+                    ></div>
+
+                </div>
+
+
+                <small class="text-muted">
+
+                    Model threshold:
+                    {{ "%.2f"|format(threshold) }}
+
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- =============================================
+             RISK LEVEL
+        ============================================== -->
+
+        <div class="col-lg-4">
+
+            <div class="risk-card">
+
+                <span>
+                    Risk Level
+                </span>
+
+
+                {% if risk_level == "High Risk" %}
+
+                    <div class="risk-badge high-risk">
+
+                        <i class="bi bi-exclamation-triangle-fill"></i>
+
+                        High Risk
+
+                    </div>
+
+                    <p>
+                        The model estimates a relatively high
+                        probability of churn.
+                    </p>
+
+
+                {% elif risk_level == "Medium Risk" %}
+
+                    <div class="risk-badge medium-risk">
+
+                        <i class="bi bi-dash-circle-fill"></i>
+
+                        Medium Risk
+
+                    </div>
+
+                    <p>
+                        The customer has a moderate predicted
+                        churn probability.
+                    </p>
+
+
+                {% else %}
+
+                    <div class="risk-badge low-risk">
+
+                        <i class="bi bi-check-circle-fill"></i>
+
+                        Low Risk
+
+                    </div>
+
+                    <p>
+                        The customer has a lower predicted
+                        churn probability.
+                    </p>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+
+        <!-- =============================================
+             MODEL PREDICTION
+        ============================================== -->
+
+        <div class="col-lg-4">
+
+            <div class="risk-card">
+
+                <span>
+                    Model Prediction
+                </span>
+
+
+                {% if prediction_result == 1 %}
+
+                    <div class="prediction-status churn-status">
+
+                        <i class="bi bi-person-x-fill"></i>
+
+                        Predicted to Churn
+
+                    </div>
+
+                {% else %}
+
+                    <div class="prediction-status retain-status">
+
+                        <i class="bi bi-person-check-fill"></i>
+
+                        Predicted to Stay
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         CUSTOMER SUMMARY
+    ================================================== -->
+
+    <div class="prediction-summary mt-4">
+
+        <h5>
+            Customer Summary
+        </h5>
+
+
+        <div class="summary-grid">
+
+
+            <div>
+
+                <span>
+                    Contract
+                </span>
+
+                <strong>
+                    {{ customer.get('Contract', 'N/A') }}
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Tenure
+                </span>
+
+                <strong>
+                    {{ customer.get('tenure', 'N/A') }} months
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Monthly Charges
+                </span>
+
+                <strong>
+                    ${{ customer.get('MonthlyCharges', 'N/A') }}
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Payment Method
+                </span>
+
+                <strong>
+                    {{ customer.get('PaymentMethod', 'N/A') }}
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Internet Service
+                </span>
+
+                <strong>
+                    {{ customer.get('InternetService', 'N/A') }}
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Total Charges
+                </span>
+
+                <strong>
+                    ${{ customer.get('TotalCharges', 'N/A') }}
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         ACTION BUTTONS
+    ================================================== -->
+
+    <div class="prediction-actions mt-4">
+
+
+        <!-- SHAP -->
+
+        <form
+            method="POST"
+            action="{{ url_for('explanation') }}"
+            style="display:inline;"
+        >
+
+            <input
+                type="hidden"
+                name="customer_id"
+                value="{{ customer_id }}"
+            >
+
+            <button
+                type="submit"
+                class="btn btn-outline-custom"
+            >
+
+                <i class="bi bi-bar-chart-line"></i>
+
+                View SHAP Explanation
+
+            </button>
+
+        </form>
+
+
+        <!-- AI ASSISTANT -->
+
+        <a
+            href="{{ url_for('assistant', customer_id=customer_id) }}"
+            class="btn btn-primary-custom"
+        >
+
+            <i class="bi bi-robot"></i>
+
+            Ask AI Assistant
+
+        </a>
+
+    </div>
+
+
+</div>
+
+{% endif %}
+
+{% endblock %}
