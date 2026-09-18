@@ -1,0 +1,41 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[[source]]
+url = "https://download.pytorch.org/whl/cpu"
+verify_ssl = true
+name = "downloadpytorch"
+
+[[source]]
+url = "https://abetlen.github.io/llama-cpp-python/whl/cpu"
+verify_ssl = true
+name = "llama-cpp-cpu"
+
+[packages]
+jupyter = "*"
+pandas = "*"
+numpy = "*"
+matplotlib = "*"
+seaborn = "*"
+scikit-learn = "*"
+jupyter-server = "*"
+notebook = "*"
+jupyterlab = "*"
+tornado = "*"
+xgboost = "*"
+ipykernel = "*"
+tensorflow = "*"
+torch = {version = "*", index = "downloadpytorch"}
+torchvision = {version = "*", index = "downloadpytorch"}
+torchaudio = {version = "*", index = "downloadpytorch"}
+sentence-transformers = "*"
+faiss-cpu = "*"
+flask = "*"
+shap = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.12"

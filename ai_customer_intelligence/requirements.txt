@@ -1,0 +1,27 @@
+# Data Analysis
+pandas
+numpy
+matplotlib
+seaborn
+
+# Machine Learning
+scikit-learn
+xgboost
+joblib
+shap
+
+# Deep Learning
+tensorflow
+
+# NLP
+nltk
+
+# Embeddings & Vector Search
+sentence-transformers
+faiss-cpu
+
+# Local LLM
+llama-cpp-python
+
+# Flask
+Flask
